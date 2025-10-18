@@ -7,7 +7,7 @@
   "type": "module",
   "homepage": "https://accessible-astro-starter.incluud.dev/",
   "scripts": {
-    "dev": "astro dev",
+    "dev": "astro dev --host",
     "start": "astro dev",
     "build": "astro build",
     "preview": "astro preview"
