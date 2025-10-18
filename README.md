@@ -1,6 +1,6 @@
 # Manheim Lions Website
 
-[![Built with Astro](https://astro.badg.es/v2/built-with-astro/small.svg)](https://astro.build)
+[![Built with Astro](https://astro.badg.es/v2/built-with-astro/large.svg)](https://astro.build) ![HTML](https://readmebadge.vercel.app/badges/html.svg) ![Tailwind CSS](https://readmebadge.vercel.app/badges/tailwind.svg) ![Typescript](https://readmebadge.vercel.app/badges/typescript.svg) ![Javascript](https://readmebadge.vercel.app/badges/javascript.svg) ![CSS](https://readmebadge.vercel.app/badges/css.svg) ![FormSpark](https://avatars.githubusercontent.com/u/64487786?s=50&v=4)
 
 This repository houses the main website for the Manheim Lions club.
 - https://manheimlions.org
@@ -11,9 +11,9 @@ The Manheim Lions club is a local detachment, non profit organization, of the Li
 
 ## TODO
 
-- Redesign the site for being statically hosted via Cloudflare pages (using Astrojs :heart:)
+- Redesign the site for being statically hosted via [Cloudflare](https://cloudflare.com) Pages (using Astrojs :heart:)
 - Make sure site is accessible as possible to as many local people as possible (using accessble components, etc)
-- Create contact forms via Form Spark
+- Create contact forms via [Formspark](https://formspark.io/)
 
 ## Getting started
 
