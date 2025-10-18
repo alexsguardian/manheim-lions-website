@@ -1,6 +1,48 @@
-# Accessible Astro Starter
+# Manheim Lions Website
 
 [![Built with Astro](https://astro.badg.es/v2/built-with-astro/small.svg)](https://astro.build)
+
+This repository houses the main website for the Manheim Lions club.
+- https://manheimlions.org
+
+The Manheim Lions club is a local detachment, non profit organization, of the Lions Club International & Lions Club Internation Foundation. The Lions Club International consists of over 1.4 million members who bring hands and hearts to communities in nearly every country across the globe. Learn more [here](https://www.lionsclubs.org/en).
+
+**Note:** The current website is built on wordpress as this repository is still a WIP conversion.
+
+## TODO
+
+- Redesign the site for being statically hosted via Cloudflare pages (using Astrojs :heart:)
+- Make sure site is accessible as possible to as many local people as possible (using accessble components, etc)
+- Create contact forms via Form Spark
+
+## Getting started
+
+Clone this theme locally and run any of the following commands in your terminal:
+
+| Command           | Action                                       |
+| :---------------- | :------------------------------------------- |
+| `npm install`     | Installs dependencies                        |
+| `npm run dev`     | Starts local dev server at `localhost:4321`  |
+| `npm run build`   | Build your production site to `./dist/`      |
+| `npm run preview` | Preview your build locally, before deploying |
+
+## Contributing
+
+Currently this project is not accepting outside collaboration. The project is public as it is using FOSS software, frameworks, etc.
+
+
+## Licensing
+
+The original [MIT license](/LICENSE) covers all code and anything related to the original theme's assets. Please refer to [TRADEMARKS](/TRADEMARKS.md) for info pertaining to assets used by MLC, LCI, LCIF, and other co.
+
+## Theme Info
+
+The site is based on the Accessible Astro Stater theme. Which can be found below.
+
+<details closed>
+<summary>Expand to see original theme info</summary>
+
+### Accessible Astro Starter
 
 <img width="1200" height="627" alt="social-preview" src="https://github.com/user-attachments/assets/fa1a8b50-3aab-4bd3-8f50-1d43586fbd84" />
 
@@ -57,17 +99,6 @@ A ready-to-use, SEO and accessibility-focused Astro starter template. Built with
 - Accessible button and hyperlink styling with clear focus states
 - Styled `<kbd>` element for keyboard shortcut documentation
 
-## Getting started
-
-Clone this theme locally and run any of the following commands in your terminal:
-
-| Command           | Action                                       |
-| :---------------- | :------------------------------------------- |
-| `npm install`     | Installs dependencies                        |
-| `npm run dev`     | Starts local dev server at `localhost:4321`  |
-| `npm run build`   | Build your production site to `./dist/`      |
-| `npm run preview` | Preview your build locally, before deploying |
-
 ## Accessible Astro projects
 
 - [Accessible Astro Starter](https://github.com/incluud/accessible-astro-starter): Fully accessible starter for kickstarting Astro projects, with Tailwind.
@@ -111,3 +142,4 @@ We want to express our heartfelt gratitude to everyone who contributes to making
 Together, we're not just building documentation or components – we're creating a more inclusive and accessible web for everyone. Every contribution, whether it's code, documentation, bug reports, or feedback, helps move us closer to this goal. ✨
 
 Remember: Accessibility is not a feature, it's a fundamental right. Thank you for being part of this journey!
+</details>
