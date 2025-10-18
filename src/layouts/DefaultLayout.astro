@@ -7,11 +7,11 @@ import Footer from '@components/Footer.astro'
 import { ClientRouter } from 'astro:transitions'
 
 const {
-  title = 'Accessible Astro',
-  description = 'A starter project with accessibility features using Astro static site builder. Contains accessible landmarks, skip links, a dark mode color scheme, better focus outline and keyboard menu navigation.',
+  title = 'Manheim Lions Club',
+  description = 'The Manheim Lions Club is a community service organization (part of Lions International) in Manheim, Pennsylvania.',
   url = Astro.site,
-  image = 'social-preview-image.png',
-  author = 'Incluud',
+  image = 'CentennialRibbon.png',
+  author = '',
 } = Astro.props
 ---
 
@@ -22,7 +22,7 @@ const {
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
 
     <!-- favicon -->
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
 
     <SiteMeta title={title} description={description.substring(0, 100)} url={url} image={image} author={author} />
 
