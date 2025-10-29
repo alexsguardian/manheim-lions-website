@@ -1,22 +1,40 @@
 ---
 import DefaultLayout from '@layouts/DefaultLayout.astro';
 import PageHeader from '@components/PageHeader.astro';
+
+const FB_URL = import.meta.env.PUBLIC_FACEBOOK_URL;
 ---
 
 <DefaultLayout title="Social">
   <PageHeader title="Social" subtitle="Club socials & press releases." bgType="gradient" showBreadcrumbs={false}/>
   <section class="container my-16">
     <p>to-do</p>
-   <iframe
-    src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fmanheimlive&tabs=timeline&width=340&height=500&small_header=true&adapt_container_width=true&hide_cover=false&show_facepile=false&appId"
-    data-adapt-container-width
-    height="500"
-    style="border:none;overflow:hidden"
-    scrolling="no"
-    frameborder="0"
-    allowfullscreen="true"
-    allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
-    data-lazy
-  />
+    <div class="mx-auto" id="fb-box">
+      <iframe
+        src={FB_URL}
+        style="border-width:0"
+        id="fb"
+        frameborder="0"
+        scrolling="no"
+        aria-label="Manheim Lions Club Facebook Feed"
+        allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+        style="border:none;overflow:hidden"
+        data-lazy
+      />
+    </div>
   </section>
 </DefaultLayout>
+
+<style>
+    #fb-box {
+        overflow-y: hidden;
+        height: var(--calheight);
+        max-height: calc(var(--calheight) - 35px);
+        border-radius: 24px;
+        width: fit-content;
+    }
+    #fb-box iframe {
+        width: var(--calwidth);
+        height: var(--calheight);
+    }
+</style>
