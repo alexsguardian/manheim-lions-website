@@ -68,7 +68,7 @@ const CF_SITE_KEY = import.meta.env.PUBLIC_CF_TURNSTILE_SITE_KEY;
 
         <div class="flex flex-row items-center gap-8">
           <Button id="submit-btn" htmlType="submit" type="primary" size="md" disabled>Send Request</Button>
-          <div id="cf-turnstile" class="pt-2" data-sitekey={CF_SITE_KEY} data-size="flexible"></div>
+          <div id="cf-turnstile" class="pt-2" data-sitekey={CF_SITE_KEY} aria-hidden="true" tabindex="-1" data-size="flexible"></div>
         </div>
         <Checkbox type="checkbox" required name="agree" id="agree" value="agree" class="text-sm"label="I agree that this equipment is on loan from the Manheim Lions Club and will return it as received after I no longer need it. I also am confirming I am a resident of Manheim, PA." />
       </Form>
