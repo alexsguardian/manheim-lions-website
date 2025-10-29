@@ -2,6 +2,11 @@
   color-scheme: light;
   interpolate-size: allow-keywords;
 
+  // calendar dimensions
+  --calheight: 700px;
+  --calwidth: 1200px;
+
+
   // brand colors (change these to your own brand colors)
   --brand-primary: #deaa0e;
   --brand-secondary: #5a0c0a;
@@ -148,3 +153,4 @@
 .darkmode {
   color-scheme: dark;
 }
+

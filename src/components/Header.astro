@@ -19,22 +19,8 @@ import { Icon } from 'astro-icon/components'
     <li class="menu-item">
       <Link href="/calendar/">Calendar</Link>
     </li>
-    <li class="menu-item has-dropdown">
-      <button aria-haspopup="true" aria-expanded="false">
-        Fundraising
-        <Icon aria-hidden="true" name="lucide:chevron-down" size="32" />
-      </button>
-      <ul class="dropdown-menu">
-        <li class="submenu-item">
-          <Link href="/brooms">Brooms</Link>
-        </li>
-        <li class="submenu-item">
-          <Link href="/sandwiches">Sandwiches!</Link>
-        </li>
-        <li class="submenu-item">
-          <Link href="/makers-market">Manheim Makers Market</Link>
-        </li>
-      </ul>
+    <li class="menu-item">
+        <Link href="/fundraising/">Fundraising</Link>
     </li>
     <li class="menu-item has-dropdown">
       <button aria-haspopup="true" aria-expanded="false">
@@ -43,28 +29,37 @@ import { Icon } from 'astro-icon/components'
       </button>
       <ul class="dropdown-menu">
         <li class="submenu-item">
-          <Link href="/community/pack-47">Cub Scouts - Pack 47</Link>
+          <Link href="https://pack47manheim.weebly.com/" target="_blank" rel="noopener"><span class="flex flex-row items-center gap-2" >Cub Pack 47 <Icon name="lucide:external-link" /></span></Link>
         </li>
         <li class="submenu-item">
-          <Link href="/community/easter-egg-hunt">Easter Egg Hunt</Link>
+          <Link href="/easter-egg-hunt">Easter Egg Hunts</Link>
         </li>
         <li class="submenu-item">
-          <Link href="/community/eye-glasses">Eye Glasses</Link>
+          <Link href="/eye-glasses">Eye Glasses</Link>
         </li>
         <li class="submenu-item">
-          <Link href="/community/baseball-14u">Manheim Lions 14U Baseball</Link>
+          <Link href="/14u-baseball">Manheim Lions 14U Baseball</Link>
         </li>
         <li class="submenu-item">
-          <Link href="/community/santa-5k">Santa 5K Run & Walk</Link>
+          <Link href="/santa-5k">Santa 5K Run & Walk</Link>
         </li>
       </ul>
     </li>
     <li class="menu-item">
       <Link href="/contact/">Contact</Link>
     </li>
+    <li class="menu-item">
+      <Link href="/about/">About</Link>
+    </li>
+    <li class="menu-item type-icon animate-rotate">
+      <Link href="/member-resources">
+        <Icon aria-hidden="true" name="lucide:user" />
+        <span class="sr-only">Member Resources</span>
+      </Link>
+    </li>
     <li class="menu-item type-icon animate-rotate">
       <Link href="https://github.com/alexsguardian/manheim-lions-website" target="_blank" rel="noopener">
-        <Icon aria-hidden="true" name="lucide:github" />
+        <Icon aria-hidden="true" name="lucide:github"/>
         <span class="sr-only">Website GitHub</span>
       </Link>
     </li>

@@ -18,10 +18,10 @@ interface Props {
   title: string
 }
 
-const { icon = 'mdi:rocket', title = 'Title' }: Props = Astro.props
+const { icon = 'lucide:rocket', title = 'Title' }: Props = Astro.props
 ---
 
-<div class="feature flex flex-col gap-4">
+<div class="feature flex flex-col gap-4 mb-8">
   <Icon aria-hidden="true" name={icon} />
   <div class="content">
     <Heading level="h3" size="h6" class="mb-2">{title}</Heading>
@@ -67,18 +67,25 @@ const { icon = 'mdi:rocket', title = 'Title' }: Props = Astro.props
       z-index: 0;
       inset: var(--space-m) -0.85rem -0.85rem 1rem;
       border-radius: var(--radius-l);
-      background-color: var(--link-color);
+      background-color: var(--brand-secondary);
     }
   }
 
   :global(.feature [data-icon]) {
     inline-size: 4rem;
     block-size: auto;
-    color: var(--link-color);
+    color: var(--brand-secondary);
   }
 
   :global(.darkmode .feature::before) {
     box-shadow: 0 0 0 6px var(--color-neutral-900);
     background-color: var(--color-neutral-900);
+  }
+
+  :global(.darkmode .feature::after) {
+    z-index: 0;
+    inset: var(--space-m) -0.85rem -0.85rem 1rem;
+    border-radius: var(--radius-l);
+    background-color: var(--brand-primary);
   }
 </style>

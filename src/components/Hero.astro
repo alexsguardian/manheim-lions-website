@@ -24,6 +24,7 @@ const { src = '/CentennialRibbon.png' }: Props = Astro.props
       <div class="flex flex-col items-center gap-8 md:items-start">
         <h1 class="text-center text-6xl md:text-left lg:text-8xl">
           <slot>Manheim Lions Club</slot>
+          <!-- <slot><p class="text-lg">Serving Manheim since 1925.</p></slot> -->
         </h1>
         <div class="flex flex-col gap-3 min-[500px]:flex-row">
           <Link
@@ -37,7 +38,7 @@ const { src = '/CentennialRibbon.png' }: Props = Astro.props
             Contact Us
           </Link>
           <Link
-            href="/contact"
+            href="/medical#contact"
             isButton
             type="default"
             animateOnHover
