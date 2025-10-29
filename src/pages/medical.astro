@@ -80,9 +80,10 @@ const CF_SITE_KEY = import.meta.env.PUBLIC_CF_TURNSTILE_SITE_KEY;
   src="https://challenges.cloudflare.com/turnstile/v0/api.js"
   async
   defer
+  data-astro-rerun
 ></script>
 
-<script>
+<script async>
   document.addEventListener('DOMContentLoaded', () => {
   const agree = document.getElementById('agree');
   const btn = document.getElementById('submit-btn');
