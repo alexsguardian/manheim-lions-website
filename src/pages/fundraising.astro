@@ -1,0 +1,53 @@
+---
+import DefaultLayout from '@layouts/DefaultLayout.astro';
+import { Heading, Link } from 'accessible-astro-components';
+import PageHeader from '@components/PageHeader.astro';
+import ContentMedia from '@components/ContentMedia.astro';
+
+import broomImage from '../assets/img/fund-brooms.jpg';
+import sandwichImage from '../assets/img/fund-sandwich.jpg';
+import makerMarket from '../assets/img/fund-makers-market.webp';
+---
+
+<DefaultLayout>
+  <PageHeader title="Fundraising" subtitle='Details about specific fundraisers and initiatives that help us make a difference.' bgType="gradient" showBreadcrumbs={false}/>
+  <section class="container my-16 space-content">
+    <ContentMedia imgSrc={broomImage.src} reverseImg={true} aria-label="Brooms">
+      <Heading level="h2">Brooms!</Heading>
+      <p class="text-2xl">
+        Need a new broom? Support our fundraising efforts by purchasing brooms from the Manheim Lions Club! Our brooms are perfect for keeping your home clean while also helping us support our community initiatives.
+      </p>
+      <p class="text-2xl">
+        You can find us at most Manheim community events throughout the year or purchase them at <Link href="https://shaubsdrycleaning.com/" target="_blank">Shaub's Dry Cleaning</Link>.
+      </p>
+    </ContentMedia>
+    <ContentMedia imgSrc={sandwichImage.src} reverseImg={false} aria-label="Ham and Cheese Sandwiches">
+      <Heading level="h2">Sandwich Sales</Heading>
+      <p class="text-2xl">
+        Support our fundraising efforts by purchasing delicious Ham & Cheese sandwiches from the Manheim Lions Club! Our sandwiches are made with 5oz of Ham and 1oz of Swiss Cheese. Great for easy lunches!
+      </p>
+      <p class="text-2xl">
+        We have two sandwich sales each year. Halfway to the Farm Show in April, and during the Manheim Farm Show in October. Watch our home page and calendar for upcoming dates!
+      </p>
+    </ContentMedia>
+    <ContentMedia imgSrc={makerMarket.src} reverseImg={true} aria-label="Manheim Maker's Market">
+      <Heading level="h2">Manheim Maker's Market</Heading>
+      <p class="text-2xl">
+        Support our fundraising efforts by purchasing unique handmade items from local artisans at the Manheim Maker's Market! Your purchases help fund our community initiatives. In partnership with The Shank Shoppe.
+      </p>
+      <p class="text-2xl">
+        The Maker's Market takes place once a year, in August. Watch our home page and calendar for upcoming dates!
+      </p>
+    </ContentMedia>
+    </section>
+    <section class="container">
+      <hr class="my-16 border-t-2 border-gray-300 mx-30" aria-hidden="true"/>
+      <Heading level="h3">Fundraising Notice</Heading>
+      <p class="text-lg">
+        All fundraising activities conducted by the Manheim Lions Club are in strict compliance with Lions Clubs International policies and local regulations. We are committed to transparency and accountability in all our fundraising efforts. If you have any questions or concerns about our fundraising activities, please do not hesitate to contact us.
+      </p>
+      <p>
+        All funds raised go directly towards supporting our community service projects, including vision and hearing programs, youth initiatives, and disaster relief efforts. We sincerely thank you for your support and generosity.
+      </p>
+    </section>
+</DefaultLayout>

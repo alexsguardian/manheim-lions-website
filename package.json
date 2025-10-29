@@ -61,6 +61,7 @@
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.5.1",
+    "@itsmatteomanf/astro-security-txt": "^0.4.0",
     "@tailwindcss/vite": "^4.1.13",
     "accessible-astro-components": "^5.0.1"
   }
