@@ -1,11 +1,96 @@
 ---
 import DefaultLayout from '@layouts/DefaultLayout.astro';
 import PageHeader from '@components/PageHeader.astro';
+import { Form, Input, Button, Textarea, Checkbox, Fieldset, Heading } from 'accessible-astro-components';
+
+import medPic from '../assets/img/medical-equipment.webp';
+
+const isLocalhost = Astro.request.url.includes('localhost');
+
+const baseURL = isLocalhost ? 'http://localhost:4321' : `${Astro.site}`;
+
+const FORM_URL = import.meta.env.PUBLIC_MEDICAL_FORM_URL;
+const CF_SITE_KEY = import.meta.env.PUBLIC_CF_TURNSTILE_SITE_KEY;
 ---
 
 <DefaultLayout title="Medical Equipment">
   <PageHeader title="Medical Equipment" subtitle="Information about the medical equipment loaner program." bgType="gradient" showBreadcrumbs={false}/>
   <section class="container my-16">
-    <p>test</p>
+    <div class="mx-auto max-w-2xl space-content">
+      <img src={medPic.src} alt="Medical Equipment" aria-hidden="true" class="my-8 rounded-lg shadow-lg" />
+      <p>
+        The Manheim Lions club offers a medical equipment loaner program to support local community members in need. Whether you're recovering from surgery, managing a chronic condition, or facing a temporary mobility challenge, we have a variety of medical equipment available for short-term loans (wheelchairs, walkers, canes, knee rovers). Use of the equipment is free of charge, and our goal is to help improve your quality of life during your time of need.
+      </p>
+      <p>
+        To borrow equipment, please fill out the form below with your details and the type of equipment you require. Our equipment manager will review your request and get back to you as soon as possible!
+      </p>
+
+      <Heading level="h2" id="contact">Request Equipment</Heading>
+
+      <Form name="medical-equipment" action={FORM_URL} method="POST">
+        <!-- Formspark stuff -->
+        <input
+          type="hidden"
+          name="_redirect"
+          value=`${baseURL}/form-success/`
+        />
+        <input type="hidden" name="_error" value=`${baseURL}/form-error/` />
+        <input type="hidden" name="_append" value="false" />
+        <!-- End Formspark stuff -->
+        <Input
+          id="name"
+          type="name"
+          name="name"
+          label="Name"
+          required
+          data-validation="We need your name to process your request"
+          autocomplete="name"
+        />
+
+        <Input name="email" type="email" id="email" label="Email address" required autocomplete="email" />
+
+        <Input name="phone" id="phone" label="Phone number (123-456-7890)" type="tel" data-validation-pattern="^(?:[0-9]{10}|1-[0-9]{3}-[0-9]{3}-[0-9]{4})$" />
+
+          <Fieldset
+            name="Equipment Needed"
+            legend="What equipment do you need?"
+            required
+            data-validation="Please select at least one piece of equipment"
+          >
+            <Checkbox type="checkbox" name="wheelchair" id="wheelchair" value="wheelchair" label=" Wheelchair" />
+            <Checkbox type="checkbox" name="walker" id="walker" value="walker" label=" Walker" />
+            <Checkbox type="checkbox" name="cane" id="cane" value="cane" label=" Cane" />
+            <Checkbox type="checkbox" name="knee-rover" id="knee-rover" value="knee-rover" label=" Knee Rover" />
+          </Fieldset>
+
+        <Textarea name="message" id="message" label="Additional Information (optional)" />
+
+
+        <div class="flex flex-row items-center gap-8">
+          <Button id="submit-btn" htmlType="submit" type="primary" size="md" disabled>Send Request</Button>
+          <div class="cf-turnstile pt-2" data-sitekey=`${CF_SITE_KEY}` data-size="flexible"></div>
+        </div>
+        <Checkbox type="checkbox" required name="agree" id="agree" value="agree" label="I agree that this equipment is on loan from the Manheim Lions Club and will return it as received after I no longer need it. I also am confirming I am a resident of Manheim, PA." />
+      </Form>
+    </div>
   </section>
 </DefaultLayout>
+
+<script
+  src="https://challenges.cloudflare.com/turnstile/v0/api.js"
+  async
+  defer
+></script>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+  const agree = document.getElementById('agree');
+  const btn = document.getElementById('submit-btn');
+  if (!agree || !btn) return;
+  function update() {
+    btn.disabled = !agree.checked;
+  }
+  agree.addEventListener('change', update);
+  update();
+});
+</script>
