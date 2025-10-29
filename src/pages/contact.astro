@@ -60,8 +60,8 @@ const CF_SITE_KEY = import.meta.env.PUBLIC_CF_TURNSTILE_SITE_KEY;
           </Fieldset>
 
           <div class="flex flex-row items-center gap-8">
-            <Button htmlType="submit" type="primary" size="md">Send Message</Button>
-            <div class="cf-turnstile pt-2" data-sitekey=`${CF_SITE_KEY}` data-size="flexible"></div>
+            <Button id="submit-btn" htmlType="submit" type="primary" size="md" disabled>Send Message</Button>
+            <div id="cf-turnstile" class="pt-2" data-sitekey={CF_SITE_KEY} data-size="flexible"></div>
           </div>
         </Form>
 
@@ -69,14 +69,53 @@ const CF_SITE_KEY = import.meta.env.PUBLIC_CF_TURNSTILE_SITE_KEY;
   </section>
 </DefaultLayout>
 
-<script>
+<script
+  src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit"
+  defer
+></script>
+
+<script is:inline>
   document.addEventListener('astro:page-load', () => {
-    // This runs on first page load and after every navigation.
-    turnstile.render('#cf-turnstile', {
-        sitekey: this.dataset.sitekey,
-        callback: function(token) {
-            console.log(`Challenge Success ${token}`);
-        },
-    });
+    // Initialize state
+    let turnstileCompleted = false;
+
+    const btn = document.getElementById('submit-btn');
+
+    if (!btn) return;
+
+    function updateButtonState() {
+      if (btn) {
+        btn.disabled = !turnstileCompleted;
+      }
+    }
+
+    // Wait for Turnstile API to be available and render
+    function initTurnstile() {
+      if (typeof window.turnstile !== 'undefined') {
+        const container = document.getElementById('cf-turnstile');
+        if (container && !container.hasChildNodes()) {
+          window.turnstile.render('#cf-turnstile', {
+            sitekey: container.dataset.sitekey,
+            callback: function(token) {
+              console.log('Turnstile Challenge Success:', token);
+              turnstileCompleted = true;
+              updateButtonState();
+            },
+            'error-callback': function() {
+              console.error('Turnstile challenge failed');
+              turnstileCompleted = false;
+              updateButtonState();
+            }
+          });
+        }
+      } else {
+        // Retry after a short delay if Turnstile isn't loaded yet
+        setTimeout(initTurnstile, 100);
+      }
+    }
+
+    // Initialize everything
+    updateButtonState();
+    initTurnstile();
   });
 </script>
