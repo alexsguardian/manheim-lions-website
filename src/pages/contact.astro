@@ -18,10 +18,10 @@ const CF_SITE_KEY = import.meta.env.PUBLIC_CF_TURNSTILE_SITE_KEY;
         <Link href="/medical" isButton={true} variant="filled" type="error">Looking to borrow medical equipment? If you are, click here!</Link>
     </div>
   </section>
-  <section class="container">
-    <div class="mx-auto max-w-2xl">
-      <div class="space-content">
-        <Form name="contact" action={FORM_URL} method="POST" class="container">
+  <section class="mx-auto max-w-2xl px-4 sm:px-6 lg:px-8">
+    <div>
+      <div class="space-content p-4 sm:p-6">
+        <Form name="contact" action={FORM_URL} method="POST">
           <!-- Formspark stuff -->
           <input
             type="hidden"
@@ -59,9 +59,9 @@ const CF_SITE_KEY = import.meta.env.PUBLIC_CF_TURNSTILE_SITE_KEY;
             <Checkbox type="checkbox" name="general" id="general" value="general" label=" General inquiries" />
           </Fieldset>
 
-          <div class="flex flex-row items-center gap-8">
+          <div class="flex flex-col sm:flex-row items-center gap-4 sm:gap-8">
             <Button id="submit-btn" htmlType="submit" type="primary" size="md" disabled>Send Message</Button>
-            <div id="cf-turnstile" class="pt-2" data-sitekey={CF_SITE_KEY} aria-hidden="true" tabindex="-1" data-size="flexible"></div>
+            <div id="cf-turnstile" class="pt-2 max-w-full" data-sitekey={CF_SITE_KEY} aria-hidden="true" tabindex="-1"></div>
           </div>
         </Form>
 
@@ -94,8 +94,13 @@ const CF_SITE_KEY = import.meta.env.PUBLIC_CF_TURNSTILE_SITE_KEY;
       if (typeof window.turnstile !== 'undefined') {
         const container = document.getElementById('cf-turnstile');
         if (container && !container.hasChildNodes()) {
+          // Determine size based on screen width
+          const isMobile = window.innerWidth < 768; // 768px is your 'm' breakpoint
+          const turnstileSize = isMobile ? 'compact' : 'flexible';
+
           window.turnstile.render('#cf-turnstile', {
             sitekey: container.dataset.sitekey,
+            size: turnstileSize,
             callback: function(token) {
               console.log('Turnstile Challenge Success:', token);
               turnstileCompleted = true;

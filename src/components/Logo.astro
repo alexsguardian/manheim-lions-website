@@ -1,7 +1,7 @@
 ---
-import { Link } from 'accessible-astro-components'
-import { Image } from 'astro:assets'
-import logo from '../assets/img/CentennialLogo-150x150.png'
+import { Link } from 'accessible-astro-components';
+import { Image } from 'astro:assets';
+import logo from '../assets/img/logo.webp';
 
 /**
  * Logo Component
@@ -14,9 +14,9 @@ interface Props {
    * @default 'eager'
    */
   loading?: 'eager' | 'lazy'
-}
+};
 
-const { loading = 'eager' }: Props = Astro.props
+const { loading = 'eager' }: Props = Astro.props;
 ---
 
 <Link href="/" class="flex items-center gap-2">
