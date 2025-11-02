@@ -1,18 +1,19 @@
 ---
-import CallToAction from './CallToAction.astro'
-import Logo from './Logo.astro'
-import { Heading, Link } from 'accessible-astro-components'
+import CallToAction from './CallToAction.astro';
+import Logo from './Logo.astro';
+import { Heading, Link } from 'accessible-astro-components';
 
 /**
  * Footer Component
  *
  * @description A component that displays the footer of the website
  */
+const { showCallToAction = true } = Astro.props;
 const currentYear = new Date().getFullYear()
 ---
 
 <footer>
-  <CallToAction />
+  {showCallToAction && <CallToAction />}
   <section class="py-8">
     <div class="container flex flex-col gap-4 md:flex-row md:justify-between">
       <p>

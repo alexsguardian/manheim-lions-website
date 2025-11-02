@@ -3,7 +3,6 @@ import DefaultLayout from '@layouts/DefaultLayout.astro';
 import PageHeader from '@components/PageHeader.astro';
 import { Heading, Link, Notification } from 'accessible-astro-components';
 import ContentMedia from '@components/ContentMedia.astro';
-import { Icon } from 'astro-icon/components';
 
 import santaRunPoster from '../assets/img/santa-run/santa-5k-raceStart.webp';
 
@@ -23,9 +22,8 @@ const PUBLIC_RUNNERS_REGISTRATION_URL = import.meta.env.PUBLIC_RUNNERS_REGISTRAT
       <p class="text-lg">
         Secure your spot for the Santa 5K Run & Walk by registering online. Early registration is encouraged to ensure availability.
       </p>
-      <Link href={PUBLIC_RUNNERS_REGISTRATION_URL} isButton size="md" class="mt-4" target="_blank" rel="noopener noreferrer">
+      <Link href={PUBLIC_RUNNERS_REGISTRATION_URL} isButton isExternal size="md" class="mt-4" target="_blank" rel="noopener noreferrer">
         Register on RunSignUp
-        <Icon aria-hidden="true" name="lucide:external-link" size={24} />
       </Link>
     </Notification>
   </section>

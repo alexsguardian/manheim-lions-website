@@ -12,6 +12,7 @@ const {
   url = Astro.site,
   image = '/CentennialRibbon.png',
   author = '',
+  showCallToAction = true,
 } = Astro.props
 ---
 
@@ -34,7 +35,7 @@ const {
     <main id="main-content" transition:animate="fade">
       <slot />
     </main>
-    <Footer />
+    <Footer showCallToAction={showCallToAction} />
     <style lang="scss" is:global>
       @use '../assets/scss/base/mixins' as *;
 

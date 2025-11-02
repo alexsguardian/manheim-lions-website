@@ -11,14 +11,14 @@ const FORM_URL = import.meta.env.PUBLIC_CONTACT_FORM_URL;
 const CF_SITE_KEY = import.meta.env.PUBLIC_CF_TURNSTILE_SITE_KEY;
 ---
 
-<DefaultLayout title="Contact">
-  <PageHeader title="Contact Us" subtitle="Looking to get in touch?" bgType="gradient" showBreadcrumbs={false}/>
+<DefaultLayout title="Contact" showCallToAction={false}>
+  <PageHeader title="Contact" subtitle="Looking to get in touch? Fill out the form below and we'll get back to you as soon as possible." bgType="gradient" showBreadcrumbs={false}/>
   <section class="container my-16">
     <div class="flex mx-auto text-black max-w-2xl p-6 space-content justify-center">
         <Link href="/medical" isButton={true} variant="filled" type="error">Looking to borrow medical equipment? If you are, click here!</Link>
     </div>
   </section>
-  <section class="mx-auto max-w-2xl px-4 sm:px-6 lg:px-8">
+  <section class="mx-auto max-w-2xl px-4 sm:px-6 lg:px-8 mb-12">
     <div>
       <div class="space-content p-4 sm:p-6">
         <Form name="contact" action={FORM_URL} method="POST">
@@ -26,9 +26,9 @@ const CF_SITE_KEY = import.meta.env.PUBLIC_CF_TURNSTILE_SITE_KEY;
           <input
             type="hidden"
             name="_redirect"
-            value=`${baseURL}/form-success/`
+            value={`${baseURL}/form-success/`}
           />
-          <input type="hidden" name="_error" value=`${baseURL}/form-error/` />
+          <input type="hidden" name="_error" value={`${baseURL}/form-error/`} />
           <input type="hidden" name="_append" value="false" />
           <!-- End Formspark stuff -->
           <Input
@@ -66,6 +66,7 @@ const CF_SITE_KEY = import.meta.env.PUBLIC_CF_TURNSTILE_SITE_KEY;
         </Form>
 
       </div>
+    </div>
   </section>
 </DefaultLayout>
 

@@ -17,10 +17,10 @@ import { Icon } from 'astro-icon/components'
       <Link href="/">Home</Link>
     </li>
     <li class="menu-item">
-      <Link href="/calendar/">Calendar</Link>
+      <Link href="/calendar">Calendar</Link>
     </li>
     <li class="menu-item">
-        <Link href="/fundraising/">Fundraising</Link>
+        <Link href="/fundraising">Fundraising</Link>
     </li>
     <li class="menu-item has-dropdown">
       <button aria-haspopup="true" aria-expanded="false">
@@ -29,7 +29,7 @@ import { Icon } from 'astro-icon/components'
       </button>
       <ul class="dropdown-menu">
         <li class="submenu-item">
-          <Link href="https://pack47manheim.weebly.com/" target="_blank" rel="noopener"><span class="flex flex-row items-center gap-2" >Cub Pack 47 <Icon name="lucide:external-link" /></span></Link>
+          <Link href="https://pack47manheim.weebly.com" isExternal>Cub Pack 47</Link>
         </li>
         <li class="submenu-item">
           <Link href="/easter-egg-hunts">Easter Egg Hunts</Link>
@@ -49,10 +49,10 @@ import { Icon } from 'astro-icon/components'
       </ul>
     </li>
     <li class="menu-item">
-      <Link href="/contact/">Contact</Link>
+      <Link href="/contact">Contact</Link>
     </li>
     <li class="menu-item">
-      <Link href="/about/">About</Link>
+      <Link href="/about">About</Link>
     </li>
     <li class="menu-item type-icon animate-rotate">
       <Link href="/member-resources">
