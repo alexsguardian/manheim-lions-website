@@ -33,16 +33,16 @@ const PUBLIC_GMAPS_URL = import.meta.env.PUBLIC_GMAPS_URL;
       class="justify-center items-center my-16 flex flex-col"
     >
       <Heading class="my-8" level="h2">Information Zone</Heading>
-      <iframe
-        src={PUBLIC_GMAPS_URL}
-        width="800"
-        height="450"
-        style="border:0;"
-        allowfullscreen=""
-        loading="lazy"
-        referrerpolicy="no-referrer-when-downgrade"
-        aria-label="Google Maps view of the location of the hunt. 350 Memorial Drive. Manheim, PA 17545"
-      />
+      <div class="mx-auto" id="gmaps-box">
+        <iframe
+          src={PUBLIC_GMAPS_URL}
+          style="border-width:0;"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          aria-label="Google Maps view of the location of the hunt. 350 Memorial Drive. Manheim, PA 17545"
+        />
+      </div>
     </div>
     <div
       class="justify-center items-center my-16 flex flex-col"
@@ -77,7 +77,7 @@ const PUBLIC_GMAPS_URL = import.meta.env.PUBLIC_GMAPS_URL;
       class="my-16 flex flex-col"
     >
       <Heading class="my-8 justify-center text-center" level="h3">Prize Information</Heading>
-      <ul class="text-lg list-disc flex flex-col gap-4">
+      <ul class="text-lg list-disc list-inside flex flex-col gap-4">
         <li><strong>Attention Adults!</strong> When you enter the stadium, before heading to the hunt zones, you will get raffle tickets. At the end of the hunt please come back to the stadium to the raffle table in front of the main bleachers. Winning tickets will be posted by 1:00 PM!</li>
         <li>Each age group will have winning tickets, located in eggs, that can be redeemed for prizes after the hunt has concluded.</li>
       </ul>
@@ -95,3 +95,17 @@ const PUBLIC_GMAPS_URL = import.meta.env.PUBLIC_GMAPS_URL;
       </div>
   </section>
 </DefaultLayout>
+
+<style>
+    #gmaps-box {
+        overflow-y: hidden;
+        height: var(--mapheight);
+        max-height: calc(var(--mapheight) - 35px);
+        border-radius: 24px;
+        width: fit-content;
+    }
+    #gmaps-box iframe {
+        width: var(--mapwidth);
+        height: var(--mapheight);
+    }
+</style>
