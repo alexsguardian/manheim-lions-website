@@ -3,10 +3,12 @@ import DefaultLayout from '@layouts/DefaultLayout.astro';
 import { Heading, Link } from 'accessible-astro-components';
 import PageHeader from '@components/PageHeader.astro';
 import ContentMedia from '@components/ContentMedia.astro';
+import { Icon } from 'astro-icon/components';
 
-import broomImage from '../assets/img/fund-brooms.webp';
-import sandwichImage from '../assets/img/fund-halfHC.webp';
-import makerMarket from '../assets/img/fund-makers-market.webp';
+import broomImage from '../assets/img/fundraisers/fund-brooms.webp';
+import sandwichImage from '../assets/img/fundraisers/fund-halfHC.webp';
+import makerMarket from '../assets/img/fundraisers/fund-makers-market.webp';
+import santaRunPoster from '../assets/img/santa-run/santa-5k-poster.webp';
 ---
 
 <DefaultLayout>
@@ -14,31 +16,43 @@ import makerMarket from '../assets/img/fund-makers-market.webp';
   <section class="container my-16 space-content">
     <ContentMedia imgSrc={broomImage.src} reverseImg={true} aria-label="Brooms">
       <Heading level="h2">Brooms!</Heading>
-      <p class="text-2xl">
+      <p class="text-lg">
         Need a new broom? Support our fundraising efforts by purchasing brooms from the Manheim Lions Club! Our brooms are perfect for keeping your home clean while also helping us support our community initiatives.
       </p>
-      <p class="text-2xl">
+      <p class="text-lg">
         You can find us at most Manheim community events throughout the year or purchase them at <Link href="https://shaubsdrycleaning.com/" target="_blank">Shaub's Dry Cleaning</Link>.
       </p>
     </ContentMedia>
     <ContentMedia imgSrc={sandwichImage.src} reverseImg={false} aria-label="Ham and Cheese Sandwiches">
       <Heading level="h2">Sandwich Sales</Heading>
-      <p class="text-2xl">
+      <p class="text-lg">
         Support our fundraising efforts by purchasing delicious Ham & Cheese sandwiches from the Manheim Lions Club! Our sandwiches are made with 5oz of Ham and 1oz of Swiss Cheese. Great for easy lunches!
       </p>
-      <p class="text-2xl">
+      <p class="text-lg">
         We have two sandwich sales each year. Halfway to the Farm Show in April, and during the Manheim Farm Show in October. Watch our home page and calendar for upcoming dates!
       </p>
     </ContentMedia>
     <ContentMedia imgSrc={makerMarket.src} reverseImg={true} aria-label="Manheim Maker's Market">
       <Heading level="h2">Manheim Maker's Market</Heading>
-      <p class="text-2xl">
+      <p class="text-lg">
         Support our fundraising efforts by purchasing unique handmade items from local artisans at the Manheim Maker's Market! Your purchases help fund our community initiatives. In partnership with The Shank Shoppe.
       </p>
-      <p class="text-2xl">
+      <p class="text-lg">
         The Maker's Market takes place once a year, in August. Watch our home page and calendar for upcoming dates!
       </p>
     </ContentMedia>
+    </section>
+    <section class="container my-16">
+      <ContentMedia imgSrc={santaRunPoster.src} reverseImg={false}>
+        <Heading level="h2">Santa 5K Run & Walk</Heading>
+        <p class="text-lg">
+          The Manheim Lions Club hosts an annual Santa 5K Run & Walk to raise funds for various community projects and charitable causes. The event is open to participants of all ages and fitness levels. Runners and walkers are encouraged to dress in festive holiday attire to celebrate the season.
+        </p>
+        <Link href="/santa-5k" isButton size="md" class="mt-4" type="primary">
+          Learn More
+          <Icon aria-hidden="true" name="lucide:arrow-right" size={24} />
+        </Link>
+      </ContentMedia>
     </section>
     <section class="container">
       <hr class="my-16 border-t-2 border-gray-300 mx-30" aria-hidden="true"/>

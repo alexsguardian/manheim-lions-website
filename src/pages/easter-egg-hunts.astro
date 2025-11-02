@@ -5,9 +5,9 @@ import { Heading, Link, Notification } from 'accessible-astro-components';
 import ContentMedia from '@components/ContentMedia.astro';
 import { Icon } from 'astro-icon/components'
 
-import eggHuntPoster from '../assets/img/egg-hunt-poster.webp';
-import eggHuntPosterVP from '../assets/img/egg-hunt-poster-vp.webp';
-import eggHuntZoneMap from '../assets/img/egg-hunt-zonemap.webp';
+import eggHuntPoster from '../assets/img/easter-hunts/egg-hunt-poster.webp';
+import eggHuntPosterVP from '../assets/img/easter-hunts/egg-hunt-poster-vp.webp';
+import eggHuntZoneMap from '../assets/img/easter-hunts/egg-hunt-zonemap.webp';
 
 const PUBLIC_GMAPS_URL = import.meta.env.PUBLIC_GMAPS_URL;
 ---
@@ -89,7 +89,6 @@ const PUBLIC_GMAPS_URL = import.meta.env.PUBLIC_GMAPS_URL;
         </p>
         <br class="my-4"/>
       <Notification type="info">
-        <Icon aria-hidden="true" name="lucide:info" size={24} />
         <p>A signup form will be made available closer to the event date for those interested in participating in the visually impaired hunt.</p>
       </Notification>
       </div>
