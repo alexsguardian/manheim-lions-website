@@ -27,28 +27,15 @@ const { src = '/CentennialRibbon.png' }: Props = Astro.props
           <!-- <slot><p class="text-lg">Serving Manheim since 1925.</p></slot> -->
         </h1>
         <div class="flex flex-col gap-3 min-[500px]:flex-row">
-          <Link
-            href="/contact"
-            isButton
-            type="primary"
-            animateOnHover
-            animationType="boop"
-          >
+          <Link href="/contact" isButton type="primary" animateOnHover animationType="boop">
             <Icon aria-hidden="true" name="lucide:send" size="1.5rem" />
             Contact Us
           </Link>
-          <Link
-            href="/medical"
-            isButton
-            type="default"
-            animateOnHover
-            animationType="boop"
-          >
+          <Link href="/medical" isButton type="default" animateOnHover animationType="boop">
             <Icon aria-hidden="true" name="lucide:heart-pulse" size="1.5rem" />
             Medical Devices
           </Link>
         </div>
-
       </div>
       <Image class="hidden lg:block" src={src} alt="" decoding="async" width={800} height={600} loading="eager" />
     </div>

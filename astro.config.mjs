@@ -5,7 +5,7 @@ import icon from 'astro-icon'
 import mdx from '@astrojs/mdx'
 import sitemap from '@astrojs/sitemap'
 import tailwindcss from '@tailwindcss/vite'
-import securityTxt from '@itsmatteomanf/astro-security-txt';
+import securityTxt from '@itsmatteomanf/astro-security-txt'
 
 // https://astro.build/config
 export default defineConfig({
@@ -17,8 +17,8 @@ export default defineConfig({
     mdx(),
     sitemap(),
     securityTxt({
-      contact: 'mailto:webmaster@alexsguardian.net'
-    })
+      contact: 'mailto:webmaster@alexsguardian.net',
+    }),
   ],
   vite: {
     css: {

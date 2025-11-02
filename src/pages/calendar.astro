@@ -1,12 +1,17 @@
 ---
-import DefaultLayout from "@layouts/DefaultLayout.astro";
-import PageHeader from "@components/PageHeader.astro";
+import DefaultLayout from '@layouts/DefaultLayout.astro'
+import PageHeader from '@components/PageHeader.astro'
 
-const CAL_URL = import.meta.env.PUBLIC_CALENDAR_URL;
+const CAL_URL = import.meta.env.PUBLIC_CALENDAR_URL
 ---
 
 <DefaultLayout title="Calendar">
-  <PageHeader title="Calendar" subtitle="View upcoming club meetings, events and activities." bgType="gradient" showBreadcrumbs={false}/>
+  <PageHeader
+    title="Calendar"
+    subtitle="View upcoming club meetings, events and activities."
+    bgType="gradient"
+    showBreadcrumbs={false}
+  />
   <section class="my-16">
     <div class="mx-auto" id="gcal-box">
       <iframe
@@ -15,50 +20,54 @@ const CAL_URL = import.meta.env.PUBLIC_CALENDAR_URL;
         id="gcal"
         frameborder="0"
         scrolling="no"
-        aria-label="Manheim Lions Club Calendar"
-      />
+        aria-label="Manheim Lions Club Calendar"></iframe>
     </div>
   </section>
   <section id="legend">
     <div class="container">
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+      <div class="mb-4 grid grid-cols-1 gap-4 md:grid-cols-3">
         <div class="flex flex-col items-center justify-start gap-2">
           <div class="flex items-center gap-2">
-            <span class="w-6 h-6 bg-[#4050b5] rounded" aria-hidden="true"></span>
+            <span class="h-6 w-6 rounded bg-[#4050b5]" aria-hidden="true"></span>
             <span aria-label="Board Meetings" class="font-bold">Board Meetings</span>
           </div>
           <p class="mt-1 text-center">Members only meeting for active club members. Not open to the public.</p>
         </div>
         <div class="flex flex-col items-center justify-start gap-2">
           <div class="flex items-center gap-2">
-            <span class="w-6 h-6 bg-[#4050b5] rounded" aria-hidden="true"></span>
+            <span class="h-6 w-6 rounded bg-[#4050b5]" aria-hidden="true"></span>
             <span aria-label="General Meetings" class="font-bold">General Meetings</span>
           </div>
-          <p class="mt-1 text-center">General meetings for the club. Open to the public, prospective members or volunteers.</p>
+          <p class="mt-1 text-center">
+            General meetings for the club. Open to the public, prospective members or volunteers.
+          </p>
         </div>
         <div class="flex flex-col items-center justify-start gap-2">
           <div class="flex items-center gap-2">
-            <span class="w-6 h-6 bg-[#4050b5] rounded" aria-hidden="true"></span>
+            <span class="h-6 w-6 rounded bg-[#4050b5]" aria-hidden="true"></span>
             <span aria-label="Community Events" class="font-bold">Community Events</span>
           </div>
-          <p class="mt-1 text-center">Upcoming community events in Manheim that we are participating in or are running.</p>
+          <p class="mt-1 text-center">
+            Upcoming community events in Manheim that we are participating in or are running.
+          </p>
         </div>
       </div>
-      <sub>Note: Due to a current limitation of Google Calendar embeds, all events are using the same color coding.</sub>
+      <sub>Note: Due to a current limitation of Google Calendar embeds, all events are using the same color coding.</sub
+      >
     </div>
   </section>
 </DefaultLayout>
 
 <style>
-    #gcal-box {
-        overflow-y: hidden;
-        height: var(--calheight);
-        max-height: calc(var(--calheight) - 35px);
-        border-radius: 24px;
-        width: fit-content;
-    }
-    #gcal-box iframe {
-        width: var(--calwidth);
-        height: var(--calheight);
-    }
+  #gcal-box {
+    border-radius: 24px;
+    width: fit-content;
+    height: var(--calheight);
+    max-height: calc(var(--calheight) - 35px);
+    overflow-y: hidden;
+  }
+  #gcal-box iframe {
+    width: var(--calwidth);
+    height: var(--calheight);
+  }
 </style>

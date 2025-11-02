@@ -6,36 +6,39 @@ import ContentVideo from '@components/ContentVideo.astro'
 import { Heading, Link } from 'accessible-astro-components'
 import { Icon } from 'astro-icon/components'
 
-import medPic from '../assets/img/medical-equipment.webp';
-import cubpack from '../assets/img/cubpack-photo.webp';
+import medPic from '../assets/img/medical-equipment.webp'
+import cubpack from '../assets/img/cubpack-photo.webp'
 
-const packURL = import.meta.env.PUBLIC_PACK_URL;
+const packURL = import.meta.env.PUBLIC_PACK_URL
 ---
 
 <DefaultLayout title="Home">
   <Hero />
   <!-- Feature Section -->
   <section class="bg-[var(--brand-secondary)] py-24">
-    <ContentVideo videoUrl="https://youtu.be/QLwcNtbF5Xc" reverseVideo={true} aspect="16/9" title="Volunteering Changed My Life | Being a Lion - From YouTube" poster="/assets/img/no-video.jpg" caption="Video from Lions International on YouTube">
-      <Heading level="h2" class="dark:text-white text-white">What is a Lion?</Heading>
+    <ContentVideo
+      videoUrl="https://youtu.be/QLwcNtbF5Xc"
+      reverseVideo={true}
+      aspect="16/9"
+      title="Volunteering Changed My Life | Being a Lion - From YouTube"
+      poster="/assets/img/no-video.jpg"
+      caption="Video from Lions International on YouTube"
+    >
+      <Heading level="h2" class="text-white dark:text-white">What is a Lion?</Heading>
       <p class="text-2xldark:text-white text-white">
-        When caring people join together, roll up their sleeves and take action to make their community better, it’s a beautiful thing—and an incredible feeling for everyone involved. That’s Lions. Being a Lion is about leading by example, building relationships and improving the world through kindness. It’s 1.4 million caring men and women serving together so they can make a lasting impact and change more lives.
+        When caring people join together, roll up their sleeves and take action to make their community better, it’s a
+        beautiful thing—and an incredible feeling for everyone involved. That’s Lions. Being a Lion is about leading by
+        example, building relationships and improving the world through kindness. It’s 1.4 million caring men and women
+        serving together so they can make a lasting impact and change more lives.
       </p>
-      <Link
-        href="/calendar"
-        isButton
-        type="primary"
-        animateOnHover
-        animationType="boop"
-        >
+      <Link href="/calendar" isButton type="primary" animateOnHover animationType="boop">
         Attend a Meeting
         <Icon aria-hidden="true" name="lucide:arrow-right" size="1.5rem" />
       </Link>
     </ContentVideo>
-
   </section>
   <!-- Upcoming Events Section -->
-  <section class="container text-center my-24">
+  <section class="container my-24 text-center">
     <div class="space-content">
       <Heading level="h2" class="text-3xl">Upcoming Events & Fundraisers</Heading>
       <p>Check below for upcoming events and fundraisers that we participate in or running!</p>
@@ -48,43 +51,31 @@ const packURL = import.meta.env.PUBLIC_PACK_URL;
     <ContentMedia imgSrc={medPic.src} reverseImg={false}>
       <Heading level="h2">Medical Equipment</Heading>
       <p class="text-2xl">
-        The Manheim Lions Club operates a Medical Equipment loan program to provide temporary use of medical equipment to community members in need. Equipment available includes wheelchairs, travel wheelchairs, walkers, non-wheeled walkers, and canes. There is no charge for the use of the equipment, but donations (monetary or equipment) are accepted to help maintain and expand the inventory.
+        The Manheim Lions Club operates a Medical Equipment loan program to provide temporary use of medical equipment
+        to community members in need. Equipment available includes wheelchairs, travel wheelchairs, walkers, non-wheeled
+        walkers, and canes. There is no charge for the use of the equipment, but donations (monetary or equipment) are
+        accepted to help maintain and expand the inventory.
       </p>
-      <Link
-        href="/medical"
-        isButton
-        type="primary"
-        animateOnHover
-        animationType="boop"
-        >
+      <Link href="/medical" isButton type="primary" animateOnHover animationType="boop">
         Learn more
         <Icon aria-hidden="true" name="lucide:arrow-right" size="1.5rem" />
       </Link>
     </ContentMedia>
-
   </section>
 
-  <section class="container text-center my-24">
+  <section class="container my-24 text-center">
     <ContentMedia imgSrc={cubpack.src} reverseImg={true}>
       <Heading level="h2">Cub Scout Pack 47</Heading>
       <p class="text-2xl">
-        The Manheim Lions Club proudly sponsors Cub Scout Pack 47, which serves the youth of the Manheim area by providing a fun and educational program that promotes character development, citizenship, and personal fitness.
+        The Manheim Lions Club proudly sponsors Cub Scout Pack 47, which serves the youth of the Manheim area by
+        providing a fun and educational program that promotes character development, citizenship, and personal fitness.
       </p>
-      <Link
-        href={packURL}
-        isButton
-        type="primary"
-        animateOnHover
-        animationType="boop"
-        target="_blank"
-        rel="noopener"
-        >
+      <Link href={packURL} isButton type="primary" animateOnHover animationType="boop" target="_blank" rel="noopener">
         Visit Pack 47
         <Icon aria-hidden="true" name="lucide:arrow-right" size="1.5rem" />
       </Link>
     </ContentMedia>
   </section>
-
 </DefaultLayout>
 
 <style>

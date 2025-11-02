@@ -1,32 +1,51 @@
 ---
-import DefaultLayout from '@layouts/DefaultLayout.astro';
-import PageHeader from '@components/PageHeader.astro';
-import { Heading, Link, Notification } from 'accessible-astro-components';
-import ContentMedia from '@components/ContentMedia.astro';
+import DefaultLayout from '@layouts/DefaultLayout.astro'
+import PageHeader from '@components/PageHeader.astro'
+import { Heading, Link, Notification } from 'accessible-astro-components'
+import ContentMedia from '@components/ContentMedia.astro'
 
-import santaRunPoster from '../assets/img/santa-run/santa-5k-raceStart.webp';
+import santaRunPoster from '../assets/img/santa-run/santa-5k-raceStart.webp'
 
-const PUBLIC_RUNNERS_REGISTRATION_URL = import.meta.env.PUBLIC_RUNNERS_REGISTRATION_URL;
+const PUBLIC_RUNNERS_REGISTRATION_URL = import.meta.env.PUBLIC_RUNNERS_REGISTRATION_URL
 ---
 
 <DefaultLayout title="Santa 5K Run & Walk">
-  <PageHeader title="Santa 5K Run & Walk" subtitle="Information about the Santa 5K Run & Walk event." bgType="gradient" showBreadcrumbs={false}/>
+  <PageHeader
+    title="Santa 5K Run & Walk"
+    subtitle="Information about the Santa 5K Run & Walk event."
+    bgType="gradient"
+    showBreadcrumbs={false}
+  />
+
   <section class="container my-16">
     <ContentMedia imgSrc={santaRunPoster.src} reverseImg={false}>
       <Heading level="h2">Santa 5K Run & Walk</Heading>
       <p class="text-lg">
-        The Manheim Lions Club hosts an annual Santa 5K Run & Walk to raise funds for various community projects and charitable causes. The event is open to participants of all ages and fitness levels. Runners and walkers are encouraged to dress in festive holiday attire to celebrate the season.
+        The Manheim Lions Club hosts an annual Santa 5K Run & Walk to raise funds for various community projects and
+        charitable causes. The event is open to participants of all ages and fitness levels. Runners and walkers are
+        encouraged to dress in festive holiday attire to celebrate the season.
       </p>
     </ContentMedia>
+
     <Notification type="info" class="my-8 flex flex-col items-start">
       <p class="text-lg">
-        Secure your spot for the Santa 5K Run & Walk by registering online. Early registration is encouraged to ensure availability.
+        Secure your spot for the Santa 5K Run & Walk by registering online. Early registration is encouraged to ensure
+        availability.
       </p>
-      <Link href={PUBLIC_RUNNERS_REGISTRATION_URL} isButton isExternal size="md" class="mt-4" target="_blank" rel="noopener noreferrer">
+      <Link
+        href={PUBLIC_RUNNERS_REGISTRATION_URL}
+        isButton
+        isExternal
+        size="md"
+        class="mt-4"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
         Register on RunSignUp
       </Link>
     </Notification>
   </section>
+
   <section class="container">
     <Heading level="h2">Information Zone</Heading>
   </section>

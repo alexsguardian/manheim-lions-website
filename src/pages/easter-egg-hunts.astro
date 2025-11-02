@@ -1,51 +1,61 @@
 ---
-import DefaultLayout from '@layouts/DefaultLayout.astro';
-import PageHeader from '@components/PageHeader.astro';
-import { Heading, Link, Notification } from 'accessible-astro-components';
-import ContentMedia from '@components/ContentMedia.astro';
+import DefaultLayout from '@layouts/DefaultLayout.astro'
+import PageHeader from '@components/PageHeader.astro'
+import { Heading, Link, Notification } from 'accessible-astro-components'
+import ContentMedia from '@components/ContentMedia.astro'
 
-import eggHuntPoster from '../assets/img/easter-hunts/egg-hunt-poster.webp';
-import eggHuntPosterVP from '../assets/img/easter-hunts/egg-hunt-poster-vp.webp';
-import eggHuntZoneMap from '../assets/img/easter-hunts/egg-hunt-zonemap.webp';
+import eggHuntPoster from '../assets/img/easter-hunts/egg-hunt-poster.webp'
+import eggHuntPosterVP from '../assets/img/easter-hunts/egg-hunt-poster-vp.webp'
+import eggHuntZoneMap from '../assets/img/easter-hunts/egg-hunt-zonemap.webp'
 
-const PUBLIC_GMAPS_URL = import.meta.env.PUBLIC_GMAPS_URL;
+const PUBLIC_GMAPS_URL = import.meta.env.PUBLIC_GMAPS_URL
 ---
 
 <DefaultLayout title="Easter Egg Hunts">
-  <PageHeader title="Easter Egg Hunts" subtitle="Information about the Easter Egg Hunts." bgType="gradient" showBreadcrumbs={false}/>
+  <PageHeader
+    title="Easter Egg Hunts"
+    subtitle="Information about the Easter Egg Hunts."
+    bgType="gradient"
+    showBreadcrumbs={false}
+  />
   <section class="container my-16">
     <ContentMedia imgSrc={eggHuntPoster.src} reverseImg={false}>
       <Heading level="h2">Easter Egg Hunt</Heading>
       <p class="text-lg">
-        The Manheim Lions Club hosts an annual Easter Egg Hunt for children in the Manheim area. The event is free and is open to ages 0-12. The hunt takes place at the Manheim Veterans Memorial Park and Elden Rettew Field. Keep an eye out on our calendar, home page and social media for updates on dates! The hunt starts at 1:00 PM.
+        The Manheim Lions Club hosts an annual Easter Egg Hunt for children in the Manheim area. The event is free and
+        is open to ages 0-12. The hunt takes place at the Manheim Veterans Memorial Park and Elden Rettew Field. Keep an
+        eye out on our calendar, home page and social media for updates on dates! The hunt starts at 1:00 PM.
       </p>
     </ContentMedia>
     <ContentMedia imgSrc={eggHuntPosterVP.src} reverseImg={true}>
       <Heading level="h2">Easter Egg Hunt for the Visually Impaired</Heading>
       <p class="text-lg">
-        The Manheim Lions Club also hosts an annual Easter Egg Hunt for the visually impaired in the area. The event is free and is open to all ages. The hunt takes place at the Elden Rettew Field using specially designed eggs that can be found using sound. It is a 1-1 (volunteer - hunter) event to ensure safety. Keep an eye out on our calendar, home page and social media for updates on dates! The hunt runs from 10:00 AM - 11:00 AM.
+        The Manheim Lions Club also hosts an annual Easter Egg Hunt for the visually impaired in the area. The event is
+        free and is open to all ages. The hunt takes place at the Elden Rettew Field using specially designed eggs that
+        can be found using sound. It is a 1-1 (volunteer - hunter) event to ensure safety. Keep an eye out on our
+        calendar, home page and social media for updates on dates! The hunt runs from 10:00 AM - 11:00 AM.
       </p>
     </ContentMedia>
   </section>
-  <hr class="my-16 border-t-2 border-gray-300 max-w-[30%] mx-auto" aria-hidden="true"/>
+  <hr class="mx-auto my-16 max-w-[30%] border-t-2 border-gray-300" aria-hidden="true" />
   <section class="container my-16">
     <div class="grid grid-cols-1 gap-8 md:grid-cols-2 md:gap-24">
-      <div class="mx-auto order-2 md:order-2" id="gmaps-box">
+      <div class="order-2 mx-auto md:order-2" id="gmaps-box">
         <iframe
-        src={PUBLIC_GMAPS_URL}
-        style="border-width:0;"
-        allowfullscreen=""
-        loading="lazy"
-        referrerpolicy="no-referrer-when-downgrade"
-        aria-label="Google Maps view of the location of the hunt. 350 Memorial Drive. Manheim, PA 17545"
-        />
+          src={PUBLIC_GMAPS_URL}
+          style="border-width:0;"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          aria-label="Google Maps view of the location of the hunt. 350 Memorial Drive. Manheim, PA 17545"></iframe>
       </div>
-      <div class="space-content flex flex-col justify-center order-1 md:order-1">
+      <div class="space-content order-1 flex flex-col justify-center md:order-1">
         <Heading class="my-8" level="h2">Event Location & Parking</Heading>
         <p>
-          The events are held at the Manheim Veterans Memorial Park and Elden Rettew Field, located at 350 Memorial Drive, Manheim, PA 17545. There are several parking options available nearby for attendees:
+          The events are held at the Manheim Veterans Memorial Park and Elden Rettew Field, located at 350 Memorial
+          Drive, Manheim, PA 17545. There are several parking options available nearby for attendees:
         </p>
-        <ul class="list-disc list-inside text-lg">
+        <ul class="list-inside list-disc text-lg">
           <li>Memorial Dr (2x parking lots)</li>
           <li>N Laurel St (on street parking)</li>
           <li>E Adele Ave (on street parking)</li>
@@ -53,16 +63,16 @@ const PUBLIC_GMAPS_URL = import.meta.env.PUBLIC_GMAPS_URL;
         </ul>
       </div>
     </div>
-    <div
-      class="my-16 flex flex-col"
-    >
-    <ContentMedia imgSrc={eggHuntZoneMap.src} reverseImg={false}>
+    <div class="my-16 flex flex-col">
+      <ContentMedia imgSrc={eggHuntZoneMap.src} reverseImg={false}>
         <Heading class="my-8" level="h2">Age Groups & Zones</Heading>
         <p class="text-lg">
-          The hunt area is divided into zones based on age groups to ensure safety and fairness. Please refer to the zone map for age group locations.
+          The hunt area is divided into zones based on age groups to ensure safety and fairness. Please refer to the
+          zone map for age group locations.
         </p>
-        <p>Start times are staggered by age group:
-          <ul class="ml-8 text-lg list-disc flex flex-col gap-4 my-8">
+        <p>
+          Start times are staggered by age group:
+          <ul class="my-8 ml-8 flex list-disc flex-col gap-4 text-lg">
             <li><strong>Ages 0-3:</strong> 1:00 PM</li>
             <li><strong>Ages 4-6:</strong> 1:07 PM</li>
             <li><strong>Ages 7-9:</strong> 1:14 PM</li>
@@ -71,26 +81,40 @@ const PUBLIC_GMAPS_URL = import.meta.env.PUBLIC_GMAPS_URL;
         </p>
       </ContentMedia>
     </div>
-    <div
-      class="my-16 flex flex-col"
-    >
+    <div class="my-16 flex flex-col">
       <Heading class="my-8" level="h2">Prizes</Heading>
-      <ul class="text-lg list-disc list-inside flex flex-col gap-4">
-        <li><strong>Attention Adults!</strong> When you enter the stadium, before heading to the hunt zones, you will get raffle tickets. At the end of the hunt please come back to the stadium to the raffle table in front of the main bleachers. <strong>Winning tickets will be posted by 1:00 PM!</strong></li>
-        <li>Each age group will have winning tickets, located in eggs, that can be redeemed for prizes after the hunt has concluded.</li>
+      <ul class="flex list-inside list-disc flex-col gap-4 text-lg">
+        <li>
+          <strong>Attention Adults!</strong> When you enter the stadium, before heading to the hunt zones, you will get raffle
+          tickets. At the end of the hunt please come back to the stadium to the raffle table in front of the main bleachers.
+          <strong>Winning tickets will be posted by 1:00 PM!</strong>
+        </li>
+        <li>
+          Each age group will have winning tickets, located in eggs, that can be redeemed for prizes after the hunt has
+          concluded.
+        </li>
       </ul>
 
-      <div class="my-16 space-content">
+      <div class="space-content my-16">
         <Heading class="my-8" level="h2">Visually Impaired Egg Hunt</Heading>
         <p>
-          The visually impaired hunt uses special eggs that chirp making it possible to find them by sound. Each hunter gets paired up with a volunteer to ensure safety and assistance. Each egg will be exchanged for candy after the hunt has concluded. The hunt is drop in between 10:00 AM - 11:00 AM on the same day as the main hunt. Thanks to <Link href="https://www.alexsguardian.net" isExternal>Alex's Guardian</Link> for donating the eggs!
+          The visually impaired hunt uses special eggs that chirp making it possible to find them by sound. Each hunter
+          gets paired up with a volunteer to ensure safety and assistance. Each egg will be exchanged for candy after
+          the hunt has concluded. The hunt is drop in between 10:00 AM - 11:00 AM on the same day as the main hunt.
+          Thanks to <Link href="https://www.alexsguardian.net" isExternal>Alex's Guardian</Link> for donating the eggs!
         </p>
         <p>
-          The eggs are open source and can be found <Link href="https://github.com/DougTomanio/beeping-easter-egg" isExternal>here</Link> if interested.
+          The eggs are open source and can be found <Link
+            href="https://github.com/DougTomanio/beeping-easter-egg"
+            isExternal>here</Link
+          > if interested.
         </p>
 
         <Notification type="info">
-          <p>A signup form will be made available closer to the event date for those interested in participating in the visually impaired hunt.</p>
+          <p>
+            A signup form will be made available closer to the event date for those interested in participating in the
+            visually impaired hunt.
+          </p>
         </Notification>
       </div>
     </div>
@@ -98,15 +122,15 @@ const PUBLIC_GMAPS_URL = import.meta.env.PUBLIC_GMAPS_URL;
 </DefaultLayout>
 
 <style>
-    #gmaps-box {
-        overflow-y: hidden;
-        height: var(--mapheight);
-        max-height: calc(var(--mapheight) - 35px);
-        border-radius: 24px;
-        width: fit-content;
-    }
-    #gmaps-box iframe {
-        width: var(--mapwidth);
-        height: var(--mapheight);
-    }
+  #gmaps-box {
+    border-radius: 24px;
+    width: fit-content;
+    height: var(--mapheight);
+    max-height: calc(var(--mapheight) - 35px);
+    overflow-y: hidden;
+  }
+  #gmaps-box iframe {
+    width: var(--mapwidth);
+    height: var(--mapheight);
+  }
 </style>

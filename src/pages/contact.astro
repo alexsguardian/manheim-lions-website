@@ -1,33 +1,36 @@
 ---
-import DefaultLayout from '@layouts/DefaultLayout.astro';
-import PageHeader from '@components/PageHeader.astro';
-import { Form, Input, Button, Textarea, Checkbox, Fieldset, Link } from 'accessible-astro-components';
+import DefaultLayout from '@layouts/DefaultLayout.astro'
+import PageHeader from '@components/PageHeader.astro'
+import { Form, Input, Button, Textarea, Checkbox, Fieldset, Link } from 'accessible-astro-components'
 
-const isLocalhost = Astro.request.url.includes('localhost');
+const isLocalhost = Astro.request.url.includes('localhost')
 
-const baseURL = isLocalhost ? 'http://localhost:4321' : `${Astro.site}`;
+const baseURL = isLocalhost ? 'http://localhost:4321' : `${Astro.site}`
 
-const FORM_URL = import.meta.env.PUBLIC_CONTACT_FORM_URL;
-const CF_SITE_KEY = import.meta.env.PUBLIC_CF_TURNSTILE_SITE_KEY;
+const FORM_URL = import.meta.env.PUBLIC_CONTACT_FORM_URL
+const CF_SITE_KEY = import.meta.env.PUBLIC_CF_TURNSTILE_SITE_KEY
 ---
 
 <DefaultLayout title="Contact" showCallToAction={false}>
-  <PageHeader title="Contact" subtitle="Looking to get in touch? Fill out the form below and we'll get back to you as soon as possible." bgType="gradient" showBreadcrumbs={false}/>
+  <PageHeader
+    title="Contact"
+    subtitle="Looking to get in touch? Fill out the form below and we'll get back to you as soon as possible."
+    bgType="gradient"
+    showBreadcrumbs={false}
+  />
   <section class="container my-16">
-    <div class="flex mx-auto text-black max-w-2xl p-6 space-content justify-center">
-        <Link href="/medical" isButton={true} variant="filled" type="error">Looking to borrow medical equipment? If you are, click here!</Link>
+    <div class="space-content mx-auto flex max-w-2xl justify-center p-6 text-black">
+      <Link href="/medical" isButton={true} variant="filled" type="error"
+        >Looking to borrow medical equipment? If you are, click here!</Link
+      >
     </div>
   </section>
-  <section class="mx-auto max-w-2xl px-4 sm:px-6 lg:px-8 mb-12">
+  <section class="mx-auto mb-12 max-w-2xl px-4 sm:px-6 lg:px-8">
     <div>
       <div class="space-content p-4 sm:p-6">
         <Form name="contact" action={FORM_URL} method="POST">
           <!-- Formspark stuff -->
-          <input
-            type="hidden"
-            name="_redirect"
-            value={`${baseURL}/form-success/`}
-          />
+          <input type="hidden" name="_redirect" value={`${baseURL}/form-success/`} />
           <input type="hidden" name="_error" value={`${baseURL}/form-error/`} />
           <input type="hidden" name="_append" value="false" />
           <!-- End Formspark stuff -->
@@ -43,7 +46,13 @@ const CF_SITE_KEY = import.meta.env.PUBLIC_CF_TURNSTILE_SITE_KEY;
 
           <Input name="email" type="email" id="email" label="Email address" required autocomplete="email" />
 
-            <Input name="phone" id="phone" label="Phone number (123-456-7890)" type="tel" data-validation-pattern="^(?:[0-9]{10}|1-[0-9]{3}-[0-9]{3}-[0-9]{4})$" />
+          <Input
+            name="phone"
+            id="phone"
+            label="Phone number (123-456-7890)"
+            type="tel"
+            data-validation-pattern="^(?:[0-9]{10}|1-[0-9]{3}-[0-9]{3}-[0-9]{4})$"
+          />
 
           <Textarea name="message" id="message" label="Message" required />
 
@@ -53,75 +62,84 @@ const CF_SITE_KEY = import.meta.env.PUBLIC_CF_TURNSTILE_SITE_KEY;
             required
             data-validation="Please select at least one area of interest"
           >
-            <Checkbox type="checkbox" name="attend-meeting" id="attend-meeting" value="attend-meeting" label=" Attend a meeting" />
-            <Checkbox type="checkbox" name="volunteer" id="volunteer" value="volunteer" label=" Volunteer for an event" />
+            <Checkbox
+              type="checkbox"
+              name="attend-meeting"
+              id="attend-meeting"
+              value="attend-meeting"
+              label=" Attend a meeting"
+            />
+            <Checkbox
+              type="checkbox"
+              name="volunteer"
+              id="volunteer"
+              value="volunteer"
+              label=" Volunteer for an event"
+            />
             <Checkbox type="checkbox" name="donation" id="donation" value="donation" label=" Club donation" />
             <Checkbox type="checkbox" name="general" id="general" value="general" label=" General inquiries" />
           </Fieldset>
 
-          <div class="flex flex-col sm:flex-row items-center gap-4 sm:gap-8">
+          <div class="flex flex-col items-center gap-4 sm:flex-row sm:gap-8">
             <Button id="submit-btn" htmlType="submit" type="primary" size="md" disabled>Send Message</Button>
-            <div id="cf-turnstile" class="pt-2 max-w-full" data-sitekey={CF_SITE_KEY} aria-hidden="true" tabindex="-1"></div>
+            <div id="cf-turnstile" class="max-w-full pt-2" data-sitekey={CF_SITE_KEY} aria-hidden="true" tabindex="-1">
+            </div>
           </div>
         </Form>
-
       </div>
     </div>
   </section>
 </DefaultLayout>
 
-<script
-  src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit"
-  defer
-></script>
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit" defer></script>
 
 <script is:inline>
   document.addEventListener('astro:page-load', () => {
     // Initialize state
-    let turnstileCompleted = false;
+    let turnstileCompleted = false
 
-    const btn = document.getElementById('submit-btn');
+    const btn = document.getElementById('submit-btn')
 
-    if (!btn) return;
+    if (!btn) return
 
     function updateButtonState() {
       if (btn) {
-        btn.disabled = !turnstileCompleted;
+        btn.disabled = !turnstileCompleted
       }
     }
 
     // Wait for Turnstile API to be available and render
     function initTurnstile() {
       if (typeof window.turnstile !== 'undefined') {
-        const container = document.getElementById('cf-turnstile');
+        const container = document.getElementById('cf-turnstile')
         if (container && !container.hasChildNodes()) {
           // Determine size based on screen width
-          const isMobile = window.innerWidth < 768; // 768px is your 'm' breakpoint
-          const turnstileSize = isMobile ? 'compact' : 'flexible';
+          const isMobile = window.innerWidth < 768 // 768px is your 'm' breakpoint
+          const turnstileSize = isMobile ? 'compact' : 'flexible'
 
           window.turnstile.render('#cf-turnstile', {
             sitekey: container.dataset.sitekey,
             size: turnstileSize,
-            callback: function(token) {
-              console.log('Turnstile Challenge Success:', token);
-              turnstileCompleted = true;
-              updateButtonState();
+            callback: function (token) {
+              console.log('Turnstile Challenge Success:', token)
+              turnstileCompleted = true
+              updateButtonState()
             },
-            'error-callback': function() {
-              console.error('Turnstile challenge failed');
-              turnstileCompleted = false;
-              updateButtonState();
-            }
-          });
+            'error-callback': function () {
+              console.error('Turnstile challenge failed')
+              turnstileCompleted = false
+              updateButtonState()
+            },
+          })
         }
       } else {
         // Retry after a short delay if Turnstile isn't loaded yet
-        setTimeout(initTurnstile, 100);
+        setTimeout(initTurnstile, 100)
       }
     }
 
     // Initialize everything
-    updateButtonState();
-    initTurnstile();
-  });
+    updateButtonState()
+    initTurnstile()
+  })
 </script>

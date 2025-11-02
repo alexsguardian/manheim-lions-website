@@ -1,14 +1,12 @@
 ---
-import CallToAction from './CallToAction.astro';
-import Logo from './Logo.astro';
-import { Heading, Link } from 'accessible-astro-components';
+import CallToAction from './CallToAction.astro'
 
 /**
  * Footer Component
  *
  * @description A component that displays the footer of the website
  */
-const { showCallToAction = true } = Astro.props;
+const { showCallToAction = true } = Astro.props
 const currentYear = new Date().getFullYear()
 ---
 
