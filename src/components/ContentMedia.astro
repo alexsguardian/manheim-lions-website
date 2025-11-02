@@ -23,12 +23,11 @@ const { imgSrc, reverseImg = false }: Props = Astro.props
 
 <section>
   <div class="container my-8">
-    <div class="grid grid-cols-1 gap-24 md:grid-cols-2">
-      {!reverseImg ? <Media class="rounded-lg" src={imgSrc} /> : ''}
-      <div class="space-content flex flex-col justify-center">
+    <div class="grid grid-cols-1 gap-8 md:grid-cols-2 md:gap-24">
+      <Media class={`rounded-lg ${reverseImg ? 'md:order-2' : ''}`} src={imgSrc} />
+      <div class={`space-content flex flex-col justify-center ${reverseImg ? 'md:order-1' : ''}`}>
         <slot />
       </div>
-      {reverseImg ? <Media class="rounded-lg" src={imgSrc} /> : ''}
     </div>
   </div>
 </section>
