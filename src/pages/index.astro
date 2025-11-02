@@ -7,7 +7,9 @@ import { Heading, Link } from 'accessible-astro-components'
 import { Icon } from 'astro-icon/components'
 
 import medPic from '../assets/img/medical-equipment.webp';
-import cubpack from '../assets/img/cubpack-photo.png';
+import cubpack from '../assets/img/cubpack-photo.webp';
+
+const packURL = import.meta.env.PUBLIC_PACK_URL;
 ---
 
 <DefaultLayout title="Home">
@@ -69,7 +71,7 @@ import cubpack from '../assets/img/cubpack-photo.png';
         The Manheim Lions Club proudly sponsors Cub Scout Pack 47, which serves the youth of the Manheim area by providing a fun and educational program that promotes character development, citizenship, and personal fitness.
       </p>
       <Link
-        href="https://pack47manheim.weebly.com/"
+        href={packURL}
         isButton
         type="primary"
         animateOnHover
