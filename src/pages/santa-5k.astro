@@ -1,12 +1,28 @@
 ---
 import DefaultLayout from '@layouts/DefaultLayout.astro';
 import PageHeader from '@components/PageHeader.astro';
-import { Heading, Link, Notification, Accordion, AccordionItem } from 'accessible-astro-components';
+import { Heading, Link, Notification, Accordion, AccordionItem, Media } from 'accessible-astro-components';
 import ContentMedia from '@components/ContentMedia.astro';
 
 import santaRunStart from '../assets/img/santa-run/santa-5k-raceStart.webp';
 import santaCourseMap from '../assets/img/santa-run/santa-5k-courseMap.webp';
 import santaParking from '../assets/img/santa-run/santa-5k-parking.webp';
+
+import santa5k1 from '../assets/img/santa-run/santa-5k-1.webp';
+import santa5k2 from '../assets/img/santa-run/santa-5k-2.webp';
+import santa5k3 from '../assets/img/santa-run/santa-5k-3.webp';
+
+import sponsor1 from '../assets/img/santa-run/sponsors/sponsor1.webp';
+import sponsor2 from '../assets/img/santa-run/sponsors/sponsor2.webp';
+import sponsor3 from '../assets/img/santa-run/sponsors/sponsor3.webp';
+import sponsor4 from '../assets/img/santa-run/sponsors/sponsor4.webp';
+import sponsor5 from '../assets/img/santa-run/sponsors/sponsor5.webp';
+import sponsor6 from '../assets/img/santa-run/sponsors/sponsor6.webp';
+import sponsor7 from '../assets/img/santa-run/sponsors/sponsor7.webp';
+import sponsor8 from '../assets/img/santa-run/sponsors/sponsor8.webp';
+import sponsor9 from '../assets/img/santa-run/sponsors/sponsor9.webp';
+import sponsor10 from '../assets/img/santa-run/sponsors/sponsor10.webp';
+import sponsor11 from '../assets/img/santa-run/sponsors/sponsor11.webp';
 
 const PUBLIC_RUNNERS_REGISTRATION_URL = import.meta.env.PUBLIC_RUNNERS_REGISTRATION_URL;
 ---
@@ -83,15 +99,19 @@ const PUBLIC_RUNNERS_REGISTRATION_URL = import.meta.env.PUBLIC_RUNNERS_REGISTRAT
     </div>
   </section>
 
+  <!-- Location & Parking Section -->
   <section class="container">
     <div class="my-16 flex flex-col">
+
       <ContentMedia imgSrc={santaCourseMap.src} reverseImg={false}>
         <Heading class="my-8" level="h2">Event Location & Parking</Heading>
         <p class="text-lg">
           The Santa 5K Run & Walk takes place in Manheim, PA, starting and finishing at Market Square. Parking is available for participants at various locations near the event site. Please see the table below for locations and spaces count.
         </p>
       </ContentMedia>
+
     </div>
+
     <div class="overflow-x-auto">
       <table class="w-full table-auto border-collapse border border-gray-300">
         <thead>
@@ -155,40 +175,67 @@ const PUBLIC_RUNNERS_REGISTRATION_URL = import.meta.env.PUBLIC_RUNNERS_REGISTRAT
         </tbody>
       </table>
     </div>
+
     <ContentMedia imgSrc={santaParking.src} reverseImg={true} aria-label="Map markers for parking locations">
       <Heading level="h3">On Street Parking</Heading>
       <p class="text-lg">
         On street parking is available throughout the Manheim Borough area. Please be sure to check for any parking restrictions or signage in the area. Traffic will be heavy on arrival so please arrive at least one hour before event start to ensure you make it to race start on time!
       </p>
     </ContentMedia>
+
   </section>
+
+  <!-- Rules Section -->
+  <section class="container my-16">
+    <Heading level="h2" class="mb-8">Event Rules & Regulations</Heading>
+    <ul class="list-inside list-disc text-lg">
+      <li>Entry fees are non-refundable.</li>
+      <li>No-shows will not be mailed their race shirts or bags.</li>
+      <li>Roller/in-line skates, skate boards, long boards, e-scooters, e-bikes, one wheels, bikes, etc. are prohibited.</li>
+      <li>Dogs / Service Dogs are allowed on the race course. However, they must be leashed at all times and you must clean up after them. If you dog is aggressive please have them in a muzzle device / leader.</li>
+      <li>The decisions of the race director are final in all matters.</li>
+      <li>Chip time is recorded by an electronic chip that is attached to a runner’s bib. Your chip records the time at which you cross the start line.</li>
+      <li>Walker etiquette: Please place yourself in line after all the runners.  If you have not crossed the finish line in 1 hour and 15 minutes after the start of the race, you will be asked to proceed your walk on the sidewalk to finish the event.</li>
+    </ul>
+  </section>
+
+  <!-- FAQ Section -->
   <section class="container my-16" id="faq">
     <Heading level="h2" class="mb-8">Frequently Asked Questions</Heading>
+
     <Accordion>
       <AccordionItem title="What is the date and time of the Santa 5K Run & Walk?">
         The event is scheduled for Saturday, December 6th, 2025. Check-in begins at 7:00 AM, and the race starts at 8:30 AM. Line-up starts at 8:20 AM. Runners will line up at the start line and walkers will follow up behind the runners.
       </AccordionItem>
+
       <AccordionItem title="Where is the event located?">
         The Santa 5K Run & Walk starts and finishes at Market Square in Manheim, PA.
       </AccordionItem>
+
       <AccordionItem title="How can I register for the event?">
         You can register online through <Link href={PUBLIC_RUNNERS_REGISTRATION_URL} isExternal>RunSignUp</Link>. Early registration is encouraged to ensure your spot in the event.
       </AccordionItem>
+
       <AccordionItem title="Can I register on the day of the event?">
         Runners may still register the morning of the race from 7:00 AM-8:00 AM. All runners and walkers are welcome.
       </AccordionItem>
+
       <AccordionItem title="Are restrooms available at the event?">
         There will be porta-potties available near the East side of Market Square near the start/finish area.
       </AccordionItem>
+
       <AccordionItem title="Is there water available during the race?">
         A water drink station will be set up at the halfway point of the race. There will also be water available at the end of the race.
       </AccordionItem>
+
       <AccordionItem title="Is the race timed?">
         The race will be chipped timed by <Link href="https://www.appliedracemgmt.com/" isExternal>Applied Race Management</Link>.
       </AccordionItem>
+
       <AccordionItem title="Are there medical services available during the event?">
         Yes. Life Lion will be onsite providing medical support for the event. As well as following participants along the course.
       </AccordionItem>
+
       <AccordionItem title="Are there awards or prizes for participants?">
         There will be a variety of goodies and drinks for all runners at the end of the race. There will also be awards for the top finishers in various age groups.
         <ul class="list-inside list-disc my-4">
@@ -203,9 +250,15 @@ const PUBLIC_RUNNERS_REGISTRATION_URL = import.meta.env.PUBLIC_RUNNERS_REGISTRAT
         </ul>
         Awards will also be given out to the Top (3) Overall Male and Female winners.
       </AccordionItem>
+
       <AccordionItem title="Are there security services available during the event?">
         Yes. We are coordinating with the Manheim Borough / Regional Police Department and the Manheim Fire Police to provide security and traffic control during the event.
       </AccordionItem>
+
+      <AccordionItem title="Is there a time limit to complete the race?">
+        Yes. The course must be completed within 1 hour and 15 minutes of the start time. Participants who do not finish within this time frame may be asked to proceed on the sidewalks to complete the event so that roads can be reopened.
+      </AccordionItem>
+
       <AccordionItem title="I am a local resident. What roads will be affected by the race?">
         The following roads will have temporary closures during the race:
         <ul class="list-inside list-disc my-4">
@@ -217,8 +270,61 @@ const PUBLIC_RUNNERS_REGISTRATION_URL = import.meta.env.PUBLIC_RUNNERS_REGISTRAT
           <li>W Gramby St. from North Fulton St. to North Charlotte St.</li>
           <li>Market Square from North Charlotte St.</li>
         </ul>
-        A course map is available above for reference. The course will also be marked via signage a week before the event. If you are within the course area we advise planning alternate routes / parking accommodations during the event times. Once the race starts no cars may traverse the course route until all participants have finished.
+        A course map is available above for reference. The course will also be marked via signage a week before the event. If you are within the course area we advise planning alternate routes / parking accommodations during the event times. Once the race starts no cars may traverse the course route, or be allowed into the inner race area, until all participants have finished. Cars may be let out before race start at the discretion of the intersection attendants.
+
+        The event runs for approximately 1 hour and 15 minutes after start time. Roads will be reopened starting with the furthest intersection. However, Market Square may remain closed for some time after the event to allow for cleanup and breakdown of event equipment.
       </AccordionItem>
     </Accordion>
   </section>
+
+  <!-- Sponsors Section -->
+  <section class="container my-16" id="sponsors">
+    <Heading level="h2" class="mb-8">Event Sponsors</Heading>
+
+    <p class="text-lg mb-8">
+      We would like to extend our sincere gratitude to the following sponsors for their generous support of the Santa 5K Run & Walk event. Their contributions help make this event possible and allow us to continue our mission of serving the community.
+    </p>
+
+    <div class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-6 mb-8">
+      <Link href="https://kriederfarms.com" target="_blank" class="hover:outline-2 hover:outline-[var(--color-primary)] focus:outline-2 focus:outline-[var(--color-primary)] active:border-2 active:border-[var(--color-neutral)]"><Media src={sponsor1.src} alt="Krieder Farms"/></Link>
+      <Link href="https://www.manheim.com/" target="_blank" class="hover:outline-2 hover:outline-[var(--color-primary)] focus:outline-2 focus:outline-[var(--color-primary)] active:border-2 active:border-[var(--color-neutral)]"><Media src={sponsor2.src} alt="Manheim Auto Auction"/></Link>
+      <Link href="https://brctv.com" target="_blank" class="hover:outline-2 hover:outline-[var(--color-primary)] focus:outline-2 focus:outline-[var(--color-primary)] active:border-2 active:border-[var(--color-neutral)]"><Media src={sponsor3.src} alt="Blue Ridge Communications"/></Link>
+      <Link href="https://www.harringtonhoists.com/" target="_blank" class="hover:outline-2 hover:outline-[var(--color-primary)] focus:outline-2 focus:outline-[var(--color-primary)] active:border-2 active:border-[var(--color-neutral)]"><Media src={sponsor4.src} alt="Harrington Hoists"/></Link>
+      <Link href="https://lancastercivil.com/" target="_blank" class="hover:outline-2 hover:outline-[var(--color-primary)] focus:outline-2 focus:outline-[var(--color-primary)] active:border-2 active:border-[var(--color-neutral)]"><Media src={sponsor5.src} alt="Lancaster Civil Engineering"/></Link>
+      <Link href="https://www.hondruauto.com/" target="_blank" class="hover:outline-2 hover:outline-[var(--color-primary)] focus:outline-2 focus:outline-[var(--color-primary)] active:border-2 active:border-[var(--color-neutral)]"><Media src={sponsor6.src} alt="Hondru Auto"/></Link>
+      <Link href="https://business.manheimchamber.com/list/member/germania-band-club-56" target="_blank" class="hover:outline-2 hover:outline-[var(--color-primary)] focus:outline-2 focus:outline-[var(--color-primary)] active:border-2 active:border-[var(--color-neutral)]"><Media src={sponsor7.src} alt="Germania Band Club"/></Link>
+      <Link href="https://harborengineering.com/" target="_blank" class="hover:outline-2 hover:outline-[var(--color-primary)] focus:outline-2 focus:outline-[var(--color-primary)] active:border-2 active:border-[var(--color-neutral)]"><Media src={sponsor8.src} alt="Harbor Engineering"/></Link>
+      <Link href="https://pleasantviewcommunities.org/" target="_blank" class="hover:outline-2 hover:outline-[var(--color-primary)] focus:outline-2 focus:outline-[var(--color-primary)] active:border-2 active:border-[var(--color-neutral)]"><Media src={sponsor9.src} alt="Pleasant View Communities"/></Link>
+      <Link href="https://www.wellspan.org/" target="_blank" class="hover:outline-2 hover:outline-[var(--color-primary)] focus:outline-2 focus:outline-[var(--color-primary)] active:border-2 active:border-[var(--color-neutral)]"><Media src={sponsor10.src} alt="WellSpan Health"/></Link>
+      <Link href="https://www.utilitykeystone.com/" target="_blank" class="hover:outline-2 hover:outline-[var(--color-primary)] focus:outline-2 focus:outline-[var(--color-primary)] active:border-2 active:border-[var(--color-neutral)]"><Media src={sponsor11.src} alt="Utility Keystone"/></Link>
+    </div>
+
+    <p>
+      We'd also like to thank the following agencies for their support and participation in ensuring the safety and success of the event:
+      <ul class="list-inside list-disc my-4">
+        <li>Manheim Borough Police Department</li>
+        <li>Manheim Fire Police</li>
+        <li>Life Lion Medical Services</li>
+        <li>PennDot</li>
+        <li>Manheim Borough</li>
+        <li>Penn Township</li>
+        <li>Ralpho Township</li>
+      </ul>
+    </p>
+
+    <p class="text-lg mt-8">
+      If you are interested in becoming a sponsor for future events, please contact us using our <Link href="/contact">contact form</Link>.
+    </p>
+  </section>
+
+  <!-- Event Gallery Section -->
+  <section class="container my-16" id="gallery">
+
+    <Heading level="h2" class="mb-8">Event Gallery</Heading>
+    <div class="grid grid-cols-2 gap-2">
+      <Media src={santa5k1.src} alt="Runners starting the Santa 5K Run & Walk" ratio="4:3"/>
+      <Media src={santa5k2.src} alt="Participants running along the course during the Santa 5K Run & Walk" ratio="4:3"/>
+      <Media src={santa5k3.src} alt="Volunteers handing out water to runners during the Santa 5K Run & Walk" ratio="4:3"/>
+    </div>
+
 </DefaultLayout>

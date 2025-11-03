@@ -1,6 +1,10 @@
 ---
-import DefaultLayout from '@layouts/DefaultLayout.astro'
-import PageHeader from '@components/PageHeader.astro'
+import DefaultLayout from '@layouts/DefaultLayout.astro';
+import PageHeader from '@components/PageHeader.astro';
+import ContentMedia from '@components/ContentMedia.astro';
+import { Link } from 'accessible-astro-components';
+
+import eyeGlasses from '../assets/img/eyeglasses-box.webp';
 ---
 
 <DefaultLayout title="Eye Glasses Collection">
@@ -10,7 +14,61 @@ import PageHeader from '@components/PageHeader.astro'
     bgType="gradient"
     showBreadcrumbs={false}
   />
+
   <section class="container my-16">
-    <p>to-do</p>
+    <ContentMedia imgSrc={eyeGlasses.src} reverseImg={false} aria-label="Picture of a eye glasses donation box." allowEnlarge={false}>
+      <p class="text-lg">
+        Drop off your unused eye glasses & cases in one of our drop boxes located around Manheim. Boxes are available year round at participating locations. Glasses are cleaned, sorted by prescription, and packaged for distribution to those in need around the world. Learn more about this program <Link href="https://www.lionsclubs.org/en/explore-our-clubs/eyeglasses-and-hearing-aids-recycling" isExternal>here</Link>.
+      </p>
+    </ContentMedia>
+
+    <div class="overflow-x-auto">
+      <table class="w-full table-auto border-collapse border border-gray-300">
+        <thead>
+          <tr class="bg-gray-100 dark:text-black">
+            <th class="border border-gray-300 px-4 py-2 text-left">Location</th>
+            <th class="border border-gray-300 px-4 py-2 text-left">Address</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="border border-gray-300 px-4 py-2">City Star Diner</td>
+            <td class="border border-gray-300 px-4 py-2">65 Lancaster Rd, Manheim, PA 17545</td>
+          </tr>
+          <tr>
+            <td class="border border-gray-300 px-4 py-2">Chad’s Barber Shop</td>
+            <td class="border border-gray-300 px-4 py-2">33 Market Square, Manheim, PA 17545</td>
+          </tr>
+          <tr>
+            <td class="border border-gray-300 px-4 py-2">Jubliee (@ Loading Dock)</td>
+            <td class="border border-gray-300 px-4 py-2">27 E Ferdinand St, Manheim, PA 17545</td>
+          </tr>
+          <tr>
+            <td class="border border-gray-300 px-4 py-2">Longeneckers True Value</td>
+            <td class="border border-gray-300 px-4 py-2">127 Doe Run Rd, Manheim, PA 17545</td>
+          </tr>
+          <tr>
+            <td class="border border-gray-300 px-4 py-2">Nearly Nu Shop – 9</td>
+            <td class="border border-gray-300 px-4 py-2">11 N Main St, Manheim, PA 17545</td>
+          </tr>
+          <tr>
+            <td class="border border-gray-300 px-4 py-2">Pleasant View Communities</td>
+            <td class="border border-gray-300 px-4 py-2">544 N Penryn Rd, Manheim, PA 17545</td>
+          </tr>
+          <tr>
+            <td class="border border-gray-300 px-4 py-2">Ruhl’s Church</td>
+            <td class="border border-gray-300 px-4 py-2">4810 Elizabethtown Rd, Manheim, PA 17545</td>
+          </tr>
+          <tr>
+            <td class="border border-gray-300 px-4 py-2">Salem United Methodist Church</td>
+            <td class="border border-gray-300 px-4 py-2">140 N Penn St, Manheim, PA 17545</td>
+          </tr>
+          <tr>
+            <td class="border border-gray-300 px-4 py-2">Zion Lutheran</td>
+            <td class="border border-gray-300 px-4 py-2">2 S Hazel St, Manheim, PA 17545</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </section>
 </DefaultLayout>
