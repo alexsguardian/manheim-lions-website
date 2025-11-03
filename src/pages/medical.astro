@@ -5,9 +5,21 @@ import { Form, Input, Button, Textarea, Checkbox, Fieldset, Heading } from 'acce
 
 import medPic from '../assets/img/medical-equipment.webp'
 
-const isLocalhost = Astro.request.url.includes('localhost')
+const isLocalhost = import.meta.env.IS_LOCAL
+const isDev = import.meta.env.DEV
 
-const baseURL = isLocalhost ? 'http://localhost:4321' : `${Astro.site}`
+let baseURL: string
+if (isLocalhost) {
+  baseURL = 'http://localhost:4321'
+} else if (isDev) {
+  baseURL = `https://dev.${Astro.site?.toString().replace(/^https?:\/\//, '') || 'manheimlions.org'}`
+} else {
+  baseURL = `${Astro.site}`
+}
+
+if (isLocalhost || isDev) {
+  console.log('Running in development mode, baseURL:', baseURL);
+}
 
 const FORM_URL = import.meta.env.PUBLIC_MEDICAL_FORM_URL
 const CF_SITE_KEY = import.meta.env.PUBLIC_CF_TURNSTILE_SITE_KEY
