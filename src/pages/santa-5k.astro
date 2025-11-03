@@ -1,12 +1,14 @@
 ---
-import DefaultLayout from '@layouts/DefaultLayout.astro'
-import PageHeader from '@components/PageHeader.astro'
-import { Heading, Link, Notification } from 'accessible-astro-components'
-import ContentMedia from '@components/ContentMedia.astro'
+import DefaultLayout from '@layouts/DefaultLayout.astro';
+import PageHeader from '@components/PageHeader.astro';
+import { Heading, Link, Notification, Accordion, AccordionItem } from 'accessible-astro-components';
+import ContentMedia from '@components/ContentMedia.astro';
 
-import santaRunPoster from '../assets/img/santa-run/santa-5k-raceStart.webp'
+import santaRunStart from '../assets/img/santa-run/santa-5k-raceStart.webp';
+import santaCourseMap from '../assets/img/santa-run/santa-5k-courseMap.webp';
+import santaParking from '../assets/img/santa-run/santa-5k-parking.webp';
 
-const PUBLIC_RUNNERS_REGISTRATION_URL = import.meta.env.PUBLIC_RUNNERS_REGISTRATION_URL
+const PUBLIC_RUNNERS_REGISTRATION_URL = import.meta.env.PUBLIC_RUNNERS_REGISTRATION_URL;
 ---
 
 <DefaultLayout title="Santa 5K Run & Walk">
@@ -18,16 +20,16 @@ const PUBLIC_RUNNERS_REGISTRATION_URL = import.meta.env.PUBLIC_RUNNERS_REGISTRAT
   />
 
   <section class="container my-16">
-    <ContentMedia imgSrc={santaRunPoster.src} reverseImg={false}>
+    <ContentMedia imgSrc={santaRunStart.src} reverseImg={false} aria-label="Previous event start line photo">
       <Heading level="h2">Santa 5K Run & Walk</Heading>
       <p class="text-lg">
-        The Manheim Lions Club hosts an annual Santa 5K Run & Walk to raise funds for various community projects and
+        The Manheim Lions Club hosts an annual Santa 5K Run & Walk, in December, to raise funds for various community projects and
         charitable causes. The event is open to participants of all ages and fitness levels. Runners and walkers are
         encouraged to dress in festive holiday attire to celebrate the season.
       </p>
     </ContentMedia>
 
-    <Notification type="info" class="my-8 flex flex-col items-start">
+    <Notification type="error" class="my-8 flex flex-col items-start">
       <p class="text-lg">
         Secure your spot for the Santa 5K Run & Walk by registering online. Early registration is encouraged to ensure
         availability.
@@ -44,9 +46,179 @@ const PUBLIC_RUNNERS_REGISTRATION_URL = import.meta.env.PUBLIC_RUNNERS_REGISTRAT
         Register on RunSignUp
       </Link>
     </Notification>
+
+    <div class="my-8 bg-blue-50 dark:bg-blue-900/20 border-4 border-blue-400 rounded-lg p-6">
+      <div class="space-y-6">
+        <Heading level="h2" class="dark:text-blue-500 mb-4">
+          Packet Pick-up Information
+        </Heading>
+
+        <div class="bg-white dark:bg-gray-800 rounded-lg p-4 shadow-sm">
+          <ul class="space-y-3">
+            <li class="flex flex-col sm:flex-row sm:justify-between sm:items-center border-b border-gray-100 dark:border-gray-700 pb-2">
+              <span class="font-semibold text-gray-900 dark:text-gray-100">Friday, December 5th, 2024</span>
+              <span class="text-blue-700 dark:text-blue-300 font-medium">4:00 PM - 7:00 PM</span>
+            </li>
+            <li class="flex flex-col sm:flex-row sm:justify-between sm:items-center">
+              <span class="font-semibold text-gray-900 dark:text-gray-100">Saturday, December 6th, 2024</span>
+              <span class="text-blue-700 dark:text-blue-300 font-medium">7:00 AM</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="text-center bg-white dark:bg-gray-800 rounded-lg p-4 shadow-sm">
+          <p class="font-bold text-lg mb-2 text-gray-900 dark:text-gray-100">Location:</p>
+          <p class="text-gray-700 dark:text-gray-300">
+            Trinity Evangelical Congregational Church<br>
+            48 Market Square, Manheim, PA 17545
+          </p>
+        </div>
+
+        <Notification type="warning" class="p-4">
+          <p class="text-sm">
+            <strong>Important:</strong> Please check in no later than 8:00 AM on Saturday, December 6th to ensure you have enough time to prepare for the race.
+          </p>
+        </Notification>
+      </div>
+    </div>
   </section>
 
   <section class="container">
-    <Heading level="h2">Information Zone</Heading>
+    <div class="my-16 flex flex-col">
+      <ContentMedia imgSrc={santaCourseMap.src} reverseImg={false}>
+        <Heading class="my-8" level="h2">Event Location & Parking</Heading>
+        <p class="text-lg">
+          The Santa 5K Run & Walk takes place in Manheim, PA, starting and finishing at Market Square. Parking is available for participants at various locations near the event site. Please see the table below for locations and spaces count.
+        </p>
+      </ContentMedia>
+    </div>
+    <div class="overflow-x-auto">
+      <table class="w-full table-auto border-collapse border border-gray-300">
+        <thead>
+          <tr class="bg-gray-100 dark:text-black">
+            <th class="border border-gray-300 px-4 py-2 text-left">Location</th>
+            <th class="border border-gray-300 px-4 py-2 text-left">Address</th>
+            <th class="border border-gray-300 px-4 py-2 text-left">Spaces</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="border border-gray-300 px-4 py-2">FL Schmidt (A)</td>
+            <td class="border border-gray-300 px-4 py-2">236 South Cherry St.</td>
+            <td class="border border-gray-300 px-4 py-2">200</td>
+          </tr>
+          <tr>
+            <td class="border border-gray-300 px-4 py-2">Zion Evangelical Lutheran Church (B)</td>
+            <td class="border border-gray-300 px-4 py-2">2 South Hazel St.</td>
+            <td class="border border-gray-300 px-4 py-2">100</td>
+          </tr>
+          <tr>
+            <td class="border border-gray-300 px-4 py-2">Salem United Methodist Church (C)</td>
+            <td class="border border-gray-300 px-4 py-2">140 North Penn St.</td>
+            <td class="border border-gray-300 px-4 py-2">100+</td>
+          </tr>
+          <tr>
+            <td class="border border-gray-300 px-4 py-2">Manheim Central High School (D)</td>
+            <td class="border border-gray-300 px-4 py-2">400 Adele Ave.</td>
+            <td class="border border-gray-300 px-4 py-2">200+</td>
+          </tr>
+          <tr>
+            <td class="border border-gray-300 px-4 py-2">Masonic Lodge 587 (E)</td>
+            <td class="border border-gray-300 px-4 py-2">30 South Linden St.</td>
+            <td class="border border-gray-300 px-4 py-2">50+</td>
+          </tr>
+          <tr>
+            <td class="border border-gray-300 px-4 py-2">Jubilee Ministries (F)</td>
+            <td class="border border-gray-300 px-4 py-2">27 East Ferdinand St.</td>
+            <td class="border border-gray-300 px-4 py-2">40</td>
+          </tr>
+          <tr>
+            <td class="border border-gray-300 px-4 py-2">New Life Assemblies of God (G)</td>
+            <td class="border border-gray-300 px-4 py-2">8 West Colebrook St.</td>
+            <td class="border border-gray-300 px-4 py-2">50</td>
+          </tr>
+          <tr>
+            <td class="border border-gray-300 px-4 py-2">Baron Elementary School (H)</td>
+            <td class="border border-gray-300 px-4 py-2">123 Gramby St.</td>
+            <td class="border border-gray-300 px-4 py-2">50</td>
+          </tr>
+          <tr>
+            <td class="border border-gray-300 px-4 py-2">St Paul's UCC Church (I)</td>
+            <td class="border border-gray-300 px-4 py-2">50 North Main St.</td>
+            <td class="border border-gray-300 px-4 py-2">100</td>
+          </tr>
+          <tr>
+            <td class="border border-gray-300 px-4 py-2">Borough Municipal Lot [Behind Subway] (J)</td>
+            <td class="border border-gray-300 px-4 py-2">North Wolf St.</td>
+            <td class="border border-gray-300 px-4 py-2">40</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <ContentMedia imgSrc={santaParking.src} reverseImg={true} aria-label="Map markers for parking locations">
+      <Heading level="h3">On Street Parking</Heading>
+      <p class="text-lg">
+        On street parking is available throughout the Manheim Borough area. Please be sure to check for any parking restrictions or signage in the area. Traffic will be heavy on arrival so please arrive at least one hour before event start to ensure you make it to race start on time!
+      </p>
+    </ContentMedia>
+  </section>
+  <section class="container my-16" id="faq">
+    <Heading level="h2" class="mb-8">Frequently Asked Questions</Heading>
+    <Accordion>
+      <AccordionItem title="What is the date and time of the Santa 5K Run & Walk?">
+        The event is scheduled for Saturday, December 6th, 2025. Check-in begins at 7:00 AM, and the race starts at 8:30 AM. Line-up starts at 8:20 AM. Runners will line up at the start line and walkers will follow up behind the runners.
+      </AccordionItem>
+      <AccordionItem title="Where is the event located?">
+        The Santa 5K Run & Walk starts and finishes at Market Square in Manheim, PA.
+      </AccordionItem>
+      <AccordionItem title="How can I register for the event?">
+        You can register online through <Link href={PUBLIC_RUNNERS_REGISTRATION_URL} isExternal>RunSignUp</Link>. Early registration is encouraged to ensure your spot in the event.
+      </AccordionItem>
+      <AccordionItem title="Can I register on the day of the event?">
+        Runners may still register the morning of the race from 7:00 AM-8:00 AM. All runners and walkers are welcome.
+      </AccordionItem>
+      <AccordionItem title="Are restrooms available at the event?">
+        There will be porta-potties available near the East side of Market Square near the start/finish area.
+      </AccordionItem>
+      <AccordionItem title="Is there water available during the race?">
+        A water drink station will be set up at the halfway point of the race. There will also be water available at the end of the race.
+      </AccordionItem>
+      <AccordionItem title="Is the race timed?">
+        The race will be chipped timed by <Link href="https://www.appliedracemgmt.com/" isExternal>Applied Race Management</Link>.
+      </AccordionItem>
+      <AccordionItem title="Are there medical services available during the event?">
+        Yes. Life Lion will be onsite providing medical support for the event. As well as following participants along the course.
+      </AccordionItem>
+      <AccordionItem title="Are there awards or prizes for participants?">
+        There will be a variety of goodies and drinks for all runners at the end of the race. There will also be awards for the top finishers in various age groups.
+        <ul class="list-inside list-disc my-4">
+          <li>11-14</li>
+          <li>15-19</li>
+          <li>20-29</li>
+          <li>30-39</li>
+          <li>40-49</li>
+          <li>50-59</li>
+          <li>60-69</li>
+          <li>70+</li>
+        </ul>
+        Awards will also be given out to the Top (3) Overall Male and Female winners.
+      </AccordionItem>
+      <AccordionItem title="Are there security services available during the event?">
+        Yes. We are coordinating with the Manheim Borough / Regional Police Department and the Manheim Fire Police to provide security and traffic control during the event.
+      </AccordionItem>
+      <AccordionItem title="I am a local resident. What roads will be affected by the race?">
+        The following roads will have temporary closures during the race:
+        <ul class="list-inside list-disc my-4">
+          <li>South Charlotte St. from Market Square to West Ferdinand St.</li>
+          <li>West Ferdinand St. from South Charlotte St. to South Heintzelman St.</li>
+          <li>West High St. from South Heintzelman St. to Cresent Drive.</li>
+          <li>Miller Drive from Cresent Drive to Lorraine Ave.</li>
+          <li>Meadow Lane from Lorraine Ave. to North Fulton St. (via W High).</li>
+          <li>W Gramby St. from North Fulton St. to North Charlotte St.</li>
+          <li>Market Square from North Charlotte St.</li>
+        </ul>
+        A course map is available above for reference. The course will also be marked via signage a week before the event. If you are within the course area we advise planning alternate routes / parking accommodations during the event times. Once the race starts no cars may traverse the course route until all participants have finished.
+      </AccordionItem>
+    </Accordion>
   </section>
 </DefaultLayout>

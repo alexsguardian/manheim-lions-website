@@ -48,7 +48,7 @@ const packURL = import.meta.env.PUBLIC_PACK_URL
 
   <!-- Medical Section -->
   <section class="bg-[var(--background-color)] py-24">
-    <ContentMedia imgSrc={medPic.src} reverseImg={false}>
+    <ContentMedia imgSrc={medPic.src} reverseImg={false} aria-label="Medical Equipment" allowEnlarge={false}>
       <Heading level="h2">Medical Equipment</Heading>
       <p class="text-2xl">
         The Manheim Lions Club operates a Medical Equipment loan program to provide temporary use of medical equipment
@@ -64,7 +64,7 @@ const packURL = import.meta.env.PUBLIC_PACK_URL
   </section>
 
   <section class="container my-24 text-center">
-    <ContentMedia imgSrc={cubpack.src} reverseImg={true}>
+    <ContentMedia imgSrc={cubpack.src} reverseImg={true} aria-label="Cub Scout Ranks (Lion, Tiger, Bobcat, Wolf, Bear, Webelos, Arrow of Light)" allowEnlarge={false}>
       <Heading level="h2">Cub Scout Pack 47</Heading>
       <p class="text-2xl">
         The Manheim Lions Club proudly sponsors Cub Scout Pack 47, which serves the youth of the Manheim area by

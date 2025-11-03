@@ -16,18 +16,112 @@ interface Props {
    * @default false
    */
   reverseImg?: boolean
+  /**
+   * Whether to allow the image to be enlarged when clicked
+   * @default true
+   */
+  allowEnlarge?: boolean
 }
 
-const { imgSrc, reverseImg = false }: Props = Astro.props
+const { imgSrc, reverseImg = false, allowEnlarge = true }: Props = Astro.props
 ---
 
 <section>
   <div class="container my-8">
     <div class="grid grid-cols-1 gap-8 md:grid-cols-2 md:gap-24">
-      <Media class={`rounded-lg ${reverseImg ? 'md:order-2' : ''}`} src={imgSrc} />
+      {allowEnlarge ? (
+        <button
+          type="button"
+          class={`image-modal-trigger rounded-lg overflow-hidden cursor-pointer hover:opacity-80 transition-opacity ${reverseImg ? 'md:order-2' : ''}`}
+          data-image-src={imgSrc}
+          aria-label="Click to view larger image"
+        >
+          <Media class="rounded-lg" src={imgSrc} />
+        </button>
+      ) : (
+        <div class={`rounded-lg ${reverseImg ? 'md:order-2' : ''}`}>
+          <Media class="rounded-lg" src={imgSrc} />
+        </div>
+      )}
       <div class={`space-content flex flex-col justify-center ${reverseImg ? 'md:order-1' : ''}`}>
         <slot />
       </div>
     </div>
   </div>
 </section>
+
+{allowEnlarge && (
+  <div id="image-modal" class="fixed inset-0 hidden" role="dialog" aria-labelledby="modal-title" aria-modal="true" style="z-index: 99999; isolation: isolate;">
+    <!-- Blurred background overlay -->
+    <div class="absolute inset-0 bg-black/30" style="backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);"></div>
+
+    <!-- Content container -->
+    <div class="absolute inset-0 flex items-center justify-center p-4">
+      <div class="relative max-w-[90vw] max-h-[90vh]">
+        <button
+          type="button"
+          id="close-modal"
+          class="absolute -top-2 -right-2 text-white text-4xl font-bold hover:text-gray-300 z-10 bg-black/50 backdrop-blur-sm rounded-full w-12 h-12 flex items-center justify-center shadow-lg"
+          aria-label="Close enlarged image view"
+        >
+          &times;
+        </button>
+        <img
+          id="modal-image"
+          class="max-w-full max-h-full object-contain rounded-lg shadow-2xl"
+          alt="Enlarged view"
+        />
+      </div>
+    </div>
+  </div>
+)}
+
+{allowEnlarge && (
+  <script>
+    // Handle image modal functionality
+    document.addEventListener('astro:page-load', () => {
+      const triggers = document.querySelectorAll('.image-modal-trigger');
+      const modal = document.getElementById('image-modal');
+      const modalImage = document.getElementById('modal-image') as HTMLImageElement;
+      const closeButton = document.getElementById('close-modal');
+
+    // Open modal when image is clicked
+    triggers.forEach(trigger => {
+      trigger.addEventListener('click', () => {
+        const imageSrc = trigger.getAttribute('data-image-src');
+        if (modalImage && modal && imageSrc) {
+          modalImage.src = imageSrc;
+          modal.classList.remove('hidden');
+          modal.classList.add('flex');
+          document.body.style.overflow = 'hidden'; // Prevent background scrolling
+        }
+      });
+    });
+
+    // Close modal when close button is clicked
+    closeButton?.addEventListener('click', () => {
+      modal?.classList.add('hidden');
+      modal?.classList.remove('flex');
+      document.body.style.overflow = ''; // Restore scrolling
+    });
+
+    // Close modal when clicking outside the image
+    modal?.addEventListener('click', (e) => {
+      if (e.target === modal) {
+        modal.classList.add('hidden');
+        modal.classList.remove('flex');
+        document.body.style.overflow = ''; // Restore scrolling
+      }
+    });
+
+      // Close modal with Escape key
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && modal && !modal.classList.contains('hidden')) {
+          modal.classList.add('hidden');
+          modal.classList.remove('flex');
+          document.body.style.overflow = ''; // Restore scrolling
+        }
+      });
+    });
+  </script>
+)}
