@@ -1,14 +1,14 @@
 ---
-import DefaultLayout from '@layouts/DefaultLayout.astro'
-import PageHeader from '@components/PageHeader.astro'
-import { Form, Input, Button, Textarea, Checkbox, Fieldset, Heading } from 'accessible-astro-components'
+import DefaultLayout from '@layouts/DefaultLayout.astro';
+import PageHeader from '@components/PageHeader.astro';
+import { Form, Input, Button, Textarea, Checkbox, Fieldset, Heading } from 'accessible-astro-components';
 
-import medPic from '../assets/img/medical-equipment.webp'
+import medPic from '../assets/img/medical-equipment.webp';
 
-const isLocalhost = import.meta.env.IS_LOCAL
-const isDev = import.meta.env.DEV
+const isLocalhost = import.meta.env.IS_LOCAL;
+const isDev = import.meta.env.DEV;
 
-let baseURL: string
+let baseURL: string;
 if (isLocalhost) {
   baseURL = 'http://localhost:4321'
 } else if (isDev) {
@@ -18,11 +18,11 @@ if (isLocalhost) {
 }
 
 if (isLocalhost || isDev) {
-  console.log('Running in development mode, baseURL:', baseURL);
+  console.log('Running in development mode, baseURL:', baseURL)
 }
 
-const FORM_URL = import.meta.env.PUBLIC_MEDICAL_FORM_URL
-const CF_SITE_KEY = import.meta.env.PUBLIC_CF_TURNSTILE_SITE_KEY
+const FORM_URL = import.meta.env.PUBLIC_MEDICAL_FORM_URL;
+const CF_SITE_KEY = import.meta.env.PUBLIC_CF_TURNSTILE_SITE_KEY;
 ---
 
 <DefaultLayout title="Medical Equipment">
@@ -32,8 +32,9 @@ const CF_SITE_KEY = import.meta.env.PUBLIC_CF_TURNSTILE_SITE_KEY
     bgType="gradient"
     showBreadcrumbs={false}
   />
+
   <section class="container my-16">
-    <div class="space-content mx-auto max-w-2xl px-4 sm:px-6 lg:px-8">
+    <div class="space-content mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
       <img src={medPic.src} alt="Medical Equipment" aria-hidden="true" class="my-8 rounded-lg shadow-lg" />
       <p>
         The Manheim Lions club offers a medical equipment loaner program to support local community members in need.
@@ -131,12 +132,18 @@ const CF_SITE_KEY = import.meta.env.PUBLIC_CF_TURNSTILE_SITE_KEY
 
     function updateButtonState() {
       if (agree && btn) {
-        btn.disabled = !(agree.checked && turnstileCompleted)
+        const isChecked = agree.checked
+        const shouldEnable = isChecked && turnstileCompleted
+        btn.disabled = !shouldEnable
+        console.log('Button state updated:', { isChecked, turnstileCompleted, shouldEnable, disabled: btn.disabled })
       }
     }
 
     // Handle checkbox changes
-    agree.addEventListener('change', updateButtonState)
+    agree.addEventListener('change', function(event) {
+      console.log('Checkbox changed:', event.target.checked)
+      updateButtonState()
+    })
 
     // Wait for Turnstile API to be available and render
     function initTurnstile() {
