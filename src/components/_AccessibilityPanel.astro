@@ -22,16 +22,6 @@ import { Icon } from 'astro-icon/components';
     <div class="accessibility-panel-body">
       <div class="accessibility-option">
         <Checkbox
-          id="grayscale-toggle"
-          name="grayscale"
-          value="true"
-          label="Grayscale"
-          description="Convert the entire site to grayscale"
-        />
-      </div>
-
-      <div class="accessibility-option">
-        <Checkbox
           id="large-text-toggle"
           name="large-text"
           value="true"
@@ -43,8 +33,8 @@ import { Icon } from 'astro-icon/components';
       <div class="accessibility-option">
         <fieldset class="contrast-fieldset">
           <legend>
-            <strong>Contrast Mode</strong>
-            <small>Choose a contrast enhancement option</small>
+            <strong>Visual Mode</strong>
+            <small>Choose a visual enhancement option</small>
           </legend>
           <div class="radio-options">
             <Radio
@@ -53,7 +43,14 @@ import { Icon } from 'astro-icon/components';
               value="none"
               checked
               label="Normal"
-              description="Standard contrast"
+              description="Standard appearance"
+            />
+            <Radio
+              id="contrast-grayscale"
+              name="contrast"
+              value="grayscale"
+              label="Grayscale"
+              description="Convert the entire site to grayscale"
             />
             <Radio
               id="contrast-high-contrast"
@@ -97,20 +94,16 @@ import { Icon } from 'astro-icon/components';
 
 <style lang="scss">
   .accessibility-panel {
-    position: fixed !important;
+    position: absolute !important;
     inset: 0 -400px 0 auto !important;
     width: 380px;
     background: var(--background-color);
     border-left: 2px solid var(--border-color);
     box-shadow: -4px 0 16px rgba(0, 0, 0, 0.1);
     z-index: 1000;
-    transition: transform 0.3s ease-in-out;
-    overflow-y: auto;
-    overflow-x: hidden;
-    contain: layout style paint;
 
     &.open {
-      transform: translateX(-400px);
+      transform: translateX(-400px) translateZ(0);
     }
 
     @media (max-width: 480px) {
@@ -118,7 +111,7 @@ import { Icon } from 'astro-icon/components';
       width: 100vw;
 
       &.open {
-        transform: translateX(-100vw);
+        transform: translateX(-100vw) translateZ(0);
       }
     }
   }
@@ -205,8 +198,9 @@ import { Icon } from 'astro-icon/components';
     z-index: 999;
     opacity: 0;
     visibility: hidden;
-    transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+    transition: opacity 0.25s cubic-bezier(0.4, 0.0, 0.2, 1), visibility 0.25s cubic-bezier(0.4, 0.0, 0.2, 1);
     contain: layout style paint;
+    will-change: opacity;
 
     &.show {
       opacity: 1;
@@ -446,7 +440,6 @@ import { Icon } from 'astro-icon/components';
   declare global {
     interface Window {
       accessibilitySettings: {
-        grayscale: boolean;
         contrast: string;
         largeText: boolean;
         highlightLinks: boolean;
@@ -477,7 +470,6 @@ import { Icon } from 'astro-icon/components';
     // Load saved settings
     const savedSettings = localStorage.getItem('accessibilitySettings');
     let settings = {
-      grayscale: false,
       contrast: 'none',
       largeText: false,
       highlightLinks: false
@@ -499,13 +491,11 @@ import { Icon } from 'astro-icon/components';
     let userPreferredDarkMode = initialDarkModeState;
 
     // Get form elements
-    const grayscaleToggle = document.getElementById('grayscale-toggle') as HTMLInputElement;
     const largeTextToggle = document.getElementById('large-text-toggle') as HTMLInputElement;
     const highlightLinksToggle = document.getElementById('highlight-links-toggle') as HTMLInputElement;
     const contrastRadios = document.querySelectorAll('input[name="contrast"]') as NodeListOf<HTMLInputElement>;
 
     // Apply saved settings to form
-    if (grayscaleToggle) grayscaleToggle.checked = settings.grayscale;
     if (largeTextToggle) largeTextToggle.checked = settings.largeText;
     if (highlightLinksToggle) highlightLinksToggle.checked = settings.highlightLinks;
 
@@ -530,13 +520,13 @@ import { Icon } from 'astro-icon/components';
       );
 
       // Apply current settings
-      if (settings.grayscale) {
+      if (settings.contrast === 'grayscale') {
         body.classList.add('accessibility-grayscale');
         // Force light mode for better grayscale visibility
         body.classList.remove('darkmode');
       }
 
-      if (settings.contrast !== 'none') {
+      if (settings.contrast !== 'none' && settings.contrast !== 'grayscale') {
         body.classList.add(`accessibility-${settings.contrast}`);
 
         if (settings.contrast === 'dark-contrast') {
@@ -546,10 +536,10 @@ import { Icon } from 'astro-icon/components';
           // Force light mode for better high contrast visibility
           body.classList.remove('darkmode');
         }
-      } else {
+      } else if (settings.contrast === 'none') {
         // If no contrast setting is active, restore user's original preference
         // but only if grayscale is not active (grayscale forces light mode)
-        if (!settings.grayscale && userPreferredDarkMode) {
+        if (userPreferredDarkMode) {
           body.classList.add('darkmode');
         }
       }
@@ -572,7 +562,7 @@ import { Icon } from 'astro-icon/components';
 
     // Function to enforce light mode when accessibility features require it
     const enforceLightModeIfNeeded = () => {
-      const shouldForceLightMode = settings.grayscale || settings.contrast === 'high-contrast';
+      const shouldForceLightMode = settings.contrast === 'grayscale' || settings.contrast === 'high-contrast';
 
       if (shouldForceLightMode) {
         const body = document.body;
@@ -586,7 +576,7 @@ import { Icon } from 'astro-icon/components';
     // Function to update user's dark mode preference when they manually toggle it
     // (but only when accessibility features aren't forcing light mode)
     const updateUserDarkModePreference = () => {
-      const shouldForceLightMode = settings.grayscale || settings.contrast === 'high-contrast';
+      const shouldForceLightMode = settings.contrast === 'grayscale' || settings.contrast === 'high-contrast';
 
       if (!shouldForceLightMode) {
         // Update the user's preference based on current state
@@ -619,6 +609,9 @@ import { Icon } from 'astro-icon/components';
       panel.setAttribute('aria-hidden', 'false');
       overlay.setAttribute('aria-hidden', 'false');
 
+      // Lock page scroll
+      document.body.style.overflow = 'hidden';
+
       // Focus the close button when panel opens
       closeButton?.focus();
 
@@ -631,6 +624,9 @@ import { Icon } from 'astro-icon/components';
       overlay.classList.remove('show');
       panel.setAttribute('aria-hidden', 'true');
       overlay.setAttribute('aria-hidden', 'true');
+
+      // Restore page scroll
+      document.body.style.overflow = '';
 
       // Return focus to open button if it exists
       const openButton = document.getElementById('accessibility-open-button');
@@ -706,20 +702,6 @@ import { Icon } from 'astro-icon/components';
     });
 
     // Settings event listeners
-    grayscaleToggle?.addEventListener('change', (e) => {
-      settings.grayscale = (e.target as HTMLInputElement).checked;
-
-      // When grayscale is enabled, reset contrast to normal
-      if (settings.grayscale && settings.contrast !== 'none') {
-        settings.contrast = 'none';
-        contrastRadios.forEach(radio => {
-          radio.checked = radio.value === 'none';
-        });
-      }
-
-      applySettings();
-    });
-
     largeTextToggle?.addEventListener('change', (e) => {
       settings.largeText = (e.target as HTMLInputElement).checked;
       applySettings();
@@ -734,15 +716,6 @@ import { Icon } from 'astro-icon/components';
       radio.addEventListener('change', (e) => {
         if ((e.target as HTMLInputElement).checked) {
           settings.contrast = (e.target as HTMLInputElement).value;
-
-          // When dark-contrast is enabled, disable grayscale for proper dark mode
-          if (settings.contrast === 'dark-contrast' && settings.grayscale) {
-            settings.grayscale = false;
-            if (grayscaleToggle) {
-              grayscaleToggle.checked = false;
-            }
-          }
-
           applySettings();
         }
       });
@@ -751,14 +724,12 @@ import { Icon } from 'astro-icon/components';
     resetButton.addEventListener('click', (e) => {
       e.preventDefault();
       settings = {
-        grayscale: false,
         contrast: 'none',
         largeText: false,
         highlightLinks: false
       };
 
       // Update form elements
-      if (grayscaleToggle) grayscaleToggle.checked = false;
       if (largeTextToggle) largeTextToggle.checked = false;
       if (highlightLinksToggle) highlightLinksToggle.checked = false;
 

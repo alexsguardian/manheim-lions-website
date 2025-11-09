@@ -1,8 +1,8 @@
 ---
-import Navigation from '../components/Navigation.astro'
-import AccessibilityPanel from '../components/AccessibilityPanel.astro'
-import { DarkMode, Link, SkipLink } from 'accessible-astro-components'
-import { Icon } from 'astro-icon/components'
+import Navigation from '../components/Navigation.astro';
+// import AccessibilityPanel from '../components/AccessibilityPanel.astro'
+import { DarkMode, Link, SkipLink } from 'accessible-astro-components';
+import { Icon } from 'astro-icon/components';
 
 /**
  * Header Component
@@ -52,16 +52,16 @@ import { Icon } from 'astro-icon/components'
     <li class="menu-item">
       <Link href="/contact">Contact</Link>
     </li>
-    <li class="menu-item">
+    <!-- <li class="menu-item">
       <Link href="/about">About</Link>
-    </li>
+    </li> -->
     <li class="menu-item type-icon animate-rotate">
       <DarkMode>
         <Icon aria-hidden="true" name="lucide:moon" slot="light" />
         <Icon aria-hidden="true" name="lucide:sun" slot="dark" />
       </DarkMode>
     </li>
-    <li class="menu-item">
+    <!-- <li class="menu-item">
      <button
        id="accessibility-open-button"
        class="accessibility-trigger"
@@ -70,11 +70,11 @@ import { Icon } from 'astro-icon/components'
      >
        <Icon aria-hidden="true" name="lucide:person-standing" />
      </button>
-    </li>
+    </li> -->
   </Navigation>
 </header>
 
-<AccessibilityPanel />
+<!-- <AccessibilityPanel /> -->
 
 <style lang="scss" is:global>
   header {
