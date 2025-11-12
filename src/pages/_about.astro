@@ -1,37 +1,51 @@
 ---
-import DefaultLayout from '@layouts/DefaultLayout.astro';
-import PageHeader from '@components/PageHeader.astro';
-import ContentMedia from '@components/ContentMedia.astro';
+import DefaultLayout from '@layouts/DefaultLayout.astro'
+import PageHeader from '@components/PageHeader.astro'
+import ContentMedia from '@components/ContentMedia.astro'
 
 // import clubPresident from '../assets/img/about/club-president.webp';
 // import clubVicePresident from '../assets/img/about/club-vice-president.webp';
 // import clubTreasurer from '../assets/img/about/club-treasurer.webp';
 // import clubSecretary from '../assets/img/about/club-secretary.webp';
-import clubPresident from '../assets/img/portrait.webp';
-import clubVicePresident from '../assets/img/portrait.webp';
-import clubTreasurer from '../assets/img/portrait.webp';
-import clubSecretary from '../assets/img/portrait.webp';
+import clubPresident from '../assets/img/portrait.webp'
+import clubVicePresident from '../assets/img/portrait.webp'
+import clubTreasurer from '../assets/img/portrait.webp'
+import clubSecretary from '../assets/img/portrait.webp'
 ---
 
 <DefaultLayout title="About">
   <PageHeader title="About" subtitle="Get to know the Manheim Lions!" bgType="gradient" showBreadcrumbs={false} />
   <section class="container my-16">
     <p class="text-lg">
-      The Manheim Lions club, chartered in 1925, has been dedicated to serving the community of Manheim through various charitable activities, events, and initiatives aimed at improving the quality of life for all residents.
+      The Manheim Lions club, chartered in 1925, has been dedicated to serving the community of Manheim through various
+      charitable activities, events, and initiatives aimed at improving the quality of life for all residents.
     </p>
 
     <ContentMedia imgSrc={clubPresident.src} aria-label="President Richard P." reverseImg={false} allowEnlarge={false}>
       <h2 class="my-8">President</h2>
       <p class="text-lg">
-        "As the President of the Manheim Lions Club, I am honored to lead a group of dedicated individuals committed to making a positive impact in our community. Our club has a rich history of service, and we continue to uphold the values of compassion, generosity, and fellowship that define Lions International. Together, we strive to address local needs through various projects and initiatives, from supporting vision and hearing programs to organizing community events. I invite you to join us in our mission to serve and make a difference in the lives of those around us."
+        "As the President of the Manheim Lions Club, I am honored to lead a group of dedicated individuals committed to
+        making a positive impact in our community. Our club has a rich history of service, and we continue to uphold the
+        values of compassion, generosity, and fellowship that define Lions International. Together, we strive to address
+        local needs through various projects and initiatives, from supporting vision and hearing programs to organizing
+        community events. I invite you to join us in our mission to serve and make a difference in the lives of those
+        around us."
       </p>
       <p>- Richard P., President</p>
     </ContentMedia>
 
-    <ContentMedia imgSrc={clubVicePresident.src} aria-label="Vice President Jane D." reverseImg={true} allowEnlarge={false}>
+    <ContentMedia
+      imgSrc={clubVicePresident.src}
+      aria-label="Vice President Jane D."
+      reverseImg={true}
+      allowEnlarge={false}
+    >
       <h2 class="my-8">Vice President</h2>
       <p class="text-lg">
-        "As the Vice President of the Manheim Lions Club, I am proud to support our club's mission and work alongside a dedicated team to make a meaningful difference in our community. Our club's commitment to service and fellowship continues to inspire us to address local needs through various projects and initiatives. I encourage everyone to get involved and help us create a positive impact in Manheim."
+        "As the Vice President of the Manheim Lions Club, I am proud to support our club's mission and work alongside a
+        dedicated team to make a meaningful difference in our community. Our club's commitment to service and fellowship
+        continues to inspire us to address local needs through various projects and initiatives. I encourage everyone to
+        get involved and help us create a positive impact in Manheim."
       </p>
       <p>- Jane D., Vice President</p>
     </ContentMedia>
@@ -39,7 +53,9 @@ import clubSecretary from '../assets/img/portrait.webp';
     <ContentMedia imgSrc={clubTreasurer.src} aria-label="Treasurer Aaron H." reverseImg={false} allowEnlarge={false}>
       <h2 class="my-8">Treasurer</h2>
       <p class="text-lg">
-        "As the Treasurer of the Manheim Lions Club, I am responsible for managing the club's finances and ensuring that our resources are used effectively to support our community projects and initiatives. I am proud to be part of a team that is dedicated to making a positive impact in Manheim."
+        "As the Treasurer of the Manheim Lions Club, I am responsible for managing the club's finances and ensuring that
+        our resources are used effectively to support our community projects and initiatives. I am proud to be part of a
+        team that is dedicated to making a positive impact in Manheim."
       </p>
       <p>- Aaron H., Treasurer</p>
     </ContentMedia>
@@ -47,18 +63,25 @@ import clubSecretary from '../assets/img/portrait.webp';
     <ContentMedia imgSrc={clubSecretary.src} aria-label="Secretary Leslie H." reverseImg={true} allowEnlarge={false}>
       <h2 class="my-8">Secretary</h2>
       <p class="text-lg">
-        "As the Secretary of the Manheim Lions Club, I am responsible for maintaining accurate records of our meetings and communications. I am proud to support our club's mission and help ensure that our operations run smoothly."
+        "As the Secretary of the Manheim Lions Club, I am responsible for maintaining accurate records of our meetings
+        and communications. I am proud to support our club's mission and help ensure that our operations run smoothly."
       </p>
       <p>- Leslie H., Secretary</p>
     </ContentMedia>
 
-    <ContentMedia imgSrc={clubSecretary.src} aria-label="Technology Officer Alexander H." reverseImg={false} allowEnlarge={false}>
+    <ContentMedia
+      imgSrc={clubSecretary.src}
+      aria-label="Technology Officer Alexander H."
+      reverseImg={false}
+      allowEnlarge={false}
+    >
       <h2 class="my-8">Technology Officer</h2>
       <p class="text-lg">
-        "As the Technology Officer of the Manheim Lions Club, I am responsible for managing our club's technological resources and ensuring effective communication within our team and with the community. I am proud to support our club's mission through innovation and technology."
+        "As the Technology Officer of the Manheim Lions Club, I am responsible for managing our club's technological
+        resources and ensuring effective communication within our team and with the community. I am proud to support our
+        club's mission through innovation and technology."
       </p>
       <p>- Alexander H., Technology Officer</p>
     </ContentMedia>
-
   </section>
 </DefaultLayout>

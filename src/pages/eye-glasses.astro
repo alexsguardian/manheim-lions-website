@@ -1,10 +1,10 @@
 ---
-import DefaultLayout from '@layouts/DefaultLayout.astro';
-import PageHeader from '@components/PageHeader.astro';
-import ContentMedia from '@components/ContentMedia.astro';
-import { Link } from 'accessible-astro-components';
+import DefaultLayout from '@layouts/DefaultLayout.astro'
+import PageHeader from '@components/PageHeader.astro'
+import ContentMedia from '@components/ContentMedia.astro'
+import { Link } from 'accessible-astro-components'
 
-import eyeGlasses from '../assets/img/eyeglasses-box.webp';
+import eyeGlasses from '../assets/img/eyeglasses-box.webp'
 ---
 
 <DefaultLayout title="Eye Glasses Collection">
@@ -16,9 +16,19 @@ import eyeGlasses from '../assets/img/eyeglasses-box.webp';
   />
 
   <section class="container my-16">
-    <ContentMedia imgSrc={eyeGlasses.src} reverseImg={false} aria-label="Picture of a eye glasses donation box." allowEnlarge={false}>
+    <ContentMedia
+      imgSrc={eyeGlasses.src}
+      reverseImg={false}
+      aria-label="Picture of a eye glasses donation box."
+      allowEnlarge={false}
+    >
       <p class="text-lg">
-        Drop off your unused eye glasses & cases in one of our drop boxes located around Manheim. Boxes are available year round at participating locations. Glasses are cleaned, sorted by prescription, and packaged for distribution to those in need around the world. Learn more about this program <Link href="https://www.lionsclubs.org/en/explore-our-clubs/eyeglasses-and-hearing-aids-recycling" isExternal>here</Link>.
+        Drop off your unused eye glasses & cases in one of our drop boxes located around Manheim. Boxes are available
+        year round at participating locations. Glasses are cleaned, sorted by prescription, and packaged for
+        distribution to those in need around the world. Learn more about this program <Link
+          href="https://www.lionsclubs.org/en/explore-our-clubs/eyeglasses-and-hearing-aids-recycling"
+          isExternal>here</Link
+        >.
       </p>
     </ContentMedia>
 

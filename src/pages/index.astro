@@ -1,15 +1,15 @@
 ---
-import DefaultLayout from '@layouts/DefaultLayout.astro';
-import Hero from '@components/Hero.astro';
-import ContentMedia from '@components/ContentMedia.astro';
-import ContentVideo from '@components/ContentVideo.astro';
-import { Heading, Link, Notification } from 'accessible-astro-components';
-import { Icon } from 'astro-icon/components';
+import DefaultLayout from '@layouts/DefaultLayout.astro'
+import Hero from '@components/Hero.astro'
+import ContentMedia from '@components/ContentMedia.astro'
+import ContentVideo from '@components/ContentVideo.astro'
+import { Heading, Link, Notification } from 'accessible-astro-components'
+import { Icon } from 'astro-icon/components'
 
-import medPic from '../assets/img/medical-equipment.webp';
-import cubpack from '../assets/img/cubpack-photo.webp';
+import medPic from '../assets/img/medical-equipment.webp'
+import cubpack from '../assets/img/cubpack-photo.webp'
 
-const packURL = import.meta.env.PUBLIC_PACK_URL;
+const packURL = import.meta.env.PUBLIC_PACK_URL
 ---
 
 <DefaultLayout title="Home">
@@ -26,7 +26,7 @@ const packURL = import.meta.env.PUBLIC_PACK_URL;
       caption="Video from Lions International on YouTube"
     >
       <Heading level="h2" class="text-white dark:text-white">What is a Lion?</Heading>
-      <p class="text-lg dark:text-white text-white">
+      <p class="text-lg text-white dark:text-white">
         When caring people join together, roll up their sleeves and take action to make their community better, it’s a
         beautiful thing—and an incredible feeling for everyone involved. That’s Lions. Being a Lion is about leading by
         example, building relationships and improving the world through kindness. It’s 1.4 million caring men and women
@@ -37,7 +37,6 @@ const packURL = import.meta.env.PUBLIC_PACK_URL;
         <Icon aria-hidden="true" name="lucide:arrow-right" size="1.5rem" />
       </Link>
     </ContentVideo>
-
   </section>
 
   <!-- Upcoming Events Section -->
@@ -49,7 +48,7 @@ const packURL = import.meta.env.PUBLIC_PACK_URL;
 
       <hr class="mx-auto mb-4 max-w-[50%] border-t-2 border-gray-300" aria-hidden="true" />
 
-      <Notification type="info" class="max-w-3xl mx-auto my-12 justify-center">
+      <Notification type="info" class="mx-auto my-12 max-w-3xl justify-center">
         There are currently no upcoming events. Please check back later!
       </Notification>
     </div>
@@ -74,7 +73,12 @@ const packURL = import.meta.env.PUBLIC_PACK_URL;
 
   <!-- Cub Scout Section -->
   <section class="container my-24">
-    <ContentMedia imgSrc={cubpack.src} reverseImg={true} aria-label="Cub Scout Ranks (Lion, Tiger, Bobcat, Wolf, Bear, Webelos, Arrow of Light)" allowEnlarge={false}>
+    <ContentMedia
+      imgSrc={cubpack.src}
+      reverseImg={true}
+      aria-label="Cub Scout Ranks (Lion, Tiger, Bobcat, Wolf, Bear, Webelos, Arrow of Light)"
+      allowEnlarge={false}
+    >
       <Heading level="h2">Cub Scout Pack 47</Heading>
       <p class="text-lg">
         The Manheim Lions club proudly sponsors Cub Scout Pack 47, which serves the youth of the Manheim area by

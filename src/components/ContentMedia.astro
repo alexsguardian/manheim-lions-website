@@ -52,10 +52,7 @@ const { imgSrc, reverseImg = false, allowEnlarge = true }: Props = Astro.props
 
 {allowEnlarge && (
   <div id="image-modal" class="fixed inset-0 hidden" role="dialog" aria-labelledby="modal-title" aria-modal="true" style="z-index: 99999; isolation: isolate;">
-    <!-- Subtle background overlay -->
-    <div class="absolute inset-0 bg-black/20" style="backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px);"></div>
-
-    <!-- Content container that scales with image -->
+    <div class="absolute inset-0 bg-black/20" style="backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px);" />
     <div class="absolute inset-0 flex items-center justify-center p-4 md:p-8" id="modal-backdrop">
       <div class="relative inline-block max-w-[95vw] max-h-[95vh] sm:max-w-[90vw] sm:max-h-[90vh] md:max-w-[85vw] md:max-h-[85vh]">
         <button
@@ -79,7 +76,6 @@ const { imgSrc, reverseImg = false, allowEnlarge = true }: Props = Astro.props
 
 {allowEnlarge && (
   <script>
-    // Handle image modal functionality
     document.addEventListener('astro:page-load', () => {
       const triggers = document.querySelectorAll('.image-modal-trigger');
       const modal = document.getElementById('image-modal');

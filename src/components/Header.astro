@@ -1,8 +1,8 @@
 ---
-import Navigation from '../components/Navigation.astro';
+import Navigation from '../components/Navigation.astro'
 // import AccessibilityPanel from '../components/AccessibilityPanel.astro'
-import { DarkMode, Link, SkipLink } from 'accessible-astro-components';
-import { Icon } from 'astro-icon/components';
+import { DarkMode, Link, SkipLink } from 'accessible-astro-components'
+import { Icon } from 'astro-icon/components'
 
 /**
  * Header Component
@@ -93,19 +93,21 @@ import { Icon } from 'astro-icon/components';
 
     .accessibility-trigger {
       display: block;
-      margin-inline: -7px;
-      background: #3b82f6;
-      color: white;
-      border: none;
+      transition:
+        background-color 0.2s ease,
+        transform 0.2s ease;
       cursor: pointer;
-      padding: 0.5rem;
+      margin-inline: -7px;
+      border: none;
       border-radius: 0.5rem;
-      transition: background-color 0.2s ease, transform 0.2s ease;
+      background: #3b82f6;
+      padding: 0.5rem;
+      color: white;
 
       &:hover,
       &:focus {
-        background: #2563eb;
         transform: scale(1.05);
+        background: #2563eb;
       }
 
       &:focus {

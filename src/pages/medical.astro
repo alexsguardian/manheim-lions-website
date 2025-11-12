@@ -1,14 +1,14 @@
 ---
-import DefaultLayout from '@layouts/DefaultLayout.astro';
-import PageHeader from '@components/PageHeader.astro';
-import { Form, Input, Button, Textarea, Checkbox, Fieldset, Heading } from 'accessible-astro-components';
+import DefaultLayout from '@layouts/DefaultLayout.astro'
+import PageHeader from '@components/PageHeader.astro'
+import { Form, Input, Button, Textarea, Checkbox, Fieldset, Heading } from 'accessible-astro-components'
 
-import medPic from '../assets/img/medical-equipment.webp';
+import medPic from '../assets/img/medical-equipment.webp'
 
-const isLocalhost = import.meta.env.IS_LOCAL;
-const isDev = import.meta.env.DEV;
+const isLocalhost = import.meta.env.IS_LOCAL
+const isDev = import.meta.env.DEV
 
-let baseURL: string;
+let baseURL: string
 if (isLocalhost) {
   baseURL = 'http://localhost:4321'
 } else if (isDev) {
@@ -21,8 +21,8 @@ if (isLocalhost || isDev) {
   console.log('Running in development mode, baseURL:', baseURL)
 }
 
-const FORM_URL = import.meta.env.PUBLIC_MEDICAL_FORM_URL;
-const CF_SITE_KEY = import.meta.env.PUBLIC_CF_TURNSTILE_SITE_KEY;
+const FORM_URL = import.meta.env.PUBLIC_MEDICAL_FORM_URL
+const CF_SITE_KEY = import.meta.env.PUBLIC_CF_TURNSTILE_SITE_KEY
 ---
 
 <DefaultLayout title="Medical Equipment">
@@ -99,7 +99,9 @@ const CF_SITE_KEY = import.meta.env.PUBLIC_CF_TURNSTILE_SITE_KEY;
           <Textarea name="message" id="message" label="Additional Information (optional)" />
 
           <div class="flex flex-col items-center gap-4 sm:flex-row sm:gap-8">
-            <Button id="submit-btn" htmlType="submit" type="primary" size="md" data-dev={isDev} disabled>Send Request</Button>
+            <Button id="submit-btn" htmlType="submit" type="primary" size="md" data-dev={isDev} disabled
+              >Send Request</Button
+            >
             <div id="cf-turnstile" class="max-w-full pt-2" data-sitekey={CF_SITE_KEY} aria-hidden="true" tabindex="-1">
             </div>
           </div>
@@ -134,20 +136,20 @@ const CF_SITE_KEY = import.meta.env.PUBLIC_CF_TURNSTILE_SITE_KEY;
 
     function updateButtonState() {
       if (container.dataset.dev === 'true') {
-          console.log('Form disabled on Dev')
-          btn.disabled = true
+        console.log('Form disabled on Dev')
+        btn.disabled = true
       } else if (agree && btn) {
-          const isChecked = agree.checked
-          const shouldEnable = isChecked && turnstileCompleted
-          btn.disabled = !shouldEnable
-          console.log('Button state updated:', { isChecked, turnstileCompleted, shouldEnable, disabled: btn.disabled })
+        const isChecked = agree.checked
+        const shouldEnable = isChecked && turnstileCompleted
+        btn.disabled = !shouldEnable
+        console.log('Button state updated:', { isChecked, turnstileCompleted, shouldEnable, disabled: btn.disabled })
       } else {
-          console.warn('Form initialization error.')
+        console.warn('Form initialization error.')
       }
     }
 
     // Handle checkbox changes
-    agree.addEventListener('change', function(event) {
+    agree.addEventListener('change', function (event) {
       console.log('Checkbox changed:', event.target.checked)
       updateButtonState()
     })
