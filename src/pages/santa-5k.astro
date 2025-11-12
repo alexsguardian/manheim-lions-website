@@ -7,10 +7,13 @@ import ContentMedia from '@components/ContentMedia.astro';
 import santaRunStart from '../assets/img/santa-run/santa-5k-raceStart.webp';
 import santaCourseMap from '../assets/img/santa-run/santa-5k-courseMap.webp';
 import santaParking from '../assets/img/santa-run/santa-5k-parking.webp';
+import santaRunAward from '../assets/img/santa-run/santa-5k-award.webp';
 
 import santa5k1 from '../assets/img/santa-run/santa-5k-1.webp';
 import santa5k2 from '../assets/img/santa-run/santa-5k-2.webp';
 import santa5k3 from '../assets/img/santa-run/santa-5k-3.webp';
+import santa5k4 from '../assets/img/santa-run/santa-5k-4.webp';
+import santa5k5 from '../assets/img/santa-run/santa-5k-5.webp';
 
 import sponsor1 from '../assets/img/santa-run/sponsors/sponsor1.webp';
 import sponsor2 from '../assets/img/santa-run/sponsors/sponsor2.webp';
@@ -61,40 +64,41 @@ const PUBLIC_RUNNERS_REGISTRATION_URL = import.meta.env.PUBLIC_RUNNERS_REGISTRAT
       </Link>
     </Notification>
 
-    <div class="my-8 bg-blue-50 dark:bg-blue-900/20 border-4 border-blue-400 rounded-lg p-6">
-      <div class="space-y-6">
-        <Heading level="h2" class="dark:text-blue-500 mb-4">
-          Packet Pick-up Information
-        </Heading>
+    <Notification type="info" class="my-8 flex flex-col items-start">
+      <Heading level="h2">Packet Pick-up Information</Heading>
 
-        <div class="bg-white dark:bg-gray-800 rounded-lg p-4 shadow-sm">
-          <ul class="space-y-3">
-            <li class="flex flex-col sm:flex-row sm:justify-between sm:items-center border-b border-gray-100 dark:border-gray-700 pb-2">
-              <span class="font-semibold text-gray-900 dark:text-gray-100">Friday, December 5th, 2024</span>
-              <span class="text-blue-700 dark:text-blue-300 font-medium">4:00 PM - 7:00 PM</span>
-            </li>
-            <li class="flex flex-col sm:flex-row sm:justify-between sm:items-center">
-              <span class="font-semibold text-gray-900 dark:text-gray-100">Saturday, December 6th, 2024</span>
-              <span class="text-blue-700 dark:text-blue-300 font-medium">7:00 AM</span>
-            </li>
-          </ul>
-        </div>
+      <table class="w-full table-auto border-collapse border border-gray-300 dark:text-black bg-white my-4">
+        <thead>
+          <tr >
+            <th class="border border-gray-300 px-4 py-2 text-left">Date</th>
+            <th class="border border-gray-300 px-4 py-2 text-left">Time</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="border border-gray-300 px-4 py-2">Friday, December 5th, 2025</td>
+            <td class="border border-gray-300 px-4 py-2">4:00 PM - 7:00 PM</td>
+          </tr>
+          <tr>
+            <td class="border border-gray-300 px-4 py-2">Saturday, December 6th, 2025</td>
+            <td class="border border-gray-300 px-4 py-2">7:00 AM</td>
+          </tr>
+        </tbody>
+      </table>
 
-        <div class="text-center bg-white dark:bg-gray-800 rounded-lg p-4 shadow-sm">
-          <p class="font-bold text-lg mb-2 text-gray-900 dark:text-gray-100">Location:</p>
-          <p class="text-gray-700 dark:text-gray-300">
-            Trinity Evangelical Congregational Church<br>
-            48 Market Square, Manheim, PA 17545
-          </p>
-        </div>
+      <p class="font-bold mt-4">
+        Location:
+      </p>
+      <p>
+        Trinity Evangelical Congregational Church<br>
+        48 Market Square, Manheim, PA 17545
+      </p>
 
-        <Notification type="warning" class="p-4">
-          <p class="text-sm">
-            <strong>Important:</strong> Please check in no later than 8:00 AM on Saturday, December 6th to ensure you have enough time to prepare for the race.
-          </p>
-        </Notification>
-      </div>
-    </div>
+      <p class="dark:bg-amber-400 text-black p-2 mt-4 rounded-md">
+        <strong>Important:</strong> Please check in no later than 8:00 AM on Saturday, December 6th to ensure you have enough time to prepare for the race!
+      </p>
+
+    </Notification>
   </section>
 
   <!-- Location & Parking Section -->
@@ -235,18 +239,21 @@ const PUBLIC_RUNNERS_REGISTRATION_URL = import.meta.env.PUBLIC_RUNNERS_REGISTRAT
       </AccordionItem>
 
       <AccordionItem title="Are there awards or prizes for participants?">
-        There will be a variety of goodies and drinks for all runners at the end of the race. There will also be awards for the top finishers in various age groups.
-        <ul class="list-inside list-disc my-4">
-          <li>11-14</li>
-          <li>15-19</li>
-          <li>20-29</li>
-          <li>30-39</li>
-          <li>40-49</li>
-          <li>50-59</li>
-          <li>60-69</li>
-          <li>70+</li>
-        </ul>
-        Awards will also be given out to the Top (3) Overall Male and Female winners.
+
+        <ContentMedia imgSrc={santaRunAward.src} reverseImg={false} aria-label="Photo of a prior Santa 5K Run & Walk award">
+          There will be a variety of goodies and drinks for all runners at the end of the race. There will also be awards for the top finishers in various age groups.
+          <ul class="list-inside list-disc my-4">
+            <li>11-14</li>
+            <li>15-19</li>
+            <li>20-29</li>
+            <li>30-39</li>
+            <li>40-49</li>
+            <li>50-59</li>
+            <li>60-69</li>
+            <li>70+</li>
+          </ul>
+          Awards will also be given out to the Top (3) Overall Male and Female winners.
+        </ContentMedia>
       </AccordionItem>
 
       <AccordionItem title="Are there security services available during the event?">
@@ -317,10 +324,12 @@ const PUBLIC_RUNNERS_REGISTRATION_URL = import.meta.env.PUBLIC_RUNNERS_REGISTRAT
   <section class="container my-16" id="gallery">
 
     <Heading level="h2" class="mb-8">Event Gallery</Heading>
+    <Media src={santa5k1.src} alt="Runners starting the Santa 5K Run & Walk" ratio="16:9" class="mb-2"/>
     <div class="grid grid-cols-2 gap-2">
-      <Media src={santa5k1.src} alt="Runners starting the Santa 5K Run & Walk" ratio="4:3"/>
-      <Media src={santa5k2.src} alt="Participants running along the course during the Santa 5K Run & Walk" ratio="4:3"/>
-      <Media src={santa5k3.src} alt="Volunteers handing out water to runners during the Santa 5K Run & Walk" ratio="4:3"/>
+      <Media src={santa5k2.src} alt="Participants running along the course, in holiday attire, during the Santa 5K Run & Walk." ratio="4:3"/>
+      <Media src={santa5k3.src} alt="Participants running with a stroller during the Santa 5K Run & Walk." ratio="4:3"/>
+      <Media src={santa5k4.src} alt="Volunteer in a Santa suit riding a bike along the course." ratio="4:3"/>
+      <Media src={santa5k5.src} alt="A group of runners wearing holiday tutus during the Santa 5K Run & Walk." ratio="4:3"/>
     </div>
 
 </DefaultLayout>
