@@ -20,14 +20,16 @@ import { Icon } from 'astro-icon/components'
           please reach out to: <Link href="mailto:webmaster@alexsguardian.net">webmaster@alexsguardian.net</Link>.
         </p>
       </Notification>
-      <Link href="/" isButton type="primary" animateOnHover animation="boop" pulse>
-        <Icon aria-hidden="true" name="lucide:home" size={24} />
-        Home
-      </Link>
-      <Link href="/contact" isButton type="default" animateOnHover animation="boop" pulse>
-        <Icon aria-hidden="true" name="lucide:mail" size={24} />
-        Send another message
-      </Link>
+      <div class="mt-8 flex flex-col gap-4 sm:flex-row">
+        <Link href="/" isButton type="primary" animateOnHover animation="boop" pulse>
+          <Icon aria-hidden="true" name="lucide:home" size={24} />
+          Home
+        </Link>
+        <Link href="/contact" isButton type="default" animateOnHover animation="boop" pulse>
+          <Icon aria-hidden="true" name="lucide:mail" size={24} />
+          Send another message
+        </Link>
+      </div>
     </div>
     <div class="my-16">
       <Heading level="h3" class="mb-4">Troubleshooting:</Heading>
