@@ -99,7 +99,7 @@ const CF_SITE_KEY = import.meta.env.PUBLIC_CF_TURNSTILE_SITE_KEY;
           <Textarea name="message" id="message" label="Additional Information (optional)" />
 
           <div class="flex flex-col items-center gap-4 sm:flex-row sm:gap-8">
-            <Button id="submit-btn" htmlType="submit" type="primary" size="md" disabled>Send Request</Button>
+            <Button id="submit-btn" htmlType="submit" type="primary" size="md" data-dev={isDev} disabled>Send Request</Button>
             <div id="cf-turnstile" class="max-w-full pt-2" data-sitekey={CF_SITE_KEY} aria-hidden="true" tabindex="-1">
             </div>
           </div>
@@ -130,12 +130,19 @@ const CF_SITE_KEY = import.meta.env.PUBLIC_CF_TURNSTILE_SITE_KEY;
 
     if (!agree || !btn) return
 
+    const container = document.getElementById('submit-btn')
+
     function updateButtonState() {
-      if (agree && btn) {
-        const isChecked = agree.checked
-        const shouldEnable = isChecked && turnstileCompleted
-        btn.disabled = !shouldEnable
-        console.log('Button state updated:', { isChecked, turnstileCompleted, shouldEnable, disabled: btn.disabled })
+      if (container.dataset.dev === 'true') {
+          console.log('Form disabled on Dev')
+          btn.disabled = true
+      } else if (agree && btn) {
+          const isChecked = agree.checked
+          const shouldEnable = isChecked && turnstileCompleted
+          btn.disabled = !shouldEnable
+          console.log('Button state updated:', { isChecked, turnstileCompleted, shouldEnable, disabled: btn.disabled })
+      } else {
+          console.warn('Form initialization error.')
       }
     }
 
