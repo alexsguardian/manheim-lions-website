@@ -52,17 +52,18 @@ const { imgSrc, reverseImg = false, allowEnlarge = true }: Props = Astro.props
 
 {allowEnlarge && (
   <div id="image-modal" class="fixed inset-0 hidden" role="dialog" aria-labelledby="modal-title" aria-modal="true" style="z-index: 99999; isolation: isolate;">
-    <!-- Blurred background overlay -->
-    <div class="absolute inset-0 bg-black/30" style="backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);"></div>
+    <!-- Subtle background overlay -->
+    <div class="absolute inset-0 bg-black/20" style="backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px);"></div>
 
-    <!-- Content container -->
-    <div class="absolute inset-0 flex items-center justify-center p-4">
-      <div class="relative max-w-[90vw] max-h-[90vh]">
+    <!-- Content container that scales with image -->
+    <div class="absolute inset-0 flex items-center justify-center p-4 md:p-8" id="modal-backdrop">
+      <div class="relative inline-block max-w-[95vw] max-h-[95vh] sm:max-w-[90vw] sm:max-h-[90vh] md:max-w-[85vw] md:max-h-[85vh]">
         <button
           type="button"
           id="close-modal"
-          class="absolute -top-2 -right-2 text-white text-4xl font-bold hover:text-gray-300 z-10 bg-black/50 backdrop-blur-sm rounded-full w-12 h-12 flex items-center justify-center shadow-lg"
+          class="absolute -top-2 -right-2 sm:-top-3 sm:-right-3 text-white text-2xl sm:text-3xl font-bold hover:text-gray-300 z-20 bg-black/70 backdrop-blur-sm rounded-full w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center shadow-xl transition-all duration-200 hover:bg-black/90 hover:scale-110"
           aria-label="Close enlarged image view"
+          title="Close"
         >
           &times;
         </button>
@@ -85,41 +86,106 @@ const { imgSrc, reverseImg = false, allowEnlarge = true }: Props = Astro.props
       const modalImage = document.getElementById('modal-image') as HTMLImageElement;
       const closeButton = document.getElementById('close-modal');
 
-    // Open modal when image is clicked
-    triggers.forEach(trigger => {
-      trigger.addEventListener('click', () => {
-        const imageSrc = trigger.getAttribute('data-image-src');
+      // Function to handle modal opening with responsive sizing
+      const openModal = (imageSrc: string) => {
         if (modalImage && modal && imageSrc) {
           modalImage.src = imageSrc;
           modal.classList.remove('hidden');
           modal.classList.add('flex');
           document.body.style.overflow = 'hidden'; // Prevent background scrolling
+
+          // Handle image load to ensure proper sizing
+          modalImage.onload = () => {
+            // Force a reflow to ensure proper dimensions are calculated
+            modalImage.style.maxWidth = '100%';
+            modalImage.style.maxHeight = '100%';
+          };
+        }
+      };
+
+      // Function to close modal
+      const closeModal = () => {
+        modal?.classList.add('hidden');
+        modal?.classList.remove('flex');
+        document.body.style.overflow = ''; // Restore scrolling
+        if (modalImage) {
+          modalImage.src = ''; // Clear src to free memory
+        }
+      };
+
+    // Open modal when image is clicked
+    triggers.forEach(trigger => {
+      trigger.addEventListener('click', () => {
+        const imageSrc = trigger.getAttribute('data-image-src');
+        if (imageSrc) {
+          openModal(imageSrc);
         }
       });
     });
 
     // Close modal when close button is clicked
-    closeButton?.addEventListener('click', () => {
-      modal?.classList.add('hidden');
-      modal?.classList.remove('flex');
-      document.body.style.overflow = ''; // Restore scrolling
+    closeButton?.addEventListener('click', closeModal);
+
+    // Close modal when clicking outside the image - improved detection
+    modal?.addEventListener('click', (e) => {
+      // Check if the click is on the backdrop (modal itself) or the backdrop div
+      const modalBackdrop = document.getElementById('modal-backdrop');
+      if (e.target === modal || e.target === modalBackdrop) {
+        closeModal();
+      }
     });
 
-    // Close modal when clicking outside the image
-    modal?.addEventListener('click', (e) => {
-      if (e.target === modal) {
-        modal.classList.add('hidden');
-        modal.classList.remove('flex');
-        document.body.style.overflow = ''; // Restore scrolling
+    // Additional click handler for the backdrop div specifically
+    const modalBackdrop = document.getElementById('modal-backdrop');
+    modalBackdrop?.addEventListener('click', (e) => {
+      // Only close if clicking directly on the backdrop, not on child elements
+      if (e.target === modalBackdrop) {
+        closeModal();
       }
     });
 
       // Close modal with Escape key
       document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape' && modal && !modal.classList.contains('hidden')) {
-          modal.classList.add('hidden');
-          modal.classList.remove('flex');
-          document.body.style.overflow = ''; // Restore scrolling
+          closeModal();
+        }
+      });
+
+      // Handle window resize to maintain proper image scaling
+      window.addEventListener('resize', () => {
+        if (modal && !modal.classList.contains('hidden') && modalImage) {
+          // Trigger a reflow to recalculate image dimensions
+          modalImage.style.maxWidth = '100%';
+          modalImage.style.maxHeight = '100%';
+        }
+      });
+
+      // Add touch gesture support for mobile devices
+      let touchStartY = 0;
+      let touchStartX = 0;
+
+      modal?.addEventListener('touchstart', (e) => {
+        if (e.touches.length === 1) {
+          touchStartY = e.touches[0].clientY;
+          touchStartX = e.touches[0].clientX;
+        }
+      });
+
+      modal?.addEventListener('touchend', (e) => {
+        if (e.changedTouches.length === 1) {
+          const modalBackdrop = document.getElementById('modal-backdrop');
+          // Check if touch ended on backdrop areas
+          if (e.target === modal || e.target === modalBackdrop) {
+            const touchEndY = e.changedTouches[0].clientY;
+            const touchEndX = e.changedTouches[0].clientX;
+            const deltaY = Math.abs(touchEndY - touchStartY);
+            const deltaX = Math.abs(touchEndX - touchStartX);
+
+            // If it's a tap (minimal movement), close the modal
+            if (deltaY < 10 && deltaX < 10) {
+              closeModal();
+            }
+          }
         }
       });
     });
