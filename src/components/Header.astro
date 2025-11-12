@@ -1,5 +1,6 @@
 ---
 import Navigation from '../components/Navigation.astro'
+// import AccessibilityPanel from '../components/AccessibilityPanel.astro'
 import { DarkMode, Link, SkipLink } from 'accessible-astro-components'
 import { Icon } from 'astro-icon/components'
 
@@ -17,10 +18,10 @@ import { Icon } from 'astro-icon/components'
       <Link href="/">Home</Link>
     </li>
     <li class="menu-item">
-      <Link href="/calendar/">Calendar</Link>
+      <Link href="/calendar">Calendar</Link>
     </li>
     <li class="menu-item">
-        <Link href="/fundraising/">Fundraising</Link>
+      <Link href="/fundraising">Fundraising</Link>
     </li>
     <li class="menu-item has-dropdown">
       <button aria-haspopup="true" aria-expanded="false">
@@ -29,10 +30,10 @@ import { Icon } from 'astro-icon/components'
       </button>
       <ul class="dropdown-menu">
         <li class="submenu-item">
-          <Link href="https://pack47manheim.weebly.com/" target="_blank" rel="noopener"><span class="flex flex-row items-center gap-2" >Cub Pack 47 <Icon name="lucide:external-link" /></span></Link>
+          <Link href="https://pack47manheim.weebly.com" isExternal>Cub Pack 47</Link>
         </li>
         <li class="submenu-item">
-          <Link href="/easter-egg-hunt">Easter Egg Hunts</Link>
+          <Link href="/easter-egg-hunts">Easter Egg Hunts</Link>
         </li>
         <li class="submenu-item">
           <Link href="/eye-glasses">Eye Glasses</Link>
@@ -41,36 +42,42 @@ import { Icon } from 'astro-icon/components'
           <Link href="/14u-baseball">Manheim Lions 14U Baseball</Link>
         </li>
         <li class="submenu-item">
+          <Link href="/medical">Medical Equipment</Link>
+        </li>
+        <li class="submenu-item">
+          <Link href="/pinewood-derby">Pinewood Derby</Link>
+        </li>
+        <li class="submenu-item">
           <Link href="/santa-5k">Santa 5K Run & Walk</Link>
         </li>
       </ul>
     </li>
     <li class="menu-item">
-      <Link href="/contact/">Contact</Link>
+      <Link href="/contact">Contact</Link>
     </li>
-    <li class="menu-item">
-      <Link href="/about/">About</Link>
-    </li>
-    <li class="menu-item type-icon animate-rotate">
-      <Link href="/member-resources">
-        <Icon aria-hidden="true" name="lucide:user" />
-        <span class="sr-only">Member Resources</span>
-      </Link>
-    </li>
-    <li class="menu-item type-icon animate-rotate">
-      <Link href="https://github.com/alexsguardian/manheim-lions-website" target="_blank" rel="noopener">
-        <Icon aria-hidden="true" name="lucide:github"/>
-        <span class="sr-only">Website GitHub</span>
-      </Link>
-    </li>
+    <!-- <li class="menu-item">
+      <Link href="/about">About</Link>
+    </li> -->
     <li class="menu-item type-icon animate-rotate">
       <DarkMode>
         <Icon aria-hidden="true" name="lucide:moon" slot="light" />
         <Icon aria-hidden="true" name="lucide:sun" slot="dark" />
       </DarkMode>
     </li>
+    <!-- <li class="menu-item">
+     <button
+       id="accessibility-open-button"
+       class="accessibility-trigger"
+       aria-label="Open Accessibility Configuration Panel"
+       title="Accessibility Settings"
+     >
+       <Icon aria-hidden="true" name="lucide:person-standing" />
+     </button>
+    </li> -->
   </Navigation>
 </header>
+
+<!-- <AccessibilityPanel /> -->
 
 <style lang="scss" is:global>
   header {
@@ -81,6 +88,37 @@ import { Icon } from 'astro-icon/components'
       svg {
         inline-size: 30px;
         block-size: 30px;
+      }
+    }
+
+    .accessibility-trigger {
+      display: block;
+      transition:
+        background-color 0.2s ease,
+        transform 0.2s ease;
+      cursor: pointer;
+      margin-inline: -7px;
+      border: none;
+      border-radius: 0.5rem;
+      background: #3b82f6;
+      padding: 0.5rem;
+      color: white;
+
+      &:hover,
+      &:focus {
+        transform: scale(1.05);
+        background: #2563eb;
+      }
+
+      &:focus {
+        outline: 2px solid var(--link-color);
+        outline-offset: 2px;
+      }
+
+      svg {
+        inline-size: 30px;
+        block-size: 30px;
+        color: white;
       }
     }
   }

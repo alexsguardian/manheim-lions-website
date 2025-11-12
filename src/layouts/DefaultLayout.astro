@@ -7,11 +7,12 @@ import Footer from '@components/Footer.astro'
 import { ClientRouter } from 'astro:transitions'
 
 const {
-  title = 'Manheim Lions Club',
-  description = 'The Manheim Lions Club is a community service organization (part of Lions International) in Manheim, Pennsylvania.',
+  title = 'Manheim Lions',
+  description = 'The Manheim Lions club is a non-profit community service organization in Manheim, Pennsylvania.',
   url = Astro.site,
-  image = 'CentennialRibbon.png',
+  image = '/CentennialRibbon.png',
   author = '',
+  showCallToAction = true,
 } = Astro.props
 ---
 
@@ -34,7 +35,7 @@ const {
     <main id="main-content" transition:animate="fade">
       <slot />
     </main>
-    <Footer />
+    <Footer showCallToAction={showCallToAction} />
     <style lang="scss" is:global>
       @use '../assets/scss/base/mixins' as *;
 

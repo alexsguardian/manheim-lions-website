@@ -1,0 +1,894 @@
+---
+import { Button, Checkbox, Radio } from 'accessible-astro-components'
+import { Icon } from 'astro-icon/components'
+
+/**
+ * AccessibilityPanel Component
+ *
+ * @description A component that provides accessibility configuration options
+ * including grayscale, contrast modes, text size adjustment, and link highlighting
+ */
+---
+
+<div
+  id="accessibility-panel"
+  class="accessibility-panel"
+  aria-labelledby="accessibility-panel-title"
+  role="dialog"
+  aria-modal="true"
+  aria-hidden="true"
+>
+  <div class="accessibility-panel-content">
+    <div class="accessibility-panel-header">
+      <h2 id="accessibility-panel-title">Accessibility Settings</h2>
+      <Button variant="ghost" id="accessibility-panel-close" aria-label="Close accessibility panel">
+        <Icon name="lucide:x" size="24" />
+      </Button>
+    </div>
+
+    <div class="accessibility-panel-body">
+      <div class="accessibility-option">
+        <Checkbox
+          id="large-text-toggle"
+          name="large-text"
+          value="true"
+          label="Larger Text"
+          description="Increase text size throughout the site"
+        />
+      </div>
+
+      <div class="accessibility-option">
+        <fieldset class="contrast-fieldset">
+          <legend>
+            <strong>Visual Mode</strong>
+            <small>Choose a visual enhancement option</small>
+          </legend>
+          <div class="radio-options">
+            <Radio
+              id="contrast-none"
+              name="contrast"
+              value="none"
+              checked
+              label="Normal"
+              description="Standard appearance"
+            />
+            <Radio
+              id="contrast-grayscale"
+              name="contrast"
+              value="grayscale"
+              label="Grayscale"
+              description="Convert the entire site to grayscale"
+            />
+            <Radio
+              id="contrast-high-contrast"
+              name="contrast"
+              value="high-contrast"
+              label="High Contrast"
+              description="Increase contrast"
+            />
+            <Radio
+              id="contrast-dark-contrast"
+              name="contrast"
+              value="dark-contrast"
+              label="Dark High Contrast"
+              description="Dark theme with high contrast"
+            />
+          </div>
+        </fieldset>
+      </div>
+
+      <!-- <div class="accessibility-option">
+        <Checkbox
+          id="highlight-links-toggle"
+          name="highlight-links"
+          value="true"
+          label="Highlight Links"
+          description="Add visual highlighting to all links"
+        />
+      </div> -->
+    </div>
+
+    <div class="accessibility-panel-footer">
+      <Button variant="primary" id="accessibility-reset">
+        <Icon name="lucide:rotate-ccw" size="16" />
+        Reset All Settings
+      </Button>
+    </div>
+  </div>
+</div>
+
+<div id="accessibility-overlay" class="accessibility-overlay" aria-hidden="true"></div>
+
+<style lang="scss">
+  .accessibility-panel {
+    position: absolute !important;
+    z-index: 1000;
+    inset: 0 -400px 0 auto !important;
+    box-shadow: -4px 0 16px rgba(0, 0, 0, 0.1);
+    border-left: 2px solid var(--border-color);
+    background: var(--background-color);
+    width: 380px;
+
+    &.open {
+      transform: translateX(-400px) translateZ(0);
+    }
+
+    @media (max-width: 480px) {
+      inset: 0 -100vw 0 auto !important;
+      width: 100vw;
+
+      &.open {
+        transform: translateX(-100vw) translateZ(0);
+      }
+    }
+  }
+
+  .accessibility-panel-content {
+    display: flex;
+    flex-direction: column;
+    padding: 1.5rem;
+    height: 100%;
+  }
+
+  .accessibility-panel-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    border-bottom: 1px solid var(--border-color-subtle);
+    padding-bottom: 1rem;
+
+    h2 {
+      margin: 0;
+      color: var(--foreground-color);
+      font-weight: 600;
+      font-size: 1.25rem;
+    }
+  }
+
+  .accessibility-panel-body {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .accessibility-panel-footer {
+    margin-top: 2rem;
+    border-top: 1px solid var(--border-color-subtle);
+    padding-top: 1rem;
+  }
+
+  .accessibility-option {
+    display: flex;
+    flex-direction: column;
+  }
+
+  // Styling for the contrast fieldset
+  .contrast-fieldset {
+    margin: 0;
+    border: none;
+    padding: 0;
+
+    legend {
+      margin-bottom: 1rem;
+      padding: 0;
+      font-size: 1rem;
+
+      strong {
+        display: block;
+        margin-bottom: 0.25rem;
+        color: var(--foreground-color);
+        font-weight: 600;
+      }
+
+      small {
+        display: block;
+        opacity: 0.7;
+        color: var(--foreground-color);
+        font-size: 0.875rem;
+        line-height: 1.3;
+      }
+    }
+  }
+
+  .radio-options {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .accessibility-overlay {
+    position: fixed !important;
+    visibility: hidden;
+    opacity: 0;
+    z-index: 999;
+    transition:
+      opacity 0.25s cubic-bezier(0.4, 0, 0.2, 1),
+      visibility 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    will-change: opacity;
+    contain: layout style paint;
+    inset: 0 !important;
+    background: rgba(0, 0, 0, 0.5);
+
+    &.show {
+      visibility: visible;
+      opacity: 1;
+    }
+  }
+
+  // Accessibility enhancement classes that will be applied to body
+  :global(.accessibility-grayscale) {
+    filter: grayscale(1);
+  }
+
+  :global(.accessibility-high-contrast) {
+    filter: contrast(150%) brightness(1.2);
+  }
+
+  :global(.accessibility-dark-contrast) {
+    // When dark mode is enabled via .darkmode class, we rely on the native dark theme
+    // and only add subtle contrast enhancement to avoid filter conflicts
+    filter: contrast(125%) brightness(1.1);
+  }
+
+  :global(.accessibility-large-text) {
+    font-size: 120% !important;
+
+    // Headings
+    h1 {
+      font-size: 3rem !important;
+    }
+    h2 {
+      font-size: 2.5rem !important;
+    }
+    h3 {
+      font-size: 2rem !important;
+    }
+    h4 {
+      font-size: 1.75rem !important;
+    }
+    h5 {
+      font-size: 1.5rem !important;
+    }
+    h6 {
+      font-size: 1.25rem !important;
+    }
+
+    // Body text elements
+    p {
+      font-size: 1.25rem !important;
+    }
+    span {
+      font-size: 1.25rem !important;
+    }
+    div {
+      font-size: 1.25rem !important;
+    }
+    article {
+      font-size: 1.25rem !important;
+    }
+    section {
+      font-size: 1.25rem !important;
+    }
+    // List elements
+    li {
+      font-size: 1.25rem !important;
+    }
+    ul {
+      font-size: 1.25rem !important;
+    }
+    ol {
+      font-size: 1.25rem !important;
+    }
+    // Table elements
+    td {
+      font-size: 1.25rem !important;
+    }
+    th {
+      font-size: 1.25rem !important;
+    }
+    table {
+      font-size: 1.25rem !important;
+    }
+    // Form elements
+    label {
+      font-size: 1.25rem !important;
+    }
+    input {
+      font-size: 1.25rem !important;
+    }
+    textarea {
+      font-size: 1.25rem !important;
+    }
+    select {
+      font-size: 1.25rem !important;
+    }
+    button {
+      font-size: 1.25rem !important;
+    }
+    slot {
+      font-size: 1.25rem !important;
+    }
+
+    // Links and interactive elements
+    a {
+      font-size: 1.25rem !important;
+    }
+    // Navigation and menu items
+    nav {
+      font-size: 1.25rem !important;
+    }
+    menu {
+      font-size: 1.25rem !important;
+    }
+
+    // Generic text content
+    [role='text'] {
+      font-size: 1.25rem !important;
+    }
+
+    // Special content areas
+    blockquote {
+      font-size: 1.25rem !important;
+    }
+    figcaption {
+      font-size: 1.25rem !important;
+    }
+    caption {
+      font-size: 1.25rem !important;
+    }
+
+    // Code elements
+    code {
+      font-size: 1.25rem !important;
+    }
+    pre {
+      font-size: 1.25rem !important;
+    }
+    // Accessibility panel specific elements
+    legend {
+      font-size: 1.25rem !important;
+    }
+    fieldset {
+      font-size: 1.25rem !important;
+    }
+
+    // Tailwind utility classes
+    .text-xs {
+      font-size: 0.875rem !important;
+    }
+    .text-sm {
+      font-size: 1rem !important;
+    }
+    .text-base {
+      font-size: 1.25rem !important;
+    }
+    .text-lg {
+      font-size: 1.5rem !important;
+    }
+    .text-xl {
+      font-size: 1.75rem !important;
+    }
+    .text-2xl {
+      font-size: 2rem !important;
+    }
+    .text-3xl {
+      font-size: 2.5rem !important;
+    }
+    .text-4xl {
+      font-size: 3rem !important;
+    }
+    .text-5xl {
+      font-size: 3.5rem !important;
+    }
+
+    // Force override for text within accessibility-large-text context
+    .text-xs,
+    .text-sm,
+    .text-base,
+    .text-lg {
+      font-size: 1.5rem !important;
+    }
+
+    // Ensure line height scales appropriately with larger text
+    * {
+      line-height: 1.6 !important;
+    }
+
+    // Component-specific targeting (Astro components)
+    [data-astro-cid] {
+      font-size: inherit !important;
+
+      * {
+        font-size: 1.25rem !important;
+      }
+    }
+
+    // Content area targeting
+    .content,
+    .content-media,
+    .media-content,
+    .space-content,
+    [class*='content'],
+    [class*='media'],
+    [class*='space'] {
+      font-size: 1.25rem !important;
+
+      * {
+        font-size: inherit !important;
+      }
+
+      p,
+      span,
+      div,
+      article,
+      section,
+      li,
+      ul,
+      ol,
+      td,
+      th,
+      table,
+      label,
+      input,
+      textarea,
+      select,
+      button,
+      a,
+      nav,
+      menu,
+      blockquote,
+      figcaption,
+      caption,
+      code,
+      pre,
+      legend,
+      fieldset {
+        font-size: 1.25rem !important;
+      }
+    }
+
+    // Flex containers and grid items (common in ContentMedia)
+    .flex,
+    .grid,
+    [class*='flex'],
+    [class*='grid'] {
+      * {
+        font-size: 1.25rem !important;
+      }
+
+      p,
+      span,
+      div,
+      article,
+      section,
+      li,
+      ul,
+      ol,
+      a,
+      blockquote {
+        font-size: 1.25rem !important;
+      }
+    }
+
+    // Container and wrapper targeting
+    .container,
+    .wrapper,
+    [class*='container'],
+    [class*='wrapper'] {
+      p,
+      span,
+      div:not([class*='icon']),
+      li,
+      a,
+      strong,
+      em,
+      small {
+        font-size: 1.25rem !important;
+      }
+    } // Specific targeting for common content containers
+    .space-content,
+    .space-content *,
+    [class*='space-content'],
+    [class*='space-content'] * {
+      font-size: 1.25rem !important;
+    }
+
+    // Target slotted content specifically
+    slot,
+    slot * {
+      font-size: 1.25rem !important;
+    }
+
+    // Override Tailwind text size classes that might be applied
+    .space-content .text-lg,
+    .space-content .text-base,
+    .space-content .text-sm,
+    [class*='space-content'] .text-lg,
+    [class*='space-content'] .text-base,
+    [class*='space-content'] .text-sm {
+      font-size: 1.5rem !important;
+    }
+
+    // Target content within flex containers (like ContentMedia)
+    .flex.flex-col.justify-center,
+    [class*='flex'][class*='col'][class*='justify'],
+    .grid .space-content,
+    .md\\:grid-cols-2 .space-content {
+      * {
+        font-size: 1.25rem !important;
+      }
+    }
+
+    // Maintain relative sizing for smaller text elements
+    small {
+      font-size: 1rem !important;
+    }
+    .text-sm,
+    .small {
+      font-size: 1.1rem !important;
+    }
+
+    // Ensure form elements are properly sized
+    input[type='text'],
+    input[type='email'],
+    input[type='password'],
+    input[type='search'],
+    textarea {
+      padding: 0.75rem !important;
+      font-size: 1.2rem !important;
+    }
+
+    // Button sizing
+    button,
+    input[type='button'],
+    input[type='submit'] {
+      padding: 0.75rem 1rem !important;
+      font-size: 1.2rem !important;
+    }
+  }
+
+  :global(.accessibility-highlight-links) {
+    a {
+      border-radius: 0.25em !important;
+      background: linear-gradient(120deg, var(--link-color) 0%, var(--link-color) 100%) !important;
+      background-position: 0 88% !important;
+      background-size: 100% 0.2em !important;
+      background-repeat: no-repeat !important;
+      padding: 0.2em 0.4em !important;
+      font-weight: 600 !important;
+      text-decoration: underline !important;
+
+      &:hover,
+      &:focus {
+        background-size: 100% 100% !important;
+        color: var(--background-color) !important;
+      }
+    }
+  }
+</style>
+
+<script>
+  declare global {
+    interface Window {
+      accessibilitySettings: {
+        contrast: string
+        largeText: boolean
+        highlightLinks: boolean
+      }
+    }
+  }
+
+  function initializeAccessibilityPanel() {
+    console.log('Initializing accessibility panel')
+
+    const panel = document.getElementById('accessibility-panel')
+    const overlay = document.getElementById('accessibility-overlay')
+    const closeButton = document.getElementById('accessibility-panel-close')
+    const resetButton = document.getElementById('accessibility-reset')
+
+    console.log('Panel elements found:', {
+      panel: !!panel,
+      overlay: !!overlay,
+      closeButton: !!closeButton,
+      resetButton: !!resetButton,
+    })
+
+    if (!panel || !overlay || !closeButton || !resetButton) {
+      console.error('Required panel elements not found')
+      return
+    }
+
+    // Load saved settings
+    const savedSettings = localStorage.getItem('accessibilitySettings')
+    let settings = {
+      contrast: 'none',
+      largeText: false,
+      highlightLinks: false,
+    }
+
+    if (savedSettings) {
+      try {
+        settings = { ...settings, ...JSON.parse(savedSettings) }
+      } catch (e) {
+        console.warn('Failed to parse saved accessibility settings:', e)
+      }
+    }
+
+    window.accessibilitySettings = settings
+
+    // Store the initial dark mode state when the page loads
+    // This helps us restore user preference when accessibility features are disabled
+    const initialDarkModeState = document.body.classList.contains('darkmode')
+    let userPreferredDarkMode = initialDarkModeState
+
+    // Get form elements
+    const largeTextToggle = document.getElementById('large-text-toggle') as HTMLInputElement
+    const highlightLinksToggle = document.getElementById('highlight-links-toggle') as HTMLInputElement
+    const contrastRadios = document.querySelectorAll('input[name="contrast"]') as NodeListOf<HTMLInputElement>
+
+    // Apply saved settings to form
+    if (largeTextToggle) largeTextToggle.checked = settings.largeText
+    if (highlightLinksToggle) highlightLinksToggle.checked = settings.highlightLinks
+
+    contrastRadios.forEach((radio) => {
+      if (radio.value === settings.contrast) {
+        radio.checked = true
+      }
+    })
+
+    // Apply settings to body
+    const applySettings = () => {
+      const body = document.body
+
+      // Remove all accessibility classes
+      body.classList.remove(
+        'accessibility-grayscale',
+        'accessibility-high-contrast',
+        'accessibility-dark-contrast',
+        'accessibility-large-text',
+        'accessibility-highlight-links',
+        'darkmode',
+      )
+
+      // Apply current settings
+      if (settings.contrast === 'grayscale') {
+        body.classList.add('accessibility-grayscale')
+        // Force light mode for better grayscale visibility
+        body.classList.remove('darkmode')
+      }
+
+      if (settings.contrast !== 'none' && settings.contrast !== 'grayscale') {
+        body.classList.add(`accessibility-${settings.contrast}`)
+
+        if (settings.contrast === 'dark-contrast') {
+          // Apply dark mode when dark-contrast is selected
+          body.classList.add('darkmode')
+        } else if (settings.contrast === 'high-contrast') {
+          // Force light mode for better high contrast visibility
+          body.classList.remove('darkmode')
+        }
+      } else if (settings.contrast === 'none') {
+        // If no contrast setting is active, restore user's original preference
+        // but only if grayscale is not active (grayscale forces light mode)
+        if (userPreferredDarkMode) {
+          body.classList.add('darkmode')
+        }
+      }
+
+      if (settings.largeText) {
+        body.classList.add('accessibility-large-text')
+      }
+
+      if (settings.highlightLinks) {
+        body.classList.add('accessibility-highlight-links')
+      }
+
+      // Save to localStorage
+      localStorage.setItem('accessibilitySettings', JSON.stringify(settings))
+      window.accessibilitySettings = settings
+
+      // Enforce light mode if grayscale or high contrast is active
+      enforceLightModeIfNeeded()
+    }
+
+    // Function to enforce light mode when accessibility features require it
+    const enforceLightModeIfNeeded = () => {
+      const shouldForceLightMode = settings.contrast === 'grayscale' || settings.contrast === 'high-contrast'
+
+      if (shouldForceLightMode) {
+        const body = document.body
+        if (body.classList.contains('darkmode')) {
+          body.classList.remove('darkmode')
+          console.log('Forced light mode due to accessibility setting')
+        }
+      }
+    }
+
+    // Function to update user's dark mode preference when they manually toggle it
+    // (but only when accessibility features aren't forcing light mode)
+    const updateUserDarkModePreference = () => {
+      const shouldForceLightMode = settings.contrast === 'grayscale' || settings.contrast === 'high-contrast'
+
+      if (!shouldForceLightMode) {
+        // Update the user's preference based on current state
+        userPreferredDarkMode = document.body.classList.contains('darkmode')
+        console.log('Updated user dark mode preference:', userPreferredDarkMode)
+      }
+    } // Watch for external dark mode changes and override if needed
+    const observer = new MutationObserver((mutations) => {
+      mutations.forEach((mutation) => {
+        if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
+          // Update user preference first (before any enforcement)
+          updateUserDarkModePreference()
+
+          // Then enforce light mode if needed
+          enforceLightModeIfNeeded()
+        }
+      })
+    })
+
+    // Start observing changes to body class
+    observer.observe(document.body, {
+      attributes: true,
+      attributeFilter: ['class'],
+    })
+
+    // Panel controls
+    const openPanel = () => {
+      panel.classList.add('open')
+      overlay.classList.add('show')
+      panel.setAttribute('aria-hidden', 'false')
+      overlay.setAttribute('aria-hidden', 'false')
+
+      // Lock page scroll
+      document.body.style.overflow = 'hidden'
+
+      // Focus the close button when panel opens
+      closeButton?.focus()
+
+      // Trap focus within panel
+      document.addEventListener('keydown', handleKeyDown)
+    }
+
+    const closePanel = () => {
+      panel.classList.remove('open')
+      overlay.classList.remove('show')
+      panel.setAttribute('aria-hidden', 'true')
+      overlay.setAttribute('aria-hidden', 'true')
+
+      // Restore page scroll
+      document.body.style.overflow = ''
+
+      // Return focus to open button if it exists
+      const openButton = document.getElementById('accessibility-open-button')
+      openButton?.focus()
+
+      document.removeEventListener('keydown', handleKeyDown)
+    }
+
+    // Handle keyboard navigation
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        closePanel()
+      }
+
+      // Focus trapping
+      if (e.key === 'Tab') {
+        const focusableElements = panel.querySelectorAll(
+          'button, input, select, textarea, [tabindex]:not([tabindex="-1"])',
+        ) as NodeListOf<HTMLElement>
+
+        const firstElement = focusableElements[0]
+        const lastElement = focusableElements[focusableElements.length - 1]
+
+        if (e.shiftKey && document.activeElement === firstElement) {
+          e.preventDefault()
+          lastElement.focus()
+        } else if (!e.shiftKey && document.activeElement === lastElement) {
+          e.preventDefault()
+          firstElement.focus()
+        }
+      }
+    }
+
+    // Event listeners
+    const setupOpenButton = () => {
+      const openButton = document.getElementById('accessibility-open-button')
+      if (openButton) {
+        console.log('Adding click listener to open button')
+        openButton.addEventListener('click', (e) => {
+          e.preventDefault()
+          console.log('Open button clicked')
+          openPanel()
+        })
+      } else {
+        console.warn('Open button not found, trying to find it with setTimeout')
+        setTimeout(() => {
+          const delayedOpenButton = document.getElementById('accessibility-open-button')
+          if (delayedOpenButton) {
+            console.log('Found open button after delay, adding listener')
+            delayedOpenButton.addEventListener('click', (e) => {
+              e.preventDefault()
+              console.log('Open button clicked (delayed)')
+              openPanel()
+            })
+          } else {
+            console.error('Open button still not found after delay')
+          }
+        }, 1000)
+      }
+    }
+
+    setupOpenButton()
+
+    closeButton.addEventListener('click', (e) => {
+      e.preventDefault()
+      console.log('Close button clicked')
+      closePanel()
+    })
+    overlay.addEventListener('click', (e) => {
+      e.preventDefault()
+      console.log('Overlay clicked')
+      closePanel()
+    })
+
+    // Settings event listeners
+    largeTextToggle?.addEventListener('change', (e) => {
+      settings.largeText = (e.target as HTMLInputElement).checked
+      applySettings()
+    })
+
+    highlightLinksToggle?.addEventListener('change', (e) => {
+      settings.highlightLinks = (e.target as HTMLInputElement).checked
+      applySettings()
+    })
+
+    contrastRadios.forEach((radio) => {
+      radio.addEventListener('change', (e) => {
+        if ((e.target as HTMLInputElement).checked) {
+          settings.contrast = (e.target as HTMLInputElement).value
+          applySettings()
+        }
+      })
+    })
+
+    resetButton.addEventListener('click', (e) => {
+      e.preventDefault()
+      settings = {
+        contrast: 'none',
+        largeText: false,
+        highlightLinks: false,
+      }
+
+      // Update form elements
+      if (largeTextToggle) largeTextToggle.checked = false
+      if (highlightLinksToggle) highlightLinksToggle.checked = false
+
+      contrastRadios.forEach((radio) => {
+        radio.checked = radio.value === 'none'
+      })
+
+      applySettings()
+    })
+
+    // Apply settings on initial load
+    applySettings()
+  }
+
+  // Initialize on both events to handle different loading scenarios
+  document.addEventListener('astro:page-load', () => {
+    setTimeout(initializeAccessibilityPanel, 100)
+  })
+  document.addEventListener('DOMContentLoaded', () => {
+    setTimeout(initializeAccessibilityPanel, 100)
+  })
+
+  // Fallback initialization
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initializeAccessibilityPanel)
+  } else {
+    setTimeout(initializeAccessibilityPanel, 100)
+  }
+</script>

@@ -61,7 +61,11 @@ function getYouTubeEmbed(raw: string): string | null {
 
     const start = url.searchParams.get('t') || url.searchParams.get('start')
     if (start) {
-      const seconds = start.endsWith('s') ? parseInt(start.slice(0, -1)) : /\d+[hms]/.test(start) ? convertToSeconds(start) : parseInt(start)
+      const seconds = start.endsWith('s')
+        ? parseInt(start.slice(0, -1))
+        : /\d+[hms]/.test(start)
+          ? convertToSeconds(start)
+          : parseInt(start)
       if (!isNaN(seconds)) {
         params += (params ? '&' : '') + `start=${seconds}`
       }
@@ -103,69 +107,73 @@ const embedSrc = youTubeEmbed || ''
 <section>
   <div class="container">
     <div class="grid grid-cols-1 gap-24 md:grid-cols-2">
-      {!reverseVideo ? (
-        <figure class="rounded-lg overflow-hidden aspect-video" style={`aspect-ratio:${aspect}`}>
-          {isLocal ? (
-            <video
-              class="w-full h-full object-cover"
-              title={title}
-              poster={poster}
-              autoplay={autoplay}
-              loop={loop}
-              muted={muted || autoplay}
-              controls={controls}
-            >
-              <source src={videoUrl} />
-              Your browser does not support the video tag.
-            </video>
-          ) : (
-            <iframe
-              src={embedSrc}
-              title={title}
-              loading="lazy"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              allowfullscreen
-              class="w-full h-full"
-            />
-          )}
-          {caption ? (
-            <figcaption class="text-center text-base text-gray-500 mt-2">{caption}</figcaption>
-          ) : ''}
-        </figure>
-      ) : ''}
+      {
+        !reverseVideo ? (
+          <figure class="aspect-video overflow-hidden rounded-lg" style={`aspect-ratio:${aspect}`}>
+            {isLocal ? (
+              <video
+                class="h-full w-full object-cover"
+                title={title}
+                poster={poster}
+                autoplay={autoplay}
+                loop={loop}
+                muted={muted || autoplay}
+                controls={controls}
+              >
+                <source src={videoUrl} />
+                Your browser does not support the video tag.
+              </video>
+            ) : (
+              <iframe
+                src={embedSrc}
+                title={title}
+                loading="lazy"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen
+                class="h-full w-full"
+              />
+            )}
+            {caption ? <figcaption class="mt-2 text-center text-base text-gray-500">{caption}</figcaption> : ''}
+          </figure>
+        ) : (
+          ''
+        )
+      }
       <div class="space-content flex flex-col justify-center">
         <slot />
       </div>
-      {reverseVideo ? (
-        <figure class="rounded-lg overflow-hidden aspect-video" style={`aspect-ratio:${aspect}`}>
-          {isLocal ? (
-            <video
-              class="w-full h-full object-cover"
-              title={title}
-              poster={poster}
-              autoplay={autoplay}
-              loop={loop}
-              muted={muted || autoplay}
-              controls={controls}
-            >
-              <source src={videoUrl} />
-              Your browser does not support the video tag.
-            </video>
-          ) : (
-            <iframe
-              src={embedSrc}
-              title={title}
-              loading="lazy"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              allowfullscreen
-              class="w-full h-full"
-            />
-          )}
-          {caption ? (
-            <figcaption class="text-center text-base text-gray-500 mt-2">{caption}</figcaption>
-          ) : ''}
-        </figure>
-      ) : ''}
+      {
+        reverseVideo ? (
+          <figure class="aspect-video overflow-hidden rounded-lg" style={`aspect-ratio:${aspect}`}>
+            {isLocal ? (
+              <video
+                class="h-full w-full object-cover"
+                title={title}
+                poster={poster}
+                autoplay={autoplay}
+                loop={loop}
+                muted={muted || autoplay}
+                controls={controls}
+              >
+                <source src={videoUrl} />
+                Your browser does not support the video tag.
+              </video>
+            ) : (
+              <iframe
+                src={embedSrc}
+                title={title}
+                loading="lazy"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen
+                class="h-full w-full"
+              />
+            )}
+            {caption ? <figcaption class="mt-2 text-center text-base text-gray-500">{caption}</figcaption> : ''}
+          </figure>
+        ) : (
+          ''
+        )
+      }
     </div>
   </div>
 </section>

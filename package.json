@@ -1,16 +1,18 @@
 {
-  "name": "accessible-astro-starter",
-  "description": "An Accessible Starter Theme for Astro including several accessibility features and tools to help you build faster.",
-  "version": "4.3.0",
-  "author": "Incluud",
+  "name": "manheim-lions-website",
+  "description": "A website for Manheim Lions club built with Accessible Astro Starter.",
+  "version": "1.0.0",
+  "author": "alexander@alexsguardian",
   "license": "MIT",
   "type": "module",
-  "homepage": "https://accessible-astro-starter.incluud.dev/",
+  "homepage": "https://manheimlions.org",
   "scripts": {
     "dev": "astro dev --host",
     "start": "astro dev",
     "build": "astro build",
-    "preview": "astro preview"
+    "preview": "astro preview",
+    "lint": "eslint . --ext .js,.ts,.astro",
+    "format": "prettier --write ."
   },
   "keywords": [
     "astro",
@@ -28,10 +30,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/incluud/accessible-astro-starter.git"
-  },
-  "bugs": {
-    "url": "https://github.com/incluud/accessible-astro-starter/issues"
+    "url": "git+https://github.com/alexsguardian/manheim-lions-website.git"
   },
   "devDependencies": {
     "@astrojs/mdx": "^4.3.5",
@@ -61,6 +60,7 @@
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.5.1",
+    "@itsmatteomanf/astro-security-txt": "^0.4.0",
     "@tailwindcss/vite": "^4.1.13",
     "accessible-astro-components": "^5.0.1"
   }

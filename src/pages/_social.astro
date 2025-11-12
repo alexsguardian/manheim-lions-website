@@ -1,0 +1,39 @@
+---
+import DefaultLayout from '@layouts/DefaultLayout.astro'
+import PageHeader from '@components/PageHeader.astro'
+
+const FB_URL = import.meta.env.PUBLIC_FACEBOOK_URL
+---
+
+<DefaultLayout title="Social">
+  <PageHeader title="Social" subtitle="Club socials & press releases." bgType="gradient" showBreadcrumbs={false} />
+  <section class="container my-16">
+    <p>to-do</p>
+    <div class="mx-auto" id="fb-box">
+      <iframe
+        src={FB_URL}
+        style="border-width:0"
+        id="fb"
+        frameborder="0"
+        scrolling="no"
+        aria-label="Manheim Lions Club Facebook Feed"
+        allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+        style="border:none;overflow:hidden"
+        data-lazy></iframe>
+    </div>
+  </section>
+</DefaultLayout>
+
+<style>
+  #fb-box {
+    border-radius: 24px;
+    width: fit-content;
+    height: var(--calheight);
+    max-height: calc(var(--calheight) - 35px);
+    overflow-y: hidden;
+  }
+  #fb-box iframe {
+    width: var(--calwidth);
+    height: var(--calheight);
+  }
+</style>

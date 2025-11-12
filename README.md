@@ -3,6 +3,7 @@
 [![Built with Astro](https://astro.badg.es/v2/built-with-astro/large.svg)](https://astro.build) ![HTML](https://readmebadge.vercel.app/badges/html.svg) ![Tailwind CSS](https://readmebadge.vercel.app/badges/tailwind.svg) ![Typescript](https://readmebadge.vercel.app/badges/typescript.svg) ![Javascript](https://readmebadge.vercel.app/badges/javascript.svg) ![CSS](https://readmebadge.vercel.app/badges/css.svg) ![FormSpark](https://avatars.githubusercontent.com/u/64487786?s=50&v=4)
 
 This repository houses the main website for the Manheim Lions club.
+
 - https://manheimlions.org
 
 The Manheim Lions club is a local detachment, non profit organization, of the Lions Club International & Lions Club Internation Foundation. The Lions Club International consists of over 1.4 million members who bring hands and hearts to communities in nearly every country across the globe. Learn more [here](https://www.lionsclubs.org/en).
@@ -29,7 +30,6 @@ Clone this theme locally and run any of the following commands in your terminal:
 ## Contributing
 
 Currently this project is not accepting outside collaboration. The project is public as it is using FOSS software, frameworks, etc.
-
 
 ## Licensing
 
@@ -142,4 +142,5 @@ We want to express our heartfelt gratitude to everyone who contributes to making
 Together, we're not just building documentation or components – we're creating a more inclusive and accessible web for everyone. Every contribution, whether it's code, documentation, bug reports, or feedback, helps move us closer to this goal. ✨
 
 Remember: Accessibility is not a feature, it's a fundamental right. Thank you for being part of this journey!
+
 </details>

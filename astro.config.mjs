@@ -5,12 +5,21 @@ import icon from 'astro-icon'
 import mdx from '@astrojs/mdx'
 import sitemap from '@astrojs/sitemap'
 import tailwindcss from '@tailwindcss/vite'
+import securityTxt from '@itsmatteomanf/astro-security-txt'
 
 // https://astro.build/config
 export default defineConfig({
   compressHTML: true,
   site: 'https://manheimlions.org',
-  integrations: [compress(), icon(), mdx(), sitemap()],
+  integrations: [
+    compress(),
+    icon(),
+    mdx(),
+    sitemap(),
+    securityTxt({
+      contact: 'mailto:webmaster@alexsguardian.net',
+    }),
+  ],
   vite: {
     css: {
       preprocessorOptions: {

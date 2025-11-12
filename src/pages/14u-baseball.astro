@@ -1,0 +1,51 @@
+---
+import PageHeader from '@components/PageHeader.astro'
+import DefaultLayout from '@layouts/DefaultLayout.astro'
+import { Link } from 'accessible-astro-components'
+
+import teamPic from '../assets/img/baseball-team.webp'
+---
+
+<DefaultLayout title="Manheim Lions 14U Baseball">
+  <PageHeader
+    title="Manheim Lions 14U Baseball Team"
+    subtitle="Proudly sponsored by the Manheim Lions club since 1975!"
+    bgType="gradient"
+    showBreadcrumbs={false}
+  />
+  <section class="container">
+    <img
+      src={teamPic.src}
+      alt="Baseball Team Picture"
+      class="mx-auto my-8 max-h-[75%] max-w-[75%] rounded-lg shadow-lg"
+    />
+    <div class="mx-auto px-4 py-8">
+      <div class="mb-8">
+        <div class="md:col-span-2">
+          <p class="mb-4">
+            The <strong>Manheim Lions 14U Baseball Team</strong> has been a proud community tradition for decades and is
+            one of the longest-running youth programs supported by the Manheim Lions Club. Through our sponsorship, we help
+            provide uniforms, equipment, and support for local athletes as they learn the value of teamwork, sportsmanship,
+            and community pride.
+          </p>
+          <p class="mb-4">
+            Competing in the <strong>14U age division</strong>, for the <Link
+              href="https://lancoyouthbaseball.org/"
+              isExternal>Lancaster County PA Youth Baseball League</Link
+            >, the team represents Manheim in regional leagues each spring and summer. The program gives young athletes
+            the opportunity to build their skills, form lasting friendships, and develop leadership both on and off the
+            field. Many former players have gone on to coach, volunteer, and give back to the same program that helped
+            shape their early years.
+          </p>
+          <p class="mb-4">
+            The Manheim Lions are honored to continue sponsoring the team and investing in the next generation of
+            players who embody the Lions’ spirit of commitment, perseverance, and service. Both on and off the field.
+          </p>
+          <p>
+            <strong>We Serve. We Play. We Grow. Go Lions!</strong>
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+</DefaultLayout>
