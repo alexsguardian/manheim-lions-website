@@ -1,0 +1,54 @@
+---
+
+import DefaultLayout from "@layouts/DefaultLayout.astro";
+import PageHeader from "@components/PageHeader.astro";
+import { Media, Heading, Link } from "accessible-astro-components";
+import ContentMedia from "@components/ContentMedia.astro";
+import { Icon } from "astro-icon/components";
+
+import derby1 from "../assets/img/pinewood-derby/derby1.webp";
+import derby2 from "../assets/img/pinewood-derby/derby2.webp";
+
+import cubpack from '../assets/img/cubpack-photo.webp';
+const packURL = import.meta.env.PUBLIC_PACK_URL;
+
+---
+
+<DefaultLayout title="Pinewood Derby">
+
+  <PageHeader
+    title="Pinewood Derby Race"
+    subtitle="Annual Pinewood Derby race."
+    bgType="gradient"
+    showBreadcrumbs={false}
+  />
+
+  <section class="container my-16">
+    <div class="prose mx-auto">
+      <h2>Information</h2>
+      <p>
+        The Manheim Lions club is proud to sponsor the annual Pinewood Derby race, a fun and exciting event for Cub Scouts and their families. Participants design and build their own wooden cars, which are then raced down a track in a speedy competition. The event is not open to the public, but is a great opportunity for Cub Scouts to showcase their creativity and engineering skills while enjoying friendly competition with their peers.
+      </p>
+    </div>
+    <div class="my-8">
+      <div class="grid grid-cols-2 gap-2">
+        <Media src={derby1.src} alt="A photo of the 'car rack' table full of Pinewood Derby cars." ratio="4:3" />
+        <Media src={derby2.src} alt="A photo of the finish line after a race finished." ratio="4:3" />
+      </div>
+    </div>
+
+  <!-- Cub Scout Section -->
+  <section class="container my-24">
+    <ContentMedia imgSrc={cubpack.src} reverseImg={true} aria-label="Cub Scout Ranks (Lion, Tiger, Bobcat, Wolf, Bear, Webelos, Arrow of Light)" allowEnlarge={false}>
+      <Heading level="h2">Cub Scout Pack 47</Heading>
+      <p class="text-lg">
+        Looking to get involved with Cub Scouts? The Manheim Lions club proudly sponsors Cub Scout Pack 47, which serves the youth of the Manheim area by providing a fun and educational program that promotes character development, citizenship, and personal fitness.
+      </p>
+      <Link href={packURL} isButton type="primary" animateOnHover animationType="boop" target="_blank" rel="noopener">
+        Learn More
+        <Icon aria-hidden="true" name="lucide:arrow-right" size="1.5rem" />
+      </Link>
+    </ContentMedia>
+  </section>
+  </section>
+</DefaultLayout>
