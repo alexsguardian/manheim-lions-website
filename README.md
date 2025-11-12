@@ -8,17 +8,9 @@ This repository houses the main website for the Manheim Lions club.
 
 The Manheim Lions club is a local detachment, non profit organization, of the Lions Club International & Lions Club Internation Foundation. The Lions Club International consists of over 1.4 million members who bring hands and hearts to communities in nearly every country across the globe. Learn more [here](https://www.lionsclubs.org/en).
 
-**Note:** The current website is built on wordpress as this repository is still a WIP conversion.
-
-## TODO
-
-- Redesign the site for being statically hosted via [Cloudflare](https://cloudflare.com) Pages (using Astrojs :heart:)
-- Make sure site is accessible as possible to as many local people as possible (using accessble components, etc)
-- Create contact forms via [Formspark](https://formspark.io/)
-
 ## Getting started
 
-Clone this theme locally and run any of the following commands in your terminal:
+Clone this repository locally and run any of the following commands in your terminal:
 
 | Command           | Action                                       |
 | :---------------- | :------------------------------------------- |
@@ -26,6 +18,8 @@ Clone this theme locally and run any of the following commands in your terminal:
 | `npm run dev`     | Starts local dev server at `localhost:4321`  |
 | `npm run build`   | Build your production site to `./dist/`      |
 | `npm run preview` | Preview your build locally, before deploying |
+| `npm run lint`    | Lint files using eslint                      |
+| `npm run format`  | Format files using prettier                  |
 
 ## Contributing
 
@@ -37,7 +31,7 @@ The original [MIT license](/LICENSE) covers all code and anything related to the
 
 ## Theme Info
 
-The site is based on the Accessible Astro Stater theme. Which can be found below.
+The site is based on the Accessible Astro Stater theme. More information can be found below.
 
 <details closed>
 <summary>Expand to see original theme info</summary>
