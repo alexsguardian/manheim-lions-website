@@ -45,9 +45,11 @@ const CF_SITE_KEY = import.meta.env.PUBLIC_CF_TURNSTILE_SITE_KEY
       <div class="space-content p-4 sm:p-6">
         <Form name="contact" action={FORM_URL} method="POST">
           <!-- Formspark stuff -->
-          <input type="hidden" name="_redirect" value={`${baseURL}/form-success/`} />
-          <input type="hidden" name="_error" value={`${baseURL}/form-error/`} />
+          <input type="hidden" name="_redirect" value={`${baseURL}form-success/`} />
+          <input type="hidden" name="_error" value={`${baseURL}form-error/`} />
           <input type="hidden" name="_append" value="false" />
+          <input type="hidden" name="_email.subject" value="New Website Contact Form Submission" />
+          <input type="checkbox" name="_honeypot" value="Are you real?" style="display:none" tabindex="-1" autocomplete="off" />
           <!-- End Formspark stuff -->
           <Input
             id="name"
