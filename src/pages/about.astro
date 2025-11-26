@@ -1,0 +1,49 @@
+---
+import DefaultLayout from '@layouts/DefaultLayout.astro'
+import PageHeader from '@components/PageHeader.astro'
+import { AvatarGroup, Avatar, Heading, Link } from 'accessible-astro-components'
+
+import clubPresident from '@assets/img/about/club-president.webp'
+import clubVicePresident from '@assets/img/about/club-1-vice-president.webp'
+import club2VicePresident from '@assets/img/about/club-2-vice-president.webp'
+import clubTreasurer from '@assets/img/about/club-treasurer.webp'
+import clubSecretary from '@assets/img/about/club-secretary.webp'
+---
+
+<DefaultLayout title="About">
+  <PageHeader title="About" subtitle="Get to know the Manheim Lions!" bgType="gradient" showBreadcrumbs={false} />
+  <section class="container my-16">
+    <p class="text-lg">
+      Since our charter in 1925, the Manheim Lions Club has proudly served the heart of Lancaster County. For nearly a century, we've dedicated ourselves to improving lives in our community through charitable activities, meaningful events, and initiatives that make a real difference for our neighbors.
+    </p>
+
+    <p class="text-lg my-4">
+      <strong>🎉 2025 marks our 100th anniversary!</strong> A century of service, friendship, and community impact. We're honored to celebrate this incredible milestone and look forward to continuing our mission for generations to come. Read more about our centennial year <Link href="https://issuu.com/engleprintingandpublishing/docs/mc1_102225" isExternal sr-only="Go to Issuu.com to see a newspaper print">here!</Link>
+    </p>
+
+    <p class="text-lg my-4">
+      As part of <Link href="https://www.lionsclubs.org" isExternal sr-only="Go to Lions Club International website">Lions Clubs International</Link>, the world's largest service organization, we join over 1.4 million members worldwide united by a simple motto: <em>"We Serve."</em>
+    </p>
+
+    <Heading level="h2" class="mt-12 mb-2">Club Members</Heading>
+    <p class="mb-8">Meet the dedicated individuals of our club.</p>
+
+    <AvatarGroup display="grid" gridItemsSize="300px" gridGap="2rem">
+      <Avatar initials="AH" title="Aaron H." subtitle="President" img={clubPresident.src}/>
+      <Avatar initials="RP" title="Rich P." subtitle="1st Vice President" img={clubVicePresident.src} />
+      <Avatar initials="EK" title="Ed K." subtitle="2nd Vice President" img={club2VicePresident.src} />
+      <Avatar initials="TH" title="Tori H." subtitle="3rd Vice President" />
+      <Avatar initials="LH" title="Leslie H." subtitle="Secretary" img={clubSecretary.src}/>
+      <Avatar initials="EK" title="Esther K." subtitle="Treasurer" img={clubTreasurer.src}/>
+      <Avatar initials="NH" title="Nancy H." subtitle="Invocation" />
+      <Avatar initials="AH" title="Alexander H." subtitle="Technology" />
+      <Avatar initials="DK" title="Dave K." subtitle="Service Chairperson" />
+      <Avatar initials="MM" title="Mark M." subtitle="Medical Equipment" />
+      <Avatar initials="DH" title="Dave H." subtitle="Membership" />
+      <Avatar initials="FS" title="Frank S." subtitle="Eye Glasses" />
+      <Avatar initials="JP" title="Jayne S." subtitle="Member" />
+      <Avatar initials="LK" title="Linda K." subtitle="Member" />
+      <Avatar initials="BB" title="Bonnie B." subtitle="Member" />
+    </AvatarGroup>
+  </section>
+</DefaultLayout>
