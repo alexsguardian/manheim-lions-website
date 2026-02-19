@@ -7,10 +7,13 @@ import sitemap from '@astrojs/sitemap'
 import tailwindcss from '@tailwindcss/vite'
 import securityTxt from '@itsmatteomanf/astro-security-txt'
 
+import cloudflare from '@astrojs/cloudflare';
+
 // https://astro.build/config
 export default defineConfig({
   compressHTML: true,
   site: 'https://manheimlions.org',
+
   integrations: [
     compress(),
     icon(),
@@ -20,6 +23,7 @@ export default defineConfig({
       contact: 'mailto:webmaster@alexsguardian.net',
     }),
   ],
+
   vite: {
     css: {
       preprocessorOptions: {
@@ -42,4 +46,16 @@ export default defineConfig({
       },
     },
   },
+
+  adapter: cloudflare({
+    imageService: 'passthrough',
+    platformProxy: {
+      enabled: true
+    },
+    routes: {
+      extend: {
+        include: [{ pattern: '/api/*' }]
+      }
+    }
+  }),
 })
