@@ -52,26 +52,12 @@ export const GET: APIRoute = async ({ request, locals }) => {
 
     // Get file from R2
     if (!env?.R2_FILESTORE) {
-      console.log('Download - R2_FILESTORE binding not available');
       return new Response('Storage not configured', { status: 500 });
     }
 
-    console.log('Download - Fetching from R2:', resourceConfig.r2Key);
-
-    // Try to list objects to verify bucket access and file existence
-    try {
-      const list = await env.R2_FILESTORE.list({ limit: 100 });
-      console.log('Download - R2 bucket accessible, object count:', list.objects.length);
-      console.log('Download - Available objects:', list.objects.map(obj => obj.key).join(', '));
-    } catch (listError) {
-      console.error('Download - Error listing R2 objects:', listError);
-    }
-
     const object = await env.R2_FILESTORE.get(resourceConfig.r2Key);
-    console.log('Download - R2 object exists:', !!object);
 
     if (!object) {
-      console.error('Download - File not found in R2. Tried key:', resourceConfig.r2Key);
       return new Response('File not found', { status: 404 });
     }
 
