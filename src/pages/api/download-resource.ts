@@ -28,7 +28,7 @@ interface ResourceConfig {
 const RESOURCES: Record<string, ResourceConfig> = {
   'we-serve-award': {
     r2Key: 'we-serve-award.pdf',
-    filename: 'ManheimLions-We-Serve-Award.pdf',
+    filename: 'Manheim-Lions-We-Serve-Award-Form-2026.pdf',
   }
 };
 
