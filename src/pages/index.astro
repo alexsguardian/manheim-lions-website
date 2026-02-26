@@ -10,6 +10,7 @@ import medPic from '@assets/img/medical-equipment.webp'
 import cubpack from '@assets/img/cubpack-photo.webp'
 import event1 from '@assets/img/easter-hunts/egg-hunt-poster.webp'
 import event2 from '@assets/img/easter-hunts/egg-hunt-poster-vp.webp'
+import weserve from '@assets/img/we-serve-award-flyer.webp'
 
 const packURL = import.meta.env.PUBLIC_PACK_URL
 ---
@@ -54,7 +55,7 @@ const packURL = import.meta.env.PUBLIC_PACK_URL
         imgSrc={event1.src}
         reverseImg={false}
         aria-label="Easter Egg Hunt Event"
-        allowEnlarge={false}
+        allowEnlarge={true}
       >
         <Heading level="h3">Annual Manheim Lions Easter Egg Hunt</Heading>
         <div class="flex flex-col space-content">
@@ -72,7 +73,7 @@ const packURL = import.meta.env.PUBLIC_PACK_URL
         imgSrc={event2.src}
         reverseImg={true}
         aria-label="Easter Egg Hunt for the Visually Impaired Event"
-        allowEnlarge={false}
+        allowEnlarge={true}
       >
         <Heading level="h3">Annual Manheim Lions Easter Egg Hunt for the Visually Impaired</Heading>
         <div class="flex flex-col space-content">
@@ -86,6 +87,23 @@ const packURL = import.meta.env.PUBLIC_PACK_URL
         </div>
       </ContentMedia>
 
+      <ContentMedia
+        imgSrc={weserve.src}
+        reverseImg={false}
+        aria-label="We Serve Award Flyer"
+        allowEnlarge={true}
+      >
+        <Heading level="h3">We Serve Award</Heading>
+        <div class="flex flex-col space-content">
+          <p class="text-lg">
+            The Manheim Lions club is proud to recognize students in the Manheim Central School District who have made a positive impact in their community with the We Serve Award. This award is given to students who have demonstrated outstanding service and leadership in their community, embodying the Lions' motto of "We Serve." Students, apply using the link below. Applications are due before April 3rd, 2026.
+          </p>
+          <Link href="/api/download-resource?resource=we-serve-award" isButton class="mx-auto justify-center" type="primary" animateOnHover animationType="boop">
+            Download Application
+            <Icon aria-hidden="true" name="lucide:cloud-download" size="1.5rem" />
+          </Link>
+        </div>
+      </ContentMedia>
       <!-- <Notification type="info" class="mx-auto my-12 max-w-3xl justify-center">
         There are currently no upcoming events. Please check back later!
       </Notification> -->
