@@ -11,6 +11,7 @@ import cubpack from '@assets/img/cubpack-photo.webp'
 import event1 from '@assets/img/easter-hunts/egg-hunt-poster.webp'
 import event2 from '@assets/img/easter-hunts/egg-hunt-poster-vp.webp'
 import weserve from '@assets/img/we-serve-award-flyer.webp'
+import htfs from '@assets/img/htfs-sale-poster.webp'
 
 const packURL = import.meta.env.PUBLIC_PACK_URL
 ---
@@ -101,6 +102,24 @@ const packURL = import.meta.env.PUBLIC_PACK_URL
           <Link href="/api/download-resource?resource=we-serve-award" isButton class="mx-auto justify-center" type="primary" animateOnHover animationType="boop">
             Download Application
             <Icon aria-hidden="true" name="lucide:cloud-download" size="1.5rem" />
+          </Link>
+        </div>
+      </ContentMedia>
+
+      <ContentMedia
+        imgSrc={htfs.src}
+        reverseImg={true}
+        aria-label="Halfway to the Farm Show Sandwich Sale Flyer"
+        allowEnlarge={true}
+      >
+        <Heading level="h3">Halfway to the Farm Show Sandwich Sale</Heading>
+        <div class="flex flex-col space-content">
+          <p class="text-lg">
+            Join us for our annual Halfway to the Farm Show Sandwich Sale on Saturday, April 25th. From 11AM - 2PM (or until sold out) at Trinity EC Church! We will be selling delicious sandwiches to support our community initiatives. Don't miss out on this tasty event!
+          </p>
+          <Link href="https://forms.gle/y6wtzx6XRHinmsv6A" isButton class="mx-auto justify-center" target="_blank" rel="noopener" type="primary" animateOnHover animationType="boop">
+            Order Form
+            <Icon aria-hidden="true" name="lucide:external-link" size="1.5rem" />
           </Link>
         </div>
       </ContentMedia>
