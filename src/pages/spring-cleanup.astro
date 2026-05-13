@@ -1,0 +1,132 @@
+---
+import PageHeader from '@components/PageHeader.astro'
+import DefaultLayout from '@layouts/DefaultLayout.astro'
+import { Image } from 'astro:assets'
+import { Icon } from 'astro-icon/components'
+import { Heading, Link, Notification } from 'accessible-astro-components'
+
+import cleanupBanner from '@assets/img/community/cleanup-page-img.webp'
+---
+
+<DefaultLayout title="Manheim Lions Club Spring Clean-up">
+  <PageHeader
+    title="Manheim Lions Club Spring Clean-up"
+    subtitle="Join us for our annual community clean-up event!"
+    bgType="gradient"
+    showBreadcrumbs={false}
+  />
+
+  <section class="container my-8">
+    <Image
+      src={cleanupBanner}
+      alt="Manheim Lions Club Spring Clean-up Banner"
+      class="mx-auto rounded-lg shadow-lg"
+    />
+  </section>
+
+  <section class="container my-16">
+    <p class="mb-6 text-lg">
+      The <strong>Manheim Lions Club Spring Clean-up</strong> is an annual event that lets us give back to our community by providing a convenient way for residents to dispose of unwanted household items and clutter.
+    </p>
+    <Notification type="error" class="mb-6">
+      <p><Icon aria-hidden="true" name="lucide:alert-triangle" class="inline" /> This event is for <strong>Manheim residents only!</strong></p>
+    </Notification>
+  </section>
+
+  <section class="container my-16">
+    <div class="grid gap-12 md:grid-cols-2">
+
+      <!-- Available Services -->
+      <div>
+        <Heading level="h2" class="mb-6">
+          <Icon aria-hidden="true" name="lucide:check-circle" class="inline-block text-green-600 dark:text-green-400" /> Available Services
+        </Heading>
+        <div class="flex flex-col gap-4">
+          <div class="rounded-lg border border-green-200 bg-green-50 p-4 dark:border-green-800 dark:bg-green-950">
+            <p class="mb-1 flex items-center gap-2 font-bold">
+              <Icon aria-hidden="true" name="lucide:trash-2" size="1.2rem" /> Dumpster Disposal
+            </p>
+            <p>
+              On-site dumpsters for large items, furniture, appliances, and general household clutter, provided by{' '}
+              <Link href="https://www.redboxplus.com/lancaster-chester/" isExternal target="_blank" rel="noopener noreferrer">Red Box+</Link>.
+            </p>
+          </div>
+          <div class="rounded-lg border border-green-200 bg-green-50 p-4 dark:border-green-800 dark:bg-green-950">
+            <p class="mb-1 flex items-center gap-2 font-bold">
+              <Icon aria-hidden="true" name="lucide:scissors" size="1.2rem" /> Shred-IT Service
+            </p>
+            <p>
+              Securely dispose of sensitive documents with an on-site shredding truck, provided by{' '}
+              <Link href="https://www.shredit.com" isExternal target="_blank" rel="noopener noreferrer">Shred-it</Link>.
+            </p>
+          </div>
+          <div class="rounded-lg border border-green-200 bg-green-50 p-4 dark:border-green-800 dark:bg-green-950">
+            <p class="mb-1 flex items-center gap-2 font-bold">
+              <Icon aria-hidden="true" name="lucide:recycle" size="1.2rem" /> Metal Disposal
+            </p>
+            <p>Drop off metal items in a designated area for recycling.</p>
+          </div>
+          <div class="rounded-lg border border-green-200 bg-green-50 p-4 dark:border-green-800 dark:bg-green-950">
+            <p class="mb-1 flex items-center gap-2 font-bold">
+              <Icon aria-hidden="true" name="lucide:bed" size="1.2rem" /> Mattresses &amp; Box Springs
+            </p>
+            <p class="mb-1"><strong>Mattresses</strong> will be accepted with a limit of 1 per household.</p>
+            <p><strong>Box springs</strong> are also accepted — if able please pre-break them down to save space in the dumpsters.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Not Accepted -->
+      <div>
+        <Heading level="h2" class="mb-6">
+          <Icon aria-hidden="true" name="lucide:x-circle" class="inline-block text-red-600 dark:text-red-400" /> Not Accepted
+        </Heading>
+        <ul class="flex flex-col gap-3">
+          <li class="flex items-start gap-3 rounded-lg border border-red-200 bg-red-50 p-3 dark:border-red-800 dark:bg-red-950">
+            <Icon aria-hidden="true" name="lucide:building-2" class="mt-0.5 shrink-0" size="1.2rem" />
+            <div><strong>Commercial &amp; Business Waste</strong> — This event is for Manheim residents only; no commercial or business waste will be accepted.</div>
+          </li>
+          <li class="flex items-start gap-3 rounded-lg border border-red-200 bg-red-50 p-3 dark:border-red-800 dark:bg-red-950">
+            <Icon aria-hidden="true" name="lucide:monitor" class="mt-0.5 shrink-0" size="1.2rem" />
+            <div><strong>Electronics</strong> — TVs, computers, monitors, and other electronic devices.</div>
+          </li>
+          <li class="flex items-start gap-3 rounded-lg border border-red-200 bg-red-50 p-3 dark:border-red-800 dark:bg-red-950">
+            <Icon aria-hidden="true" name="lucide:droplets" class="mt-0.5 shrink-0" size="1.2rem" />
+            <div><strong>Liquids</strong> — Paint, chemicals, and other liquid substances.</div>
+          </li>
+          <li class="flex items-start gap-3 rounded-lg border border-red-200 bg-red-50 p-3 dark:border-red-800 dark:bg-red-950">
+            <Icon aria-hidden="true" name="lucide:biohazard" class="mt-0.5 shrink-0" size="1.2rem" />
+            <div><strong>Hazardous Materials</strong> — Asbestos, batteries, lead, and other hazardous materials.</div>
+          </li>
+          <li class="flex items-start gap-3 rounded-lg border border-red-200 bg-red-50 p-3 dark:border-red-800 dark:bg-red-950">
+            <Icon aria-hidden="true" name="lucide:wind" class="mt-0.5 shrink-0" size="1.2rem" />
+            <div><strong>Appliances with Freon</strong> — Refrigerators, freezers, A/C units, and other appliances containing Freon.</div>
+          </li>
+          <li class="flex items-start gap-3 rounded-lg border border-red-200 bg-red-50 p-3 dark:border-red-800 dark:bg-red-950">
+            <Icon aria-hidden="true" name="lucide:flame" class="mt-0.5 shrink-0" size="1.2rem" />
+            <div><strong>Flammable, Toxic, or Corrosive Materials</strong> — Gasoline, propane tanks, and other hazardous substances.</div>
+          </li>
+          <li class="flex items-start gap-3 rounded-lg border border-red-200 bg-red-50 p-3 dark:border-red-800 dark:bg-red-950">
+            <Icon aria-hidden="true" name="lucide:leaf" class="mt-0.5 shrink-0" size="1.2rem" />
+            <div><strong>Yard Waste</strong> — Grass clippings, leaves, branches, and other yard waste.</div>
+          </li>
+          <li class="flex items-start gap-3 rounded-lg border border-red-200 bg-red-50 p-3 dark:border-red-800 dark:bg-red-950">
+            <Icon aria-hidden="true" name="lucide:circle" class="mt-0.5 shrink-0" size="1.2rem" />
+            <div><strong>Tires</strong> — All types of tires.</div>
+          </li>
+          <li>
+            <div class="flex items-start gap-3 rounded-lg border border-red-200 bg-red-50 p-3 dark:border-red-800 dark:bg-red-950">
+              <Icon aria-hidden="true" name="lucide:hammer" class="mt-0.5 shrink-0" size="1.2rem" />
+              <div><strong>Construction Debris</strong> — Concrete, bricks, wood, and other construction waste materials.</div>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+
+    <p class="mt-16 text-lg">
+      We encourage all Manheim residents to take advantage of this opportunity to declutter their homes and support our club's mission to serve the community. By participating in the Spring Clean-up, you are helping us keep our town clean and beautiful while also supporting our ongoing community service projects.
+    </p>
+  </section>
+</DefaultLayout>
