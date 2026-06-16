@@ -49,34 +49,14 @@ const packURL = import.meta.env.PUBLIC_PACK_URL
 
       <hr class="mx-auto mb-4 max-w-[50%] border-t-2 border-gray-300" aria-hidden="true" />
 
-
-      <div class="my-12 flex flex-col gap-16">
-        <ContentMedia
-          imgSrc={flyer1.src}
-          reverseImg={false}
-          aria-label="Manheim Lions Club Spring Clean-up Flyer. June 6th, 2026. 8-11AM."
-          allowEnlarge={true}
-        >
-          <Heading level="h3">Manheim Lions Club Spring Clean-up</Heading>
-          <div class="flex flex-col space-content">
-            <p class="text-lg">
-              Join us for our annual household spring clean-up event on June 6th, 2026 from 8-11AM! We will be providing dumpsters and Shred-it for the Manheim community to dispose of unwanted items and clutter. This is a great opportunity to declutter your home and support our club's mission to serve the community. This is for Manheim residents only!
-            </p>
-            <Link href="/spring-cleanup" isButton class="mx-auto justify-center" type="primary" animateOnHover animationType="boop">
-              Learn more
-              <Icon aria-hidden="true" name="lucide:arrow-right" size="1.5rem" />
-            </Link>
-          </div>
-        </ContentMedia>
-      </div>
       <!--
         TODO:
         - Create reusable data files / event cards for each event that can be displayed on a schedule using SSR?
       -->
 
-      <!-- <Notification type="info" class="mx-auto my-12 max-w-3xl justify-center">
+      <Notification type="info" class="mx-auto my-12 max-w-3xl justify-center">
         There are currently no upcoming events. Please check back later!
-      </Notification> -->
+      </Notification>
 
       <hr class="mx-auto mb-4 max-w-[25%] border-t-2 border-gray-300" aria-hidden="true" />
     </div>
