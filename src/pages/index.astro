@@ -3,12 +3,12 @@ import DefaultLayout from '@layouts/DefaultLayout.astro'
 import Hero from '@components/Hero.astro'
 import ContentMedia from '@components/ContentMedia.astro'
 import ContentVideo from '@components/ContentVideo.astro'
-import { Heading, Link, Notification } from 'accessible-astro-components'
+import { Heading, Link } from 'accessible-astro-components'
 import { Icon } from 'astro-icon/components'
 
 import medPic from '@assets/img/medical-equipment.webp'
 import cubpack from '@assets/img/cubpack-photo.webp'
-import flyer1 from '@assets/img/spring-cleanup-flyer.webp'
+import christmasInJulyFlyer from '@assets/img/ChristmasInJuly_5KFlyer-2026.webp'
 
 const packURL = import.meta.env.PUBLIC_PACK_URL
 ---
@@ -49,14 +49,36 @@ const packURL = import.meta.env.PUBLIC_PACK_URL
 
       <hr class="mx-auto mb-4 max-w-[50%] border-t-2 border-gray-300" aria-hidden="true" />
 
+      <div class="my-12 flex flex-col gap-16">
+        <ContentMedia
+          imgSrc={christmasInJulyFlyer.src}
+          reverseImg={false}
+          aria-label="Santa 5K Run & Walk Christmas in July Special Flyer. Register July 19th-31st to save $5 off registration."
+          allowEnlarge={true}
+        >
+          <Heading level="h3">Christmas in July Special: Santa 5K Run & Walk</Heading>
+          <div class="flex flex-col space-content">
+            <p class="text-lg">
+              Get a jump on the holidays! Register for the 11th Annual Santa 5K Run & Walk between July 19th and July
+              31st and save $5 off each registration. The event takes place Saturday, December 5th, 2026 at 8:30AM in
+              Manheim.
+            </p>
+            <Link href="/santa-5k" isButton class="mx-auto justify-center" type="primary" animateOnHover animationType="boop">
+              Learn more
+              <Icon aria-hidden="true" name="lucide:arrow-right" size="1.5rem" />
+            </Link>
+          </div>
+        </ContentMedia>
+      </div>
+
       <!--
         TODO:
         - Create reusable data files / event cards for each event that can be displayed on a schedule using SSR?
       -->
 
-      <Notification type="info" class="mx-auto my-12 max-w-3xl justify-center">
+      <!-- <Notification type="info" class="mx-auto my-12 max-w-3xl justify-center">
         There are currently no upcoming events. Please check back later!
-      </Notification>
+      </Notification> -->
 
       <hr class="mx-auto mb-4 max-w-[25%] border-t-2 border-gray-300" aria-hidden="true" />
     </div>
