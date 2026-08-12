@@ -3,12 +3,11 @@ import DefaultLayout from '@layouts/DefaultLayout.astro'
 import Hero from '@components/Hero.astro'
 import ContentMedia from '@components/ContentMedia.astro'
 import ContentVideo from '@components/ContentVideo.astro'
-import { Heading, Link } from 'accessible-astro-components'
+import { Heading, Link, Notification } from 'accessible-astro-components'
 import { Icon } from 'astro-icon/components'
 
 import medPic from '@assets/img/medical-equipment.webp'
 import cubpack from '@assets/img/cubpack-photo.webp'
-import christmasInJulyFlyer from '@assets/img/ChristmasInJuly_5KFlyer-2026.webp'
 
 const packURL = import.meta.env.PUBLIC_PACK_URL
 ---
@@ -49,7 +48,7 @@ const packURL = import.meta.env.PUBLIC_PACK_URL
 
       <hr class="mx-auto mb-4 max-w-[50%] border-t-2 border-gray-300" aria-hidden="true" />
 
-      <div class="my-12 flex flex-col gap-16">
+      <!-- <div class="my-12 flex flex-col gap-16">
         <ContentMedia
           imgSrc={christmasInJulyFlyer.src}
           reverseImg={false}
@@ -69,16 +68,16 @@ const packURL = import.meta.env.PUBLIC_PACK_URL
             </Link>
           </div>
         </ContentMedia>
-      </div>
+      </div> -->
 
       <!--
         TODO:
         - Create reusable data files / event cards for each event that can be displayed on a schedule using SSR?
       -->
 
-      <!-- <Notification type="info" class="mx-auto my-12 max-w-3xl justify-center">
+      <Notification type="info" class="mx-auto my-12 max-w-3xl justify-center">
         There are currently no upcoming events. Please check back later!
-      </Notification> -->
+      </Notification>
 
       <hr class="mx-auto mb-4 max-w-[25%] border-t-2 border-gray-300" aria-hidden="true" />
     </div>
