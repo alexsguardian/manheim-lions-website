@@ -17,8 +17,7 @@
         "unifiedjs.vscode-mdx",
         "esbenp.prettier-vscode",
         "bradlc.vscode-tailwindcss",
-        "wdhongtw.gpg-indicator",
-        "eamodio.gitlens"
+        "wdhongtw.gpg-indicator"
       ]
     }
   },
