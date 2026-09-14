@@ -12,6 +12,10 @@ interface Props {
    */
   imgSrc: string
   /**
+   * Alt text describing the image
+   */
+  alt: string
+  /**
    * Whether to display the image on the right side instead of the left
    * @default false
    */
@@ -23,7 +27,7 @@ interface Props {
   allowEnlarge?: boolean
 }
 
-const { imgSrc, reverseImg = false, allowEnlarge = true }: Props = Astro.props
+const { imgSrc, alt, reverseImg = false, allowEnlarge = true }: Props = Astro.props
 ---
 
 <section>
@@ -34,13 +38,13 @@ const { imgSrc, reverseImg = false, allowEnlarge = true }: Props = Astro.props
           type="button"
           class={`image-modal-trigger rounded-lg overflow-hidden cursor-pointer hover:opacity-80 transition-opacity ${reverseImg ? 'md:order-2' : ''}`}
           data-image-src={imgSrc}
-          aria-label="Click to view larger image"
+          aria-label={`View larger image: ${alt}`}
         >
-          <Media class="rounded-lg" src={imgSrc} />
+          <Media class="rounded-lg" src={imgSrc} alt={alt} />
         </button>
       ) : (
         <div class={`rounded-lg ${reverseImg ? 'md:order-2' : ''}`}>
-          <Media class="rounded-lg" src={imgSrc} />
+          <Media class="rounded-lg" src={imgSrc} alt={alt} />
         </div>
       )}
       <div class={`space-content flex flex-col justify-center ${reverseImg ? 'md:order-1' : ''}`}>
