@@ -10,11 +10,15 @@ import { Icon } from 'astro-icon/components'
 import medPic from '@assets/img/medical-equipment.webp'
 import cubpack from '@assets/img/cubpack-photo.webp'
 import santarunposter from '@assets/img/santa-run/santa-5k-poster-26LFS.webp'
+import farmshowPoster from '@assets/img/fundraisers/fund-farm-show-stand.webp'
 
 const packURL = import.meta.env.PUBLIC_PACK_URL
 ---
 
-<DefaultLayout title="Home">
+<DefaultLayout
+  title="Manheim Lions Club"
+  description="The Manheim Lions Club is a non-profit service organization in Manheim, PA serving Lancaster County since 1925. Attend a meeting, volunteer, borrow medical equipment, or join our community events."
+>
   <Hero />
 
   <!-- Feature Section -->
@@ -76,6 +80,28 @@ const packURL = import.meta.env.PUBLIC_PACK_URL
           </div>
         </ContentMedia>
       </div>
+
+      <ContentMedia
+        imgSrc={farmshowPoster.src}
+        reverseImg={true}
+        alt="Manheim Farm Show Stand Poster"
+        allowEnlarge={true}
+      >
+        <Heading level="h3">Manheim Farm Show Stand</Heading>
+        <div class="flex flex-col space-content">
+          <p class="text-lg">
+            Support our fundraising efforts by visiting the Manheim Lions Club stand at the Manheim Farm Show! We offer a variety
+            of items for sale, including our popular Ham & Cheese sandwiches. Your purchases help fund our community initiatives. This year the Manheim Farm Show is taking place October 5-9th.
+          </p>
+          <div class="flex flex-wrap justify-center gap-4">
+            <Link href="/calendar" isButton class="justify-center" type="primary" animateOnHover animationType="boop">
+              See Calendar
+              <Icon aria-hidden="true" name="lucide:arrow-right" size="1.5rem" />
+            </Link>
+          </div>
+        </div>
+      </ContentMedia>
+
 
       <!--
         TODO:
