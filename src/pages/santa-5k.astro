@@ -26,9 +26,44 @@ import sponsor9 from '@assets/img/santa-run/sponsors/sponsor9.webp'
 import sponsor10 from '@assets/img/santa-run/sponsors/sponsor10.webp'
 
 const PUBLIC_RUNNERS_REGISTRATION_URL = import.meta.env.PUBLIC_RUNNERS_REGISTRATION_URL
+
+const santaRunEvent = {
+  '@context': 'https://schema.org',
+  '@type': 'SportsEvent',
+  name: 'Manheim Lions Club Santa 5K Run & Walk',
+  description:
+    'Annual chip-timed 5K run and walk through downtown Manheim, PA hosted by the Manheim Lions Club. Festive holiday attire encouraged. Proceeds support local community projects.',
+  startDate: '2026-12-05T08:30:00-05:00',
+  endDate: '2026-12-05T10:00:00-05:00',
+  eventStatus: 'https://schema.org/EventScheduled',
+  eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode',
+  image: new URL(santaRunStart.src, Astro.site).href,
+  location: {
+    '@type': 'Place',
+    name: 'Market Square, Manheim',
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: 'Market Square',
+      addressLocality: 'Manheim',
+      addressRegion: 'PA',
+      postalCode: '17545',
+      addressCountry: 'US',
+    },
+  },
+  organizer: { '@id': `${Astro.site}#organization` },
+  offers: {
+    '@type': 'Offer',
+    url: PUBLIC_RUNNERS_REGISTRATION_URL,
+    availability: 'https://schema.org/InStock',
+  },
+}
 ---
 
-<DefaultLayout title="Santa 5K Run & Walk">
+<DefaultLayout
+  title="Santa 5K Run & Walk in Manheim, PA"
+  description="Register for the Manheim Lions Club Santa 5K Run & Walk on Saturday, December 5, 2026 in downtown Manheim, PA. Chip-timed, festive attire encouraged, all ages welcome. Proceeds support local community projects."
+  structuredData={[santaRunEvent]}
+>
   <PageHeader
     title="Santa 5K Run & Walk"
     subtitle="Information about the Santa 5K Run & Walk event."

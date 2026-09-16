@@ -4,14 +4,17 @@ import '../assets/scss/index.scss'
 import SiteMeta from '@components/SiteMeta.astro'
 import Header from '@components/Header.astro'
 import Footer from '@components/Footer.astro'
+import StructuredData from '@components/StructuredData.astro'
 import { ClientRouter } from 'astro:transitions'
 
 const {
-  title = 'Manheim Lions',
-  description = 'The Manheim Lions club is a non-profit community service organization in Manheim, Pennsylvania.',
-  url = Astro.site,
+  title = 'Manheim Lions Club',
+  description = 'The Manheim Lions Club is a non-profit community service organization serving Manheim, PA and Lancaster County since 1925. Join us at a meeting, volunteer, or borrow medical equipment.',
+  url = Astro.url,
   image = '/CentennialRibbon.png',
   author = '',
+  noindex = false,
+  structuredData = [],
   showCallToAction = true,
 } = Astro.props
 ---
@@ -25,7 +28,8 @@ const {
     <!-- favicon -->
     <link rel="icon" type="image/png" href="/favicon.png" />
 
-    <SiteMeta title={title} description={description.substring(0, 100)} url={url} image={image} author={author} />
+    <SiteMeta title={title} description={description} url={url} image={image} author={author} noindex={noindex} />
+    <StructuredData extra={structuredData} />
 
     <!-- Enable Astro View Transitions for all browsers -->
     <ClientRouter />

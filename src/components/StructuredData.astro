@@ -1,0 +1,66 @@
+---
+/**
+ * StructuredData Component
+ *
+ * @description Emits JSON-LD for the club (on every page) plus any page-specific schema objects
+ */
+interface Props {
+  /**
+   * Additional schema.org objects to emit for this page (e.g. an Event)
+   */
+  extra?: Record<string, unknown>[]
+}
+
+const { extra = [] } = Astro.props
+
+const FB_URL = import.meta.env.PUBLIC_FACEBOOK_PAGE_URL
+const site = Astro.site?.href ?? 'https://manheimlions.org/'
+
+const organization = {
+  '@context': 'https://schema.org',
+  '@type': ['NGO', 'Organization'],
+  '@id': `${site}#organization`,
+  name: 'Manheim Lions Club',
+  alternateName: 'Manheim Lions',
+  url: site,
+  logo: new URL('/CentennialRibbon.png', site).href,
+  description:
+    'The Manheim Lions Club is a non-profit community service organization serving Manheim, Pennsylvania and Lancaster County since 1925.',
+  foundingDate: '1925',
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: 'Manheim',
+    addressRegion: 'PA',
+    postalCode: '17545',
+    addressCountry: 'US',
+  },
+  areaServed: [
+    { '@type': 'City', name: 'Manheim', containedInPlace: { '@type': 'State', name: 'Pennsylvania' } },
+    { '@type': 'AdministrativeArea', name: 'Lancaster County, Pennsylvania' },
+  ],
+  parentOrganization: {
+    '@type': 'Organization',
+    name: 'Lions Clubs International',
+    url: 'https://www.lionsclubs.org',
+  },
+  sameAs: [FB_URL, 'https://www.lionsclubs.org'].filter(Boolean),
+  contactPoint: {
+    '@type': 'ContactPoint',
+    contactType: 'general inquiries',
+    url: new URL('/contact', site).href,
+  },
+}
+
+const website = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  '@id': `${site}#website`,
+  url: site,
+  name: 'Manheim Lions Club',
+  publisher: { '@id': `${site}#organization` },
+}
+
+const schemas = [organization, website, ...extra]
+---
+
+{schemas.map((schema) => <script type="application/ld+json" set:html={JSON.stringify(schema)} />)}

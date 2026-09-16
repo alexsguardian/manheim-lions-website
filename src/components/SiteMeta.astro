@@ -14,9 +14,9 @@ interface Props {
    */
   description: string
   /**
-   * The URL of the page
+   * The canonical URL of the page
    */
-  url: string
+  url: URL | string
   /**
    * The image path for social sharing
    */
@@ -25,26 +25,42 @@ interface Props {
    * The author of the page
    */
   author?: string
+  /**
+   * Prevent search engines from indexing this page
+   */
+  noindex?: boolean
 }
 
-const { title, description, url, image, author = '' } = Astro.props
+const { title, description, url, image, author = '', noindex = false } = Astro.props
 
-let subtitle = 'Manheim Lions'
+const siteName = 'Manheim Lions Club'
+const fullTitle = title === siteName ? title : `${title} | ${siteName}`
+const canonical = new URL(url, Astro.site).href
+const imageUrl = new URL(image, Astro.site).href
 ---
 
 <!-- general meta -->
-<meta name="title" content={`${title} - ${subtitle}`} />
+<title>{fullTitle}</title>
 <meta name="description" content={description} />
-<meta name="author" content={author} />
+{author && <meta name="author" content={author} />}
+<link rel="canonical" href={canonical} />
+{noindex && <meta name="robots" content="noindex, nofollow" />}
+
+<!-- local / geo hints -->
+<meta name="geo.region" content="US-PA" />
+<meta name="geo.placename" content="Manheim, Pennsylvania" />
 
 <!-- open graph -->
-<meta property="og:title" content={`${title} - ${subtitle}`} />
+<meta property="og:site_name" content={siteName} />
+<meta property="og:locale" content="en_US" />
+<meta property="og:title" content={fullTitle} />
 <meta property="og:description" content={description} />
 <meta property="og:type" content="website" />
-<meta property="og:url" content={url} />
-<meta property="og:image" content={`${Astro.site}${image}`} />
+<meta property="og:url" content={canonical} />
+<meta property="og:image" content={imageUrl} />
 
 <!-- twitter card -->
-
-<!-- page title -->
-<title>{title} - {subtitle}</title>
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content={fullTitle} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={imageUrl} />

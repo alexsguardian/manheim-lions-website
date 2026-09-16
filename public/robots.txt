@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Disallow: /form-success/
+Disallow: /form-error/
+Disallow: /api/
+
+Sitemap: https://manheimlions.org/sitemap-index.xml
