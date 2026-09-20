@@ -70,7 +70,7 @@ function getYouTubeEmbed(raw: string): string | null {
         params += (params ? '&' : '') + `start=${seconds}`
       }
     }
-    const base = 'https://www.youtube.com/embed/' + videoId
+    const base = 'https://www.youtube-nocookie.com/embed/' + videoId
     return params ? `${base}?${params}` : base
   } catch {
     return null
