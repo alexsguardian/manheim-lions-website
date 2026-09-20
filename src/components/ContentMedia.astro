@@ -1,5 +1,6 @@
 ---
-import { Media } from 'accessible-astro-components'
+import { Image } from 'astro:assets'
+import type { ImageMetadata } from 'astro'
 
 /**
  * ContentMedia Component
@@ -8,9 +9,14 @@ import { Media } from 'accessible-astro-components'
  */
 interface Props {
   /**
-   * The source URL for the image
+   * The imported image (from src/assets) to display. Passing the metadata object
+   * lets Astro generate responsive, optimized variants with intrinsic dimensions.
    */
-  imgSrc: string
+  imgSrc: ImageMetadata
+  /**
+   * Alt text describing the image
+   */
+  alt: string
   /**
    * Whether to display the image on the right side instead of the left
    * @default false
@@ -23,7 +29,13 @@ interface Props {
   allowEnlarge?: boolean
 }
 
-const { imgSrc, reverseImg = false, allowEnlarge = true }: Props = Astro.props
+const { imgSrc, alt, reverseImg = false, allowEnlarge = true }: Props = Astro.props
+
+// Responsive variants: the image fills the container on mobile and half of it (minus the gap) on md+.
+// Never upscale past the source width.
+const widths = [480, 768, 1024, 1440].filter((w) => w <= imgSrc.width)
+if (!widths.includes(imgSrc.width)) widths.push(imgSrc.width)
+const sizes = '(min-width: 768px) calc(50vw - 3rem), calc(100vw - 2rem)'
 ---
 
 <section>
@@ -33,14 +45,14 @@ const { imgSrc, reverseImg = false, allowEnlarge = true }: Props = Astro.props
         <button
           type="button"
           class={`image-modal-trigger rounded-lg overflow-hidden cursor-pointer hover:opacity-80 transition-opacity ${reverseImg ? 'md:order-2' : ''}`}
-          data-image-src={imgSrc}
-          aria-label="Click to view larger image"
+          data-image-src={imgSrc.src}
+          aria-label={`View larger image: ${alt}`}
         >
-          <Media class="rounded-lg" src={imgSrc} />
+          <Image class="content-media-img rounded-lg" src={imgSrc} alt={alt} widths={widths} sizes={sizes} loading="lazy" decoding="async" />
         </button>
       ) : (
         <div class={`rounded-lg ${reverseImg ? 'md:order-2' : ''}`}>
-          <Media class="rounded-lg" src={imgSrc} />
+          <Image class="content-media-img rounded-lg" src={imgSrc} alt={alt} widths={widths} sizes={sizes} loading="lazy" decoding="async" />
         </div>
       )}
       <div class={`space-content flex flex-col justify-center ${reverseImg ? 'md:order-1' : ''}`}>
@@ -49,6 +61,14 @@ const { imgSrc, reverseImg = false, allowEnlarge = true }: Props = Astro.props
     </div>
   </div>
 </section>
+
+<style>
+  .content-media-img {
+    inline-size: 100%;
+    block-size: auto;
+    object-fit: cover;
+  }
+</style>
 
 {allowEnlarge && (
   <div id="image-modal" class="fixed inset-0 z-[99999] hidden items-center justify-center p-4 md:p-8 h-dvh w-screen" role="dialog" aria-labelledby="modal-title" aria-modal="true" style="isolation: isolate;">

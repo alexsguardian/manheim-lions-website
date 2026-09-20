@@ -26,9 +26,44 @@ import sponsor9 from '@assets/img/santa-run/sponsors/sponsor9.webp'
 import sponsor10 from '@assets/img/santa-run/sponsors/sponsor10.webp'
 
 const PUBLIC_RUNNERS_REGISTRATION_URL = import.meta.env.PUBLIC_RUNNERS_REGISTRATION_URL
+
+const santaRunEvent = {
+  '@context': 'https://schema.org',
+  '@type': 'SportsEvent',
+  name: 'Manheim Lions Club Santa 5K Run & Walk',
+  description:
+    'Annual chip-timed 5K run and walk through downtown Manheim, PA hosted by the Manheim Lions Club. Festive holiday attire encouraged. Proceeds support local community projects.',
+  startDate: '2026-12-05T08:30:00-05:00',
+  endDate: '2026-12-05T10:00:00-05:00',
+  eventStatus: 'https://schema.org/EventScheduled',
+  eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode',
+  image: new URL(santaRunStart.src, Astro.site).href,
+  location: {
+    '@type': 'Place',
+    name: 'Market Square, Manheim',
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: 'Market Square',
+      addressLocality: 'Manheim',
+      addressRegion: 'PA',
+      postalCode: '17545',
+      addressCountry: 'US',
+    },
+  },
+  organizer: { '@id': `${Astro.site}#organization` },
+  offers: {
+    '@type': 'Offer',
+    url: PUBLIC_RUNNERS_REGISTRATION_URL,
+    availability: 'https://schema.org/InStock',
+  },
+}
 ---
 
-<DefaultLayout title="Santa 5K Run & Walk">
+<DefaultLayout
+  title="Santa 5K Run & Walk in Manheim, PA"
+  description="Register for the Manheim Lions Club Santa 5K Run & Walk on Saturday, December 5, 2026 in downtown Manheim, PA. Chip-timed, festive attire encouraged, all ages welcome. Proceeds support local community projects."
+  structuredData={[santaRunEvent]}
+>
   <PageHeader
     title="Santa 5K Run & Walk"
     subtitle="Information about the Santa 5K Run & Walk event."
@@ -37,7 +72,7 @@ const PUBLIC_RUNNERS_REGISTRATION_URL = import.meta.env.PUBLIC_RUNNERS_REGISTRAT
   />
 
   <section class="container my-16">
-    <ContentMedia imgSrc={santaRunStart.src} reverseImg={false} aria-label="Previous event start line photo">
+    <ContentMedia imgSrc={santaRunStart} reverseImg={false} alt="Previous event start line photo">
       <Heading level="h2">Santa 5K Run & Walk</Heading>
       <p class="text-lg">
         The Manheim Lions Club hosts an annual Santa 5K Run & Walk, in December, to raise funds for various community
@@ -102,7 +137,7 @@ const PUBLIC_RUNNERS_REGISTRATION_URL = import.meta.env.PUBLIC_RUNNERS_REGISTRAT
   <!-- Location & Parking Section -->
   <section class="container">
     <div class="my-16 flex flex-col">
-      <ContentMedia imgSrc={santaCourseMap.src} aria-label="Map of the course" reverseImg={false}>
+      <ContentMedia imgSrc={santaCourseMap} alt="Map of the course" reverseImg={false}>
         <Heading class="my-8" level="h2">Event Location & Parking</Heading>
         <p class="text-lg">
           The Santa 5K Run & Walk takes place in Manheim, PA, starting and finishing at Market Square. Parking is
@@ -176,7 +211,7 @@ const PUBLIC_RUNNERS_REGISTRATION_URL = import.meta.env.PUBLIC_RUNNERS_REGISTRAT
       </table>
     </div>
 
-    <ContentMedia imgSrc={santaParking.src} reverseImg={true} aria-label="Map markers for parking locations">
+    <ContentMedia imgSrc={santaParking} reverseImg={true} alt="Map markers for parking locations">
       <Heading level="h3">On Street Parking</Heading>
       <p class="text-lg">
         On street parking is available throughout the Manheim Borough area. Please be sure to check for any parking
@@ -258,9 +293,9 @@ const PUBLIC_RUNNERS_REGISTRATION_URL = import.meta.env.PUBLIC_RUNNERS_REGISTRAT
 
       <AccordionItem title="Are there awards or prizes for participants?">
         <ContentMedia
-          imgSrc={santaRunAward.src}
+          imgSrc={santaRunAward}
           reverseImg={false}
-          aria-label="Photo of a prior Santa 5K Run & Walk award"
+          alt="Photo of a prior Santa 5K Run & Walk award"
         >
           There will be a variety of goodies and drinks for all runners at the end of the race. There will also be
           medals for the top finishers in various age groups.

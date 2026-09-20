@@ -12,7 +12,10 @@ import cubpack from '../assets/img/cubpack-photo.webp'
 const packURL = import.meta.env.PUBLIC_PACK_URL
 ---
 
-<DefaultLayout title="Pinewood Derby">
+<DefaultLayout
+  title="Pinewood Derby"
+  description="The Manheim Lions Club partners with local Cub Scouts for the annual Pinewood Derby in Manheim, PA."
+>
   <PageHeader
     title="Pinewood Derby Race"
     subtitle="Annual Pinewood Derby race."
@@ -40,9 +43,9 @@ const packURL = import.meta.env.PUBLIC_PACK_URL
     <!-- Cub Scout Section -->
     <section class="container my-24">
       <ContentMedia
-        imgSrc={cubpack.src}
+        imgSrc={cubpack}
         reverseImg={true}
-        aria-label="Cub Scout Ranks (Lion, Tiger, Bobcat, Wolf, Bear, Webelos, Arrow of Light)"
+        alt="Cub Scout Ranks (Lion, Tiger, Bobcat, Wolf, Bear, Webelos, Arrow of Light)"
         allowEnlarge={false}
       >
         <Heading level="h2">Cub Scout Pack 47</Heading>

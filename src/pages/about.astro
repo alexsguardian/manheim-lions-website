@@ -5,12 +5,16 @@ import { AvatarGroup, Avatar, Heading, Link } from 'accessible-astro-components'
 
 import clubPresident from '@assets/img/about/club-president.webp'
 import clubVicePresident from '@assets/img/about/club-1-vice-president.webp'
-import club2VicePresident from '@assets/img/about/club-2-vice-president.webp'
 import clubTreasurer from '@assets/img/about/club-treasurer.webp'
 import clubSecretary from '@assets/img/about/club-secretary.webp'
+import placeholder from '@assets/img/about/portrait.webp'
+import placeholderf from '@assets/img/about/portrait-f.webp'
 ---
 
-<DefaultLayout title="About">
+<DefaultLayout
+  title="About Our Club"
+  description="Learn about the Manheim Lions Club, a Lions Clubs International chapter chartered in 1925 and serving Manheim, PA and Lancaster County. Meet our officers and members."
+>
   <PageHeader title="About" subtitle="Get to know the Manheim Lions!" bgType="gradient" showBreadcrumbs={false} />
   <section class="container my-16">
     <p class="text-lg">
@@ -18,7 +22,7 @@ import clubSecretary from '@assets/img/about/club-secretary.webp'
     </p>
 
     <p class="text-lg my-4">
-      <strong>🎉 2025 marks our 100th anniversary!</strong> A century of service, friendship, and community impact. We're honored to celebrate this incredible milestone and look forward to continuing our mission for generations to come. Read more about our centennial year <Link href="https://issuu.com/engleprintingandpublishing/docs/mc1_102225" isExternal sr-only="Go to Issuu.com to see a newspaper print">here!</Link>
+      <strong>🎉 2025 marked our 100th anniversary!</strong> A century of service, friendship, and community impact. We're honored to celebrate this incredible milestone and look forward to continuing our mission for generations to come. Read more about our centennial year <Link href="https://issuu.com/engleprintingandpublishing/docs/mc1_102225" isExternal sr-only="Go to Issuu.com to see a newspaper print">here!</Link>
     </p>
 
     <p class="text-lg my-4">
@@ -29,21 +33,19 @@ import clubSecretary from '@assets/img/about/club-secretary.webp'
     <p class="mb-8">Meet the dedicated individuals of our club.</p>
 
     <AvatarGroup display="grid" gridItemsSize="300px" gridGap="2rem">
-      <Avatar initials="AH" title="Aaron H." subtitle="President" img={clubPresident.src}/>
-      <Avatar initials="RP" title="Rich P." subtitle="1st Vice President" img={clubVicePresident.src} />
-      <Avatar initials="EK" title="Ed K." subtitle="2nd Vice President" img={club2VicePresident.src} />
-      <Avatar initials="TH" title="Tori H." subtitle="3rd Vice President" />
+      <Avatar initials="RP" title="Rich P." subtitle="President" img={clubPresident.src} />
+      <Avatar initials="EK" title="Ed K." subtitle="1st Vice President" img={clubVicePresident.src} />
+      <Avatar initials="TH" title="Tori H." subtitle="2nd Vice President" img={placeholderf.src}/>
       <Avatar initials="LH" title="Leslie H." subtitle="Secretary" img={clubSecretary.src}/>
-      <Avatar initials="EK" title="Esther K." subtitle="Treasurer" img={clubTreasurer.src}/>
-      <Avatar initials="NH" title="Nancy H." subtitle="Invocation" />
-      <Avatar initials="AH" title="Alexander H." subtitle="Technology" />
-      <Avatar initials="DK" title="Dave K." subtitle="Service Chairperson" />
-      <Avatar initials="MM" title="Mark M." subtitle="Medical Equipment" />
-      <Avatar initials="DH" title="Dave H." subtitle="Membership" />
-      <Avatar initials="FS" title="Frank S." subtitle="Eye Glasses" />
-      <Avatar initials="JP" title="Jayne S." subtitle="Member" />
-      <Avatar initials="LK" title="Linda K." subtitle="Member" />
-      <Avatar initials="BB" title="Bonnie B." subtitle="Member" />
+      <Avatar initials="AH" title="Aaron H." subtitle="Treasurer" img={clubTreasurer.src}/>
+      <Avatar initials="AH" title="Alexander H." subtitle="Technology" img={placeholder.src}/>
+      <Avatar initials="DK" title="Dave K." subtitle="Eye Glasses" img={placeholder.src}/>
+      <Avatar initials="MM" title="Mark M." subtitle="Medical Equipment" img={placeholder.src}/>
+      <Avatar initials="FS" title="Frank S." subtitle="Eye Glasses" img={placeholder.src}/>
+      <Avatar initials="EK" title="Esther K." subtitle="Member" img={placeholderf.src}/>
+      <Avatar initials="JP" title="Jayne S." subtitle="Member" img={placeholderf.src}/>
+      <Avatar initials="LK" title="Linda K." subtitle="Member" img={placeholderf.src}/>
+      <Avatar initials="BB" title="Bonnie B." subtitle="Member" img={placeholderf.src}/>
     </AvatarGroup>
   </section>
 </DefaultLayout>

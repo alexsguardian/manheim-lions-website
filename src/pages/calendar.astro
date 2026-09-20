@@ -5,7 +5,10 @@ import PageHeader from '@components/PageHeader.astro'
 const CAL_URL = import.meta.env.PUBLIC_CALENDAR_URL
 ---
 
-<DefaultLayout title="Calendar">
+<DefaultLayout
+  title="Meetings & Events Calendar"
+  description="Upcoming Manheim Lions Club meetings, community events, and fundraisers in Manheim, PA. Club meetings are usually the first Monday of the month, 7-8 PM, and are open to the public."
+>
   <PageHeader
     title="Calendar"
     subtitle="View upcoming club meetings, events and activities."
@@ -25,21 +28,15 @@ const CAL_URL = import.meta.env.PUBLIC_CALENDAR_URL
   </section>
   <section id="legend">
     <div class="container">
-      <div class="mb-4 grid grid-cols-1 gap-4 md:grid-cols-3">
+      <div class="mb-4 grid grid-cols-1 gap-4 md:grid-cols-2">
         <div class="flex flex-col items-center justify-start gap-2">
           <div class="flex items-center gap-2">
             <span class="h-6 w-6 rounded bg-[#4050b5]" aria-hidden="true"></span>
-            <span aria-label="Board Meetings" class="font-bold">Board Meetings</span>
-          </div>
-          <p class="mt-1 text-center">Members only meeting for active club members. Not open to the public.</p>
-        </div>
-        <div class="flex flex-col items-center justify-start gap-2">
-          <div class="flex items-center gap-2">
-            <span class="h-6 w-6 rounded bg-[#4050b5]" aria-hidden="true"></span>
-            <span aria-label="General Meetings" class="font-bold">General Meetings</span>
+            <span aria-label="Club Meetings" class="font-bold">Club Meetings</span>
           </div>
           <p class="mt-1 text-center">
-            General meetings for the club. Open to the public, prospective members or volunteers.
+            Usually the first Monday of the month, 7:00&ndash;8:00 PM. Open to the public, prospective members and
+            volunteers. Locations vary &mdash; check the event for details.
           </p>
         </div>
         <div class="flex flex-col items-center justify-start gap-2">

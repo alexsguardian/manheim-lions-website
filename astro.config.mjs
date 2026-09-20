@@ -18,7 +18,9 @@ export default defineConfig({
     compress(),
     icon(),
     mdx(),
-    sitemap(),
+    sitemap({
+      filter: (page) => !/\/(form-success|form-error)\/?$/.test(page),
+    }),
     securityTxt({
       contact: 'mailto:webmaster@alexsguardian.net',
     }),
@@ -49,7 +51,7 @@ export default defineConfig({
 
   output: 'static',
   adapter: cloudflare({
-    imageService: 'passthrough',
+    imageService: 'compile',
     platformProxy: {
       enabled: true
     },

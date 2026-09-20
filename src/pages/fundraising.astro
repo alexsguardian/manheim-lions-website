@@ -9,9 +9,13 @@ import broomImage from '@assets/img/fundraisers/fund-brooms.webp'
 import sandwichImage from '@assets/img/fundraisers/fund-halfHC.webp'
 import makerMarket from '@assets/img/fundraisers/fund-makers-market.webp'
 import santaRunPoster from '@assets/img/santa-run/santa-5k-raceStart.webp'
+import farmshowPoster from '@assets/img/fundraisers/fund-farm-show-stand.webp'
 ---
 
-<DefaultLayout>
+<DefaultLayout
+  title="Fundraisers"
+  description="Support the Manheim Lions Club through our fundraisers: broom sales, the Santa 5K Run & Walk, our Pennsylvania Farm Show food stand, and more. All proceeds support projects in Manheim, PA."
+>
   <PageHeader
     title="Fundraising"
     subtitle="Details about specific fundraisers and initiatives that help us make a difference."
@@ -19,7 +23,7 @@ import santaRunPoster from '@assets/img/santa-run/santa-5k-raceStart.webp'
     showBreadcrumbs={false}
   />
   <section class="space-content container my-16">
-    <ContentMedia imgSrc={broomImage.src} reverseImg={true} aria-label="Image of Brooms" allowEnlarge={false}>
+    <ContentMedia imgSrc={broomImage} reverseImg={true} alt="Image of Brooms" allowEnlarge={false}>
       <Heading level="h2">Brooms!</Heading>
       <p class="text-lg">
         Need a new broom? Support our fundraising efforts by purchasing brooms from the Manheim Lions Club! Our brooms
@@ -33,9 +37,9 @@ import santaRunPoster from '@assets/img/santa-run/santa-5k-raceStart.webp'
       </p>
     </ContentMedia>
     <ContentMedia
-      imgSrc={sandwichImage.src}
+      imgSrc={sandwichImage}
       reverseImg={false}
-      aria-label="Ham and Cheese Sandwiches Poster"
+      alt="Ham and Cheese Sandwiches Poster"
       allowEnlarge={false}
     >
       <Heading level="h2">Sandwich Sales</Heading>
@@ -49,9 +53,9 @@ import santaRunPoster from '@assets/img/santa-run/santa-5k-raceStart.webp'
       </p>
     </ContentMedia>
     <ContentMedia
-      imgSrc={makerMarket.src}
+      imgSrc={makerMarket}
       reverseImg={true}
-      aria-label="Manheim Maker's Market Logo"
+      alt="Manheim Maker's Market Logo"
       allowEnlarge={false}
     >
       <Heading level="h2">Manheim Maker's Market</Heading>
@@ -66,9 +70,9 @@ import santaRunPoster from '@assets/img/santa-run/santa-5k-raceStart.webp'
   </section>
   <section class="container my-16">
     <ContentMedia
-      imgSrc={santaRunPoster.src}
+      imgSrc={santaRunPoster}
       reverseImg={false}
-      aria-label="Santa 5K Run & Walk Poster"
+      alt="Santa 5K Run & Walk Poster"
       allowEnlarge={false}
     >
       <Heading level="h2">Santa 5K Run & Walk</Heading>
@@ -81,6 +85,21 @@ import santaRunPoster from '@assets/img/santa-run/santa-5k-raceStart.webp'
         Learn More
         <Icon aria-hidden="true" name="lucide:arrow-right" size={24} />
       </Link>
+    </ContentMedia>
+    <ContentMedia
+      imgSrc={farmshowPoster}
+      reverseImg={true}
+      alt="Manheim Farm Show Stand Poster"
+      allowEnlarge={false}
+    >
+      <Heading level="h2">Manheim Farm Show Stand</Heading>
+      <p class="text-lg">
+        Support our fundraising efforts by visiting the Manheim Lions Club stand at the Manheim Farm Show! We offer a variety
+        of items for sale, including our popular Ham & Cheese sandwiches. Your purchases help fund our community initiatives.
+      </p>
+      <p class="text-lg">
+        The Manheim Farm Show takes place annually in October (first full week). Watch our home page and <a href="/calendar">calendar</a> for upcoming dates!
+      </p>
     </ContentMedia>
   </section>
   <section class="container">

@@ -24,8 +24,10 @@ const { src = '/CentennialRibbon.png' }: Props = Astro.props
       <div class="flex flex-col items-center gap-8 md:items-start">
         <h1 class="text-center text-6xl md:text-left lg:text-8xl">
           <slot>Manheim Lions</slot>
-          <!-- <slot><p class="text-lg">Serving Manheim since 1925.</p></slot> -->
         </h1>
+        <p class="text-center text-xl md:text-left">
+          Serving the Manheim, PA community since 1925.
+        </p>
         <div class="flex flex-col gap-3 min-[500px]:flex-row">
           <Link href="/contact" isButton type="primary" animateOnHover animationType="boop">
             <Icon aria-hidden="true" name="lucide:send" size="1.5rem" />
@@ -37,7 +39,7 @@ const { src = '/CentennialRibbon.png' }: Props = Astro.props
           </Link>
         </div>
       </div>
-      <Image class="hidden lg:block" src={src} alt="" decoding="async" width={800} height={600} loading="eager" />
+      <Image class="hidden lg:block" src={src} alt="" decoding="async" width={800} height={800} loading="eager" />
     </div>
   </div>
 </section>
