@@ -25,6 +25,8 @@ import sponsor11 from '@assets/img/santa-run/sponsors/sponsor11.webp'
 import sponsor12 from '@assets/img/santa-run/sponsors/sponsor12.webp'
 import sponsor13 from '@assets/img/santa-run/sponsors/sponsor13.webp'
 import sponsor14 from '@assets/img/santa-run/sponsors/sponsor14.webp'
+import sponsor15 from '@assets/img/santa-run/sponsors/sponsor15.webp'
+import sponsor16 from '@assets/img/santa-run/sponsors/sponsor16.webp'
 
 const PUBLIC_RUNNERS_REGISTRATION_URL = import.meta.env.PUBLIC_RUNNERS_REGISTRATION_URL
 
@@ -413,7 +415,8 @@ const santaRunEvent = {
     <Heading level="h3" class="mb-4">Event Partners</Heading>
 
     <p class="mb-8 text-lg">
-      Special thanks to Kreider Farms for keeping our runners and walkers refreshed at the finish line.
+      Special thanks to our partners for keeping our runners and walkers refreshed at the finish line: Kreider Farms for
+      drinks, Zern's Beverage for water and Grocery Outlet of Manheim for bananas.
     </p>
 
     <div class="mb-8 grid grid-cols-2 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3">
@@ -422,6 +425,18 @@ const santaRunEvent = {
         target="_blank"
         class="hover:outline-2 hover:outline-[var(--color-primary)] focus:outline-2 focus:outline-[var(--color-primary)] active:border-2 active:border-[var(--color-neutral)]"
         ><Media src={sponsor1.src} alt="Kreider Farms" /></Link
+      >
+      <Link
+        href="https://www.zernsbeverage.com/"
+        target="_blank"
+        class="hover:outline-2 hover:outline-[var(--color-primary)] focus:outline-2 focus:outline-[var(--color-primary)] active:border-2 active:border-[var(--color-neutral)]"
+        ><Media src={sponsor15.src} alt="Zern's Beverage" /></Link
+      >
+      <Link
+        href="https://www.groceryoutlet.com/circulars/storeid/705"
+        target="_blank"
+        class="hover:outline-2 hover:outline-[var(--color-primary)] focus:outline-2 focus:outline-[var(--color-primary)] active:border-2 active:border-[var(--color-neutral)]"
+        ><Media src={sponsor16.src} alt="Grocery Outlet Manheim" /></Link
       >
     </div>
 
