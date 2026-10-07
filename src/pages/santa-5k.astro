@@ -16,14 +16,15 @@ import santa5k4 from '@assets/img/santa-run/santa-5k-4.webp'
 import santa5k5 from '@assets/img/santa-run/santa-5k-5.webp'
 
 import sponsor1 from '@assets/img/santa-run/sponsors/sponsor1.webp'
-import sponsor2 from '@assets/img/santa-run/sponsors/sponsor2.webp'
 import sponsor4 from '@assets/img/santa-run/sponsors/sponsor4.webp'
 import sponsor5 from '@assets/img/santa-run/sponsors/sponsor5.webp'
 import sponsor6 from '@assets/img/santa-run/sponsors/sponsor6.webp'
-import sponsor7 from '@assets/img/santa-run/sponsors/sponsor7.webp'
 import sponsor8 from '@assets/img/santa-run/sponsors/sponsor8.webp'
-import sponsor9 from '@assets/img/santa-run/sponsors/sponsor9.webp'
 import sponsor10 from '@assets/img/santa-run/sponsors/sponsor10.webp'
+import sponsor11 from '@assets/img/santa-run/sponsors/sponsor11.webp'
+import sponsor12 from '@assets/img/santa-run/sponsors/sponsor12.webp'
+import sponsor13 from '@assets/img/santa-run/sponsors/sponsor13.webp'
+import sponsor14 from '@assets/img/santa-run/sponsors/sponsor14.webp'
 
 const PUBLIC_RUNNERS_REGISTRATION_URL = import.meta.env.PUBLIC_RUNNERS_REGISTRATION_URL
 
@@ -292,11 +293,7 @@ const santaRunEvent = {
       </AccordionItem>
 
       <AccordionItem title="Are there awards or prizes for participants?">
-        <ContentMedia
-          imgSrc={santaRunAward}
-          reverseImg={false}
-          alt="Photo of a prior Santa 5K Run & Walk award"
-        >
+        <ContentMedia imgSrc={santaRunAward} reverseImg={false} alt="Photo of a prior Santa 5K Run & Walk award">
           There will be a variety of goodies and drinks for all runners at the end of the race. There will also be
           medals for the top finishers in various age groups.
           <ul class="my-4 list-inside list-disc">
@@ -358,28 +355,10 @@ const santaRunEvent = {
 
     <div class="mb-8 grid grid-cols-2 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3">
       <Link
-        href="https://kriederfarms.com"
-        target="_blank"
-        class="hover:outline-2 hover:outline-[var(--color-primary)] focus:outline-2 focus:outline-[var(--color-primary)] active:border-2 active:border-[var(--color-neutral)]"
-        ><Media src={sponsor1.src} alt="Krieder Farms" /></Link
-      >
-      <Link
-        href="https://www.manheim.com/"
-        target="_blank"
-        class="hover:outline-2 hover:outline-[var(--color-primary)] focus:outline-2 focus:outline-[var(--color-primary)] active:border-2 active:border-[var(--color-neutral)]"
-        ><Media src={sponsor2.src} alt="Manheim Auto Auction" /></Link
-      >
-      <Link
         href="https://www.harringtonhoists.com/"
         target="_blank"
         class="hover:outline-2 hover:outline-[var(--color-primary)] focus:outline-2 focus:outline-[var(--color-primary)] active:border-2 active:border-[var(--color-neutral)]"
         ><Media src={sponsor4.src} alt="Harrington Hoists" /></Link
-      >
-      <Link
-        href="https://lancastercivil.com/"
-        target="_blank"
-        class="hover:outline-2 hover:outline-[var(--color-primary)] focus:outline-2 focus:outline-[var(--color-primary)] active:border-2 active:border-[var(--color-neutral)]"
-        ><Media src={sponsor5.src} alt="Lancaster Civil Engineering" /></Link
       >
       <Link
         href="https://www.hondruauto.com/"
@@ -388,10 +367,10 @@ const santaRunEvent = {
         ><Media src={sponsor6.src} alt="Hondru Auto" /></Link
       >
       <Link
-        href="https://business.manheimchamber.com/list/member/germania-band-club-56"
+        href="https://www.wellspan.org/"
         target="_blank"
         class="hover:outline-2 hover:outline-[var(--color-primary)] focus:outline-2 focus:outline-[var(--color-primary)] active:border-2 active:border-[var(--color-neutral)]"
-        ><Media src={sponsor7.src} alt="Germania Band Club" /></Link
+        ><Media src={sponsor10.src} alt="WellSpan Health" /></Link
       >
       <Link
         href="https://harborengineering.com/"
@@ -400,16 +379,49 @@ const santaRunEvent = {
         ><Media src={sponsor8.src} alt="Harbor Engineering" /></Link
       >
       <Link
-        href="https://pleasantviewcommunities.org/"
+        href="https://lancastercivil.com/"
         target="_blank"
         class="hover:outline-2 hover:outline-[var(--color-primary)] focus:outline-2 focus:outline-[var(--color-primary)] active:border-2 active:border-[var(--color-neutral)]"
-        ><Media src={sponsor9.src} alt="Pleasant View Communities" /></Link
+        ><Media src={sponsor5.src} alt="Lancaster Civil Engineering" /></Link
       >
       <Link
-        href="https://www.wellspan.org/"
+        href="https://lawyeryoung.com/"
         target="_blank"
         class="hover:outline-2 hover:outline-[var(--color-primary)] focus:outline-2 focus:outline-[var(--color-primary)] active:border-2 active:border-[var(--color-neutral)]"
-        ><Media src={sponsor10.src} alt="WellSpan Health" /></Link
+        ><Media src={sponsor11.src} alt="Young & Young Attorneys at Law" /></Link
+      >
+      <Link
+        href="https://executiveprintingcorp.com/"
+        target="_blank"
+        class="hover:outline-2 hover:outline-[var(--color-primary)] focus:outline-2 focus:outline-[var(--color-primary)] active:border-2 active:border-[var(--color-neutral)]"
+        ><Media src={sponsor12.src} alt="Executive Printing" /></Link
+      >
+      <Link
+        href="https://www.kbford.com/"
+        target="_blank"
+        class="hover:outline-2 hover:outline-[var(--color-primary)] focus:outline-2 focus:outline-[var(--color-primary)] active:border-2 active:border-[var(--color-neutral)]"
+        ><Media src={sponsor13.src} alt="Keller Bros. Ford" /></Link
+      >
+      <Link
+        href="https://shaubsdrycleaning.com/"
+        target="_blank"
+        class="hover:outline-2 hover:outline-[var(--color-primary)] focus:outline-2 focus:outline-[var(--color-primary)] active:border-2 active:border-[var(--color-neutral)]"
+        ><Media src={sponsor14.src} alt="Shaub's Dry Cleaning" /></Link
+      >
+    </div>
+
+    <Heading level="h3" class="mb-4">Event Partners</Heading>
+
+    <p class="mb-8 text-lg">
+      Special thanks to Kreider Farms for keeping our runners and walkers refreshed at the finish line.
+    </p>
+
+    <div class="mb-8 grid grid-cols-2 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3">
+      <Link
+        href="https://kriederfarms.com"
+        target="_blank"
+        class="hover:outline-2 hover:outline-[var(--color-primary)] focus:outline-2 focus:outline-[var(--color-primary)] active:border-2 active:border-[var(--color-neutral)]"
+        ><Media src={sponsor1.src} alt="Kreider Farms" /></Link
       >
     </div>
 
