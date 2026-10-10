@@ -27,6 +27,7 @@ import sponsor13 from '@assets/img/santa-run/sponsors/sponsor13.webp'
 import sponsor14 from '@assets/img/santa-run/sponsors/sponsor14.webp'
 import sponsor15 from '@assets/img/santa-run/sponsors/sponsor15.webp'
 import sponsor16 from '@assets/img/santa-run/sponsors/sponsor16.webp'
+import sponsor17 from '@assets/img/santa-run/sponsors/sponsor17.webp'
 
 const PUBLIC_RUNNERS_REGISTRATION_URL = import.meta.env.PUBLIC_RUNNERS_REGISTRATION_URL
 
@@ -355,61 +356,76 @@ const santaRunEvent = {
       serving the community.
     </p>
 
-    <div class="mb-8 grid grid-cols-2 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3">
-      <Link
-        href="https://www.harringtonhoists.com/"
-        target="_blank"
-        class="hover:outline-2 hover:outline-[var(--color-primary)] focus:outline-2 focus:outline-[var(--color-primary)] active:border-2 active:border-[var(--color-neutral)]"
-        ><Media src={sponsor4.src} alt="Harrington Hoists" /></Link
-      >
-      <Link
-        href="https://www.hondruauto.com/"
-        target="_blank"
-        class="hover:outline-2 hover:outline-[var(--color-primary)] focus:outline-2 focus:outline-[var(--color-primary)] active:border-2 active:border-[var(--color-neutral)]"
-        ><Media src={sponsor6.src} alt="Hondru Auto" /></Link
-      >
-      <Link
-        href="https://www.wellspan.org/"
-        target="_blank"
-        class="hover:outline-2 hover:outline-[var(--color-primary)] focus:outline-2 focus:outline-[var(--color-primary)] active:border-2 active:border-[var(--color-neutral)]"
-        ><Media src={sponsor10.src} alt="WellSpan Health" /></Link
-      >
-      <Link
-        href="https://harborengineering.com/"
-        target="_blank"
-        class="hover:outline-2 hover:outline-[var(--color-primary)] focus:outline-2 focus:outline-[var(--color-primary)] active:border-2 active:border-[var(--color-neutral)]"
-        ><Media src={sponsor8.src} alt="Harbor Engineering" /></Link
-      >
-      <Link
-        href="https://lancastercivil.com/"
-        target="_blank"
-        class="hover:outline-2 hover:outline-[var(--color-primary)] focus:outline-2 focus:outline-[var(--color-primary)] active:border-2 active:border-[var(--color-neutral)]"
-        ><Media src={sponsor5.src} alt="Lancaster Civil Engineering" /></Link
-      >
-      <Link
-        href="https://lawyeryoung.com/"
-        target="_blank"
-        class="hover:outline-2 hover:outline-[var(--color-primary)] focus:outline-2 focus:outline-[var(--color-primary)] active:border-2 active:border-[var(--color-neutral)]"
-        ><Media src={sponsor11.src} alt="Young & Young Attorneys at Law" /></Link
-      >
-      <Link
-        href="https://executiveprintingcorp.com/"
-        target="_blank"
-        class="hover:outline-2 hover:outline-[var(--color-primary)] focus:outline-2 focus:outline-[var(--color-primary)] active:border-2 active:border-[var(--color-neutral)]"
-        ><Media src={sponsor12.src} alt="Executive Printing" /></Link
-      >
-      <Link
-        href="https://www.kbford.com/"
-        target="_blank"
-        class="hover:outline-2 hover:outline-[var(--color-primary)] focus:outline-2 focus:outline-[var(--color-primary)] active:border-2 active:border-[var(--color-neutral)]"
-        ><Media src={sponsor13.src} alt="Keller Bros. Ford" /></Link
-      >
-      <Link
-        href="https://shaubsdrycleaning.com/"
-        target="_blank"
-        class="hover:outline-2 hover:outline-[var(--color-primary)] focus:outline-2 focus:outline-[var(--color-primary)] active:border-2 active:border-[var(--color-neutral)]"
-        ><Media src={sponsor14.src} alt="Shaub's Dry Cleaning" /></Link
-      >
+    <!-- Sponsors ordered by tier, highest first; each tier starts its own row -->
+    <div class="mb-8 flex flex-col gap-6">
+      <div class="flex flex-wrap justify-center gap-6">
+        <Link
+          href="https://www.harringtonhoists.com/"
+          target="_blank"
+          class="w-[calc(50%-0.75rem)] hover:outline-2 hover:outline-[var(--color-primary)] focus:outline-2 focus:outline-[var(--color-primary)] active:border-2 active:border-[var(--color-neutral)] md:w-[calc(33.333%-1rem)]"
+          ><Media src={sponsor4.src} alt="Harrington Hoists" /></Link
+        >
+        <Link
+          href="https://www.hondruauto.com/"
+          target="_blank"
+          class="w-[calc(50%-0.75rem)] hover:outline-2 hover:outline-[var(--color-primary)] focus:outline-2 focus:outline-[var(--color-primary)] active:border-2 active:border-[var(--color-neutral)] md:w-[calc(33.333%-1rem)]"
+          ><Media src={sponsor6.src} alt="Hondru Auto" /></Link
+        >
+        <Link
+          href="https://lancastercivil.com/"
+          target="_blank"
+          class="w-[calc(50%-0.75rem)] hover:outline-2 hover:outline-[var(--color-primary)] focus:outline-2 focus:outline-[var(--color-primary)] active:border-2 active:border-[var(--color-neutral)] md:w-[calc(33.333%-1rem)]"
+          ><Media src={sponsor5.src} alt="Lancaster Civil Engineering" /></Link
+        >
+      </div>
+      <div class="flex flex-wrap justify-center gap-6">
+        <Link
+          href="https://www.wellspan.org/"
+          target="_blank"
+          class="w-[calc(50%-0.75rem)] hover:outline-2 hover:outline-[var(--color-primary)] focus:outline-2 focus:outline-[var(--color-primary)] active:border-2 active:border-[var(--color-neutral)] md:w-[calc(33.333%-1rem)]"
+          ><Media src={sponsor10.src} alt="WellSpan Health" /></Link
+        >
+        <Link
+          href="https://harborengineering.com/"
+          target="_blank"
+          class="w-[calc(50%-0.75rem)] hover:outline-2 hover:outline-[var(--color-primary)] focus:outline-2 focus:outline-[var(--color-primary)] active:border-2 active:border-[var(--color-neutral)] md:w-[calc(33.333%-1rem)]"
+          ><Media src={sponsor8.src} alt="Harbor Engineering" /></Link
+        >
+        <Link
+          href="https://executiveprintingcorp.com/"
+          target="_blank"
+          class="w-[calc(50%-0.75rem)] hover:outline-2 hover:outline-[var(--color-primary)] focus:outline-2 focus:outline-[var(--color-primary)] active:border-2 active:border-[var(--color-neutral)] md:w-[calc(33.333%-1rem)]"
+          ><Media src={sponsor12.src} alt="Executive Printing" /></Link
+        >
+      </div>
+      <div class="flex flex-wrap justify-center gap-6">
+        <Link
+          href="https://lawyeryoung.com/"
+          target="_blank"
+          class="w-[calc(50%-0.75rem)] hover:outline-2 hover:outline-[var(--color-primary)] focus:outline-2 focus:outline-[var(--color-primary)] active:border-2 active:border-[var(--color-neutral)] md:w-[calc(33.333%-1rem)]"
+          ><Media src={sponsor11.src} alt="Young & Young Attorneys at Law" /></Link
+        >
+        <Link
+          href="https://gandgfeed.com/"
+          target="_blank"
+          class="w-[calc(50%-0.75rem)] hover:outline-2 hover:outline-[var(--color-primary)] focus:outline-2 focus:outline-[var(--color-primary)] active:border-2 active:border-[var(--color-neutral)] md:w-[calc(33.333%-1rem)]"
+          ><Media src={sponsor17.src} alt="G&G Feed & Supply" /></Link
+        >
+      </div>
+      <div class="flex flex-wrap justify-center gap-6">
+        <Link
+          href="https://www.kbford.com/"
+          target="_blank"
+          class="w-[calc(50%-0.75rem)] hover:outline-2 hover:outline-[var(--color-primary)] focus:outline-2 focus:outline-[var(--color-primary)] active:border-2 active:border-[var(--color-neutral)] md:w-[calc(33.333%-1rem)]"
+          ><Media src={sponsor13.src} alt="Keller Bros. Ford" /></Link
+        >
+        <Link
+          href="https://shaubsdrycleaning.com/"
+          target="_blank"
+          class="w-[calc(50%-0.75rem)] hover:outline-2 hover:outline-[var(--color-primary)] focus:outline-2 focus:outline-[var(--color-primary)] active:border-2 active:border-[var(--color-neutral)] md:w-[calc(33.333%-1rem)]"
+          ><Media src={sponsor14.src} alt="Shaub's Dry Cleaning" /></Link
+        >
+      </div>
     </div>
 
     <Heading level="h3" class="mb-4">Event Partners</Heading>
